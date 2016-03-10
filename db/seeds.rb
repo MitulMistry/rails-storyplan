@@ -30,7 +30,7 @@ genres = [
   "Speculative",
   "Thriller",
   "Urban",
-  "Western",
+  "Western"
   ]
 
 genres.each do |genre_name|

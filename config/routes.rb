@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #resources :character_chapters
   resources :characters
   resources :chapters
-  resources :genres
+  resources :genres, only: [:index, :show]
   #resources :story_genres
   resources :stories
   
