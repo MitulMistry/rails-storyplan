@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160310001916) do
     t.string   "name"
     t.integer  "target_word_count"
     t.string   "target_audience"
+    t.text     "overview"
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

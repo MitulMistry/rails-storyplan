@@ -4,7 +4,8 @@ class CreateStories < ActiveRecord::Migration
       t.string :name
       t.integer :target_word_count
       t.string :target_audience
-      
+      t.text :overview
+
       t.integer :user_id
 
       t.timestamps null: false

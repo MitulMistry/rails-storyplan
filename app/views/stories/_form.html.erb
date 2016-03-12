@@ -9,7 +9,10 @@
   <div class="field"><%= f.label :target_audience %><br>
   <%= f.text_field :target_audience %></div>
 
-  <div class="field"><%= f.label :genres%><br>
+  <div class="field"><%= f.label :overview %><br>
+  <%= f.text_field :overview %></div>
+
+  <div class="field"><%= f.label "Genre 1" %><br>
   <%= f.collection_select :genres, Genre.all, :id, :name %></div>
 
   <br>
