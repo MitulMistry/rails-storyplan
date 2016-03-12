@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :show]
   resources :stories
 
+  get 'writers' => 'writers#index', as: :writers
+  get 'writers/profile' => 'writers#profile', as: :profile
+  get 'writers/profile_stories' => 'writers#profile_stories', as: :profile_stories
+  get 'writers/:id' => 'writers#show'
+
   root 'pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

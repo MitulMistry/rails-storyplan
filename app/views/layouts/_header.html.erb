@@ -22,7 +22,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to "Stories", stories_path %></li>
             <li><%= link_to "Genres", genres_path %></li>
-            <li><a href="#">Writers</a></li>
+            <li><%= link_to "Writers", writers_path %></li>
             <li><%= link_to "Characters", characters_path %></li>
           </ul>
         </li>
@@ -37,9 +37,9 @@
           </ul>
         </li>
 
-          <li><a href="#">My Stories</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><%= link_to "Logout", destroy_user_session_path %></li>
+          <li><%= link_to "My Stories", profile_stories_path %></li>
+          <li><%= link_to "Profile", profile_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
