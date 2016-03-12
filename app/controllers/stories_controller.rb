@@ -13,8 +13,8 @@ class StoriesController < ApplicationController
   end
 
   def create
-    params[:user_id] = current_user.id #sets the user_id of the story to be created to the current user
     @story = Story.new(story_params)
+    @story.user = current_user #sets the user_id of the story to the current user
 
     respond_to do |format|
       if @story.save
@@ -29,10 +29,20 @@ class StoriesController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+      if @story.update(story_params)
+        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+      else
+        format.html { render :edit, error: 'Story update failed.' }
+      end
+    end
   end
 
-  def destroy
+  def destroy #destroy chapters as well???
     @story.destroy
+    respond_to do |format|
+      format.html { redirect_to stories_path, notice: 'Story was successfully deleted.' }
+    end
   end
 
   #-------------------------------
@@ -42,6 +52,6 @@ class StoriesController < ApplicationController
   end
 
   def story_params #strong params
-    params.require(:story).permit(:name, :target_word_count, :target_audience, :user_id)
+    params.require(:story).permit(:name, :target_word_count, :target_audience, :overview, :genre_ids)
   end
 end

@@ -1,4 +1,14 @@
 <h1><%= @story.name %></h1>
+<h3>By: <%= @story.user.try(:email) %></h3>
 <p>Target word count: <%= @story.target_word_count %></p>
 <p>Target audience: <%= @story.target_audience %></p>
 <p>Overview: <%= @story.overview %></p>
+<p>Genres:
+  <% @story.genres.each do |genre| %>
+  <%= link_to genre.name, genre %>
+  <% end %>
+</p>
+<% if @story.user == current_user %>
+  <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-default btn-sm", role: "button" %>
+  <%= link_to "Delete", @story, :method => :delete, :data => {:confirm => "You Sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
+<% end %>

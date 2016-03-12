@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'writers' => 'writers#index', as: :writers
   get 'writers/profile' => 'writers#profile', as: :profile
-  get 'writers/profile_stories' => 'writers#profile_stories', as: :profile_stories
+  get 'writers/my_stories' => 'writers#my_stories', as: :my_stories
   get 'writers/:id' => 'writers#show'
 
   root 'pages#index'

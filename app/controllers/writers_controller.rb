@@ -13,7 +13,7 @@ class WritersController < ApplicationController
     @current_user = current_user
   end
 
-  def profile_stories
+  def my_stories
     @stories = current_user.stories
   end
 end

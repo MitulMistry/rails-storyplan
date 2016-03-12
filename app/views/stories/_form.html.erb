@@ -13,7 +13,7 @@
   <%= f.text_field :overview %></div>
 
   <div class="field"><%= f.label "Genre 1" %><br>
-  <%= f.collection_select :genres, Genre.all, :id, :name %></div>
+  <%= f.collection_select :genre_ids, Genre.all, :id, :name, {include_blank: false, :include_hidden => false}, {:multiple => true} %></div>
 
   <br>
 
