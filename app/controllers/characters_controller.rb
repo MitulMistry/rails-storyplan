@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   before_action :find_character, only: [:show, :edit, :update, :destroy]
-  
+
   def index #?
     @characters = Character.all
   end
@@ -24,10 +24,14 @@ class CharactersController < ApplicationController
   def destroy
     @character.destroy
   end
-  
+
   #-------------------------------
   private
   def find_character
     @character = Character.find(params[:id])
+  end
+
+  def character_params #strong params
+    params.require(:character).permit(:name, :bio, :traits)
   end
 end

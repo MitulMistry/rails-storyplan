@@ -1,0 +1,16 @@
+<%= form_for(@story) do |f| %>
+
+  <div class="field"><%= f.label :name %><br>
+  <%= f.text_field :name %></div>
+
+  <div class="field"><%= f.label :target_word_count %><br>
+  <%= f.text_field :target_word_count %></div>
+
+  <div class="field"><%= f.label :target_audience %><br>
+  <%= f.text_field :target_audience %></div>
+
+  <br>
+
+  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+<% end %>

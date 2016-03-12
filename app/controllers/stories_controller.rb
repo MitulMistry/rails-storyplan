@@ -30,4 +30,8 @@ class StoriesController < ApplicationController
   def find_story
     @story = Story.find(params[:id])
   end
+  
+  def story_params #strong params
+    params.require(:story).permit(:name, :target_word_count, :target_audience, :user_id)
+  end
 end

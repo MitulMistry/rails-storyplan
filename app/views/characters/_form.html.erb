@@ -1,0 +1,16 @@
+<%= form_for(@character) do |f| %>
+
+  <div class="field"><%= f.label :name %><br>
+  <%= f.text_field :name %></div>
+
+  <div class="field"><%= f.label :traits %><br>
+  <%= f.text_field :traits %></div>
+
+  <div class="field"><%= f.label :bio %><br>
+  <%= f.text_field :bio %></div>
+
+  <br>
+
+  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
+
+<% end %>
