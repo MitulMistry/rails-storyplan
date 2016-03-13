@@ -1,4 +1,13 @@
-<%= form_for(@chapter) do |f| %>
+<%= form_for(chapter) do |f| %>
+
+  <% if try(:story) %>
+    <div class="field">
+      <%= f.hidden_field :story_id, :value => story.id %>
+    </div>
+  <% else %>
+    <div class="field"><%= f.label "Story" %><br>
+    <%= f.collection_select :story_id, current_user.stories, :id, :name %></div>
+  <% end %>
 
   <div class="field"><%= f.label :name %><br>
   <%= f.text_field :name %></div>

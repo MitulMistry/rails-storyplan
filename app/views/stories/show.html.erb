@@ -12,3 +12,6 @@
   <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-default btn-sm", role: "button" %>
   <%= link_to "Delete", @story, :method => :delete, :data => {:confirm => "You Sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
 <% end %>
+
+<h2>Chapters:</h2>
+<%= render :partial => "chapters/chapter", :collection => @story.chapters %>

@@ -1,5 +1,1 @@
-<ul>
-<% @stories.each do |story| %>
-  <li><%= link_to story.name, story %></li>
-<% end %>
-</ul>
+<%= render :partial => "story", :collection => @stories %>

@@ -40,8 +40,9 @@ class StoriesController < ApplicationController
 
   def destroy #destroy chapters as well???
     @story.destroy
+
     respond_to do |format|
-      format.html { redirect_to stories_path, notice: 'Story was successfully deleted.' }
+      format.html { redirect_to my_stories_path, notice: 'Story was successfully deleted.' }
     end
   end
 
