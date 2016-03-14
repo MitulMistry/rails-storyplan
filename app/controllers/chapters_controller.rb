@@ -43,6 +43,7 @@ class ChaptersController < ApplicationController
 
   #-------------------------------
   private
+  
   def find_chapter
     @chapter = Chapter.find(params[:id])
   end

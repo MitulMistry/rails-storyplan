@@ -6,36 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-genres = [
-  "Surreal",
-  "Action",
-  "Adventure",
-  "Comedy",
-  "Crime",
-  "Drama",
-  "Erotica",
-  "Fantasy",
-  "Historical",
-  "Historical fiction",
-  "Horror",
-  "Magical realism",
-  "Mystery",
-  "Paranoid",
-  "Philosophical",
-  "Political",
-  "Romance",
-  "Saga",
-  "Satire",
-  "Science fiction",
-  "Slice of life",
-  "Speculative",
-  "Thriller",
-  "Urban",
-  "Western"
+genres = [  
+  ["Action", "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.)"],
+  ["Adventure", "An adventure story is about a protagonist who journeys to epic or distant places to accomplish something."],
+  ["Comedy", "Comedy is a story that tells about a series of funny or comical events, intended to make the audience laugh."],
+  ["Crime", "A crime story is about a crime that is being committed or was committed. It can also be an account of a criminal's life."],
+  ["Drama", "Drama is a genre of narrative fiction (or semi-fiction) intended to be more serious than humorous in tone,[2] focusing on in-depth development of realistic characters who must deal with realistic emotional struggles."],
+  ["Fantasy", "A fantasy story is about magic or supernatural forces, rather than technology, though it often is made to include elements of other genres, such as science fiction elements."],
+  ["Historical", "A story about a real person or event."],
+  ["Historical fiction", "The genre historical fiction includes stories that are about the past."],
+  ["Horror", "A horror story is told to deliberately scare or frighten the audience, through suspense, violence or shock."],
+  ["Magical realism", "Magical realism, also called Magic realism, is literary works where magical events form part of ordinary life."],
+  ["Mystery", "A mystery story follows an investigator as he/she attempts to solve a puzzle (often a crime)."],
+  ["Paranoid", "Paranoid fiction is works of literature that explore the subjective nature of reality and how it can be manipulated by forces in power."],
+  ["Philosophical", "Philosophical fiction is fiction in which a significant proportion of the work is devoted to a discussion of the sort of questions normally addressed in discursive philosophy."],
+  ["Political", "Political fiction is a subgenre of fiction that deals with political affairs. Political fiction has often used narrative to provide commentary on political events, systems and theories."],
+  ["Romance", "Romance novels are emotion-driven stories that are primarily focused on the relationship between the main characters of the story."],
+  ["Saga", "Sagas are stories mostly about ancient Nordic and Germanic history, about early Viking voyages, the battles that took place during the voyages, about migration to Iceland and of feuds between Icelandic families."],
+  ["Satire", "In satire, human or individual vices, follies, abuses, or shortcomings are held up to censure by means of ridicule, derision, burlesque, irony, or other methods, ideally with the intent to bring about improvement."],
+  ["Science fiction", "Science fiction is similar to fantasy, except stories in this genre use scientific understanding to explain the universe that it takes place in."],
+  ["Slice of life", "A Slice of Life is a story that might have no plot, but represents a portion of (everyday) life."],
+  ["Speculative", "Speculative fiction speculates about worlds that are unlike the real world in various important ways."],
+  ["Surreal", "The surreal genre is predicated on deliberate violations of causal reasoning, producing events and behaviours that are obviously illogical."],
+  ["Thriller", "A Thriller is a story that is usually a mix of fear and excitement. It has traits from the suspense genre and often from the action, adventure or mystery genres, but the level of terror makes it borderline horror fiction at times as well."],
+  ["Urban", "Urban fiction, also known as street lit, is a literary genre set, as the name implies, in a city landscape; however, the genre is as much defined by the race and culture of its characters as the urban setting."],
+  ["Western", "Stories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century."]
   ]
 
-genres.each do |genre_name|
-  Genre.create(name: genre_name)
+genres.each do |genre_array|
+  Genre.create(name: genre_array[0], description: genre_array[1])
 end
 
 8.times do

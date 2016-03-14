@@ -1,0 +1,9 @@
+<h1><%= @character.name %></h1>
+<h3>Written by: <%= link_to @character.user.username, writer_path(@character.user) %></h3>
+<p>Appears in:
+  <% @character.stories.each do |story| %>
+  <%= link_to story.name, story %>
+  <% end %>
+</p>
+<p>Bio: <%= @character.bio %></p>
+<p>Traits: <%= @character.traits %></p>

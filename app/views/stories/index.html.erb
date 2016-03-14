@@ -1,1 +1,7 @@
-<%= render :partial => "story", :collection => @stories %>
+<% counter = 0 %>
+<% @stories.each_with_index do |story, index| %>
+  <% if counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'story', locals: { story: story } %>
+  <% counter += 1 %>
+  <% if counter == 3 || index == (@stories.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
+<% end %>

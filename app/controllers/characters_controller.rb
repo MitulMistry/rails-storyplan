@@ -47,6 +47,7 @@ class CharactersController < ApplicationController
 
   #-------------------------------
   private
+  
   def find_character
     @character = Character.find(params[:id])
   end

@@ -1,6 +1,9 @@
 # rails-storyplan
 Rails project - story planner
 
+Run rake db:seed to populate the database
+
+---
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
