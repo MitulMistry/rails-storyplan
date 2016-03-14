@@ -3,7 +3,6 @@ class CreateStories < ActiveRecord::Migration
     create_table :stories do |t|
       t.string :name
       t.integer :target_word_count
-      t.string :target_audience
       t.text :overview
 
       t.integer :user_id

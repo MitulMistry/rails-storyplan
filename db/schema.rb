@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312234134) do
+ActiveRecord::Schema.define(version: 20160314164859) do
+
+  create_table "audiences", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chapters", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +59,13 @@ ActiveRecord::Schema.define(version: 20160312234134) do
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "story_audiences", force: :cascade do |t|
+    t.integer  "story_id"
+    t.integer  "audience_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "story_genres", force: :cascade do |t|

@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-genres = [  
+genres = [
   ["Action", "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.)"],
   ["Adventure", "An adventure story is about a protagonist who journeys to epic or distant places to accomplish something."],
   ["Comedy", "Comedy is a story that tells about a series of funny or comical events, intended to make the audience laugh."],
@@ -37,6 +37,18 @@ genres.each do |genre_array|
   Genre.create(name: genre_array[0], description: genre_array[1])
 end
 
+audiences = [
+  "Adult",
+  "Young Adult",
+  "Female",
+  "Male",
+  "Children"
+  ]
+
+audiences.each do |audience|
+  Audience.create(name: audience)
+end
+
 8.times do
   User.create(
     username: Faker::Internet.user_name,
@@ -51,10 +63,10 @@ end
   st = Story.new(
     name: Faker::Book.title,
     target_word_count: (Faker::Number.between(1, 100) * 1000),
-    target_audience: "Adult",
     overview: Faker::Lorem.paragraph,
     user_id: (Faker::Number.between(0, User.all.count - 1))
     )
+  st.audiences << Audience.order("RANDOM()").first
   2.times { st.genres << Genre.order("RANDOM()").first }
   st.save
 end
