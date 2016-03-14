@@ -1,0 +1,14 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <img src=".#" alt="...">
+    <div class="caption">
+      <h3><%= link_to writer.username, writer_path(writer) %></h3>
+      <p><%= writer.try(:bio) %></p>
+      <p>Genres
+        <% writer.try(:genres).each do |genre| %>
+        <%= link_to genre.name, genre %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>

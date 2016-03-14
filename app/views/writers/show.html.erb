@@ -1,0 +1,4 @@
+<p>Username: <%= @current_user.username %></p>
+<p>Fullname: <%= @current_user.try(:full_name) %></p>
+<p>Email: <%= @current_user.email %></p>
+<p>Bio: <%= @current_user.try(:bio) %></p>

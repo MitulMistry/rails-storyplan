@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' } #use custom registrations controller override
   resources :characters
   resources :chapters, except: :index
   resources :genres, only: [:index, :show]
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'writers' => 'writers#index', as: :writers
   get 'writers/profile' => 'writers#profile', as: :profile
   get 'writers/my_stories' => 'writers#my_stories', as: :my_stories
-  get 'writers/:id' => 'writers#show'
+  get 'writers/:id' => 'writers#show', as: :writer
 
   root 'pages#index'
 

@@ -1,0 +1,6 @@
+<% @writers.each_with_index do |index, writer| %>
+  <% if @counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'writer', locals: { writer: writer } %>
+  <% @counter += 1 %>
+  <% if @counter == 3 || index == (@writers.count - 1) %></div><% end %>
+<% end %>

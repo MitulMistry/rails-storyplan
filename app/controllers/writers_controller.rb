@@ -3,6 +3,7 @@ class WritersController < ApplicationController
 
   def index
     @writers = User.all
+    @counter = 0
   end
 
   def show
