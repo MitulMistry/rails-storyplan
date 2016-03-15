@@ -1,0 +1,8 @@
+<h1>Audiences:</h1>
+<% counter = 0 %>
+<% @audiences.each_with_index do |audience, index| %>
+  <% if counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'audience', locals: { audience: audience } %>
+  <% counter += 1 %>
+  <% if counter == 4 || index == (@audiences.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
+<% end %>

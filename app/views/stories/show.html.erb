@@ -1,11 +1,15 @@
 <h1><%= @story.name %></h1>
-<h3>By: <%= @story.user.try(:email) %></h3>
+<h3>By: <%= link_to @story.user.username, writer_path(@story.user) %></h3>
 <p>Target word count: <%= @story.target_word_count %></p>
-<p>Target audience: <%= @story.target_audience %></p>
+<p>Target audience:
+  <% @story.audiences.each do |audience| %>
+    <%= link_to audience.name, audience %>
+  <% end %>
+</p>
 <p>Overview: <%= @story.overview %></p>
 <p>Genres:
   <% @story.genres.each do |genre| %>
-  <%= link_to genre.name, genre %>
+    <%= link_to genre.name, genre %>
   <% end %>
 </p>
 <% if @story.user == current_user %>
@@ -15,3 +19,12 @@
 
 <h2>Chapters:</h2>
 <%= render :partial => "chapters/chapter", :collection => @story.chapters %>
+
+<h2>Characters:</h2>
+<% counter = 0 %>
+<% @story.characters.each_with_index do |character, index| %>
+  <% if counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'characters/character', locals: { character: character } %>
+  <% counter += 1 %>
+  <% if counter == 3 || index == (@story.characters.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
+<% end %>

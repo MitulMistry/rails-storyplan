@@ -63,9 +63,9 @@ end
   st = Story.new(
     name: Faker::Book.title,
     target_word_count: (Faker::Number.between(1, 100) * 1000),
-    overview: Faker::Lorem.paragraph,
-    user_id: (Faker::Number.between(0, User.all.count - 1))
+    overview: Faker::Lorem.paragraph
     )
+  st.user = User.order("RANDOM()").first
   st.audiences << Audience.order("RANDOM()").first
   2.times { st.genres << Genre.order("RANDOM()").first }
   st.save

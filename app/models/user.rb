@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :stories
   has_many :genres, through: :stories
   has_many :chapters, through: :stories
+  has_many :characters, through: :chapters
 
-  validates :username, :presence => true
+  validates :username, :presence => true, uniqueness: true
 end

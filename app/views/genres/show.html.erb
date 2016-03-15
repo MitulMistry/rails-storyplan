@@ -1,6 +1,9 @@
 <h1><%= @genre.name %></h1>
-<ul>
-<% @genre.stories.each do |story| %>
-  <li><%= link_to story.name, story_path(story) %></li>
+
+<% counter = 0 %>
+<% @genre.stories.each_with_index do |story, index| %>
+  <% if counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'stories/story', locals: { story: story } %>
+  <% counter += 1 %>
+  <% if counter == 3 || index == (@genre.stories.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
 <% end %>
-</ul>

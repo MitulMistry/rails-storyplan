@@ -1,15 +1,18 @@
 <div class="col-sm-12 col-md-4">
   <div class="thumbnail">
-    <img src=".#" alt="...">
     <div class="caption">
       <h3><%= link_to story.name, story %></h3>
-      <p>Written by:<%= story.user.try(:email) %></p>
+      <p>Written by:<%= link_to story.user.username, writer_path(story.user) %></p>
       <p>Target word count: <%= story.target_word_count %></p>
-      <p>Target audience: <%= story.target_audience %></p>
+      <p>Target audience:
+        <% story.audiences.each do |audience| %>
+          <%= link_to audience.name, audience %>
+        <% end %>
+      </p>
       <p>Overview: <%= story.overview %></p>
       <p>Genres:
         <% story.genres.each do |genre| %>
-        <%= link_to genre.name, genre %>
+          <%= link_to genre.name, genre %>
         <% end %>
       </p>
     </div>
