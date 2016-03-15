@@ -40,7 +40,15 @@
 
           <li><%= link_to "My Stories", my_stories_path %></li>
           <li><%= link_to "Profile", profile_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to "Edit Settings", edit_user_registration_path  %></li>
+            </ul>
+          </li>
+
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>

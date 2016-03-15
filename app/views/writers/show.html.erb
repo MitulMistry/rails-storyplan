@@ -2,7 +2,6 @@
 <p>Email: <%= @writer.email %></p>
 <p>Full name: <%= @writer.try(:full_name) %></p>
 <p>Bio: <%= @writer.try(:bio) %></p>
-
 <p>Genres:
   <% @writer.genres.each do |genre| %>
     <%= link_to genre.name, genre %>

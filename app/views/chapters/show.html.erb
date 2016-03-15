@@ -1,0 +1,5 @@
+<h1>Chapter: <%= @chapter.name %></h1>
+<h3>From: <%= link_to @chapter.story.name, @chapter.story %> by <%= link_to @chapter.user.username, writer_path(@chapter.user) %></h3>
+<p>Objective: <%= @chapter.objective %></p>
+<p>Target word count: <%= @chapter.objective %></p>
+<p>Overview: <%= @chapter.overview %></p>

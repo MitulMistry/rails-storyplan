@@ -5,4 +5,13 @@ class ApplicationController < ActionController::Base
 
   #covers most authentication for the website here:
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+  #devise redirects
+  def after_sign_in_path_for(resource)
+    profile_path
+  end
+  
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 end

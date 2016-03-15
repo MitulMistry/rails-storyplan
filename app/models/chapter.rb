@@ -5,4 +5,8 @@ class Chapter < ActiveRecord::Base
   
   validates_presence_of :name, :story_id
   validates :overview, length: { maximum: 2000 }  
+  
+  def user
+    self.story.user
+  end
 end
