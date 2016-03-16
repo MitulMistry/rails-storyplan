@@ -6,7 +6,7 @@
       <p><%= writer.try(:bio) %></p>
       <p>Genres
         <% writer.try(:genres).each do |genre| %>
-        <%= link_to genre.name, genre %>
+          <%= link_to genre.name, genre %>
         <% end %>
       </p>
     </div>

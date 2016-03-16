@@ -21,10 +21,5 @@
 <%= render :partial => "chapters/chapter", :collection => @story.chapters %>
 
 <h2>Characters:</h2>
-<% counter = 0 %>
-<% @story.characters.each_with_index do |character, index| %>
-  <% if counter == 0 %><div class="row"><% end %>
-  <%= render partial: 'characters/character', locals: { character: character } %>
-  <% counter += 1 %>
-  <% if counter == 3 || index == (@story.characters.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
-<% end %>
+<%= render :partial => 'characters/characters_grid', locals: { characters: @story.characters } %>
+

@@ -9,22 +9,10 @@
 </p>
 
 <h3>Stories:</h3>
-<% counter = 0 %>
-<% @writer.stories.each_with_index do |story, index| %>
-  <% if counter == 0 %><div class="row"><% end %>
-  <%= render partial: 'stories/story', locals: { story: story } %>
-  <% counter += 1 %>
-  <% if counter == 3 || index == (@writer.stories.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
-<% end %>
+<%= render partial: 'stories/stories_grid', locals: { stories: @writer.stories } %>
 
 <h3>Recently updated chapters:</h3>
 <%= render :partial => "chapters/chapter", :collection => @recent_chapters %>
 
 <h3>Characters:</h3>
-<% counter = 0 %>
-<% @writer.characters.each_with_index do |character, index| %>
-  <% if counter == 0 %><div class="row"><% end %>
-  <%= render partial: 'characters/character', locals: { character: character } %>
-  <% counter += 1 %>
-  <% if counter == 3 || index == (@writer.characters.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
-<% end %>
+<%= render partial: 'characters/characters_grid', locals: { characters: @writer.characters } %>

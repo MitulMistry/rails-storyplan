@@ -49,7 +49,7 @@ audiences.each do |audience|
   Audience.create(name: audience)
 end
 
-8.times do
+25.times do
   User.create(
     username: Faker::Internet.user_name,
     full_name: Faker::Name.name,
@@ -59,7 +59,7 @@ end
     )
 end
 
-12.times do
+35.times do
   st = Story.new(
     name: Faker::Book.title,
     target_word_count: (Faker::Number.between(1, 100) * 1000),
@@ -71,7 +71,7 @@ end
   st.save
 end
 
-20.times do
+50.times do
   ch = Chapter.new(
     name: Faker::Book.title,
     objective: Faker::Lorem.sentence,
@@ -82,7 +82,7 @@ end
   ch.save
 end
 
-20.times do
+50.times do
   #usr = User.order("RANDOM()").first
   #until usr.chapters
     #usr = User.order("RANDOM()").first

@@ -2,8 +2,8 @@ class WritersController < ApplicationController
   before_action :authenticate_user!, only: [:profile, :profile_stories]
 
   def index
-    @writers = User.all
-    @counter = 0
+    #@writers = User.all
+    @writers = User.order(created_at: :desc).page(params[:page]) #kaminari
   end
 
   def show

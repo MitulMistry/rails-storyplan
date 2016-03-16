@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_action :find_story, only: [:show, :edit, :update, :destroy]
 
   def index
-    @stories = Story.all
+    @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
   end
 
   def show
@@ -15,6 +15,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.user = current_user #sets the user_id of the story to the current user
+    #@story = current_user.stories.build(story_params) #use build to set the story user_id to the current user
 
     respond_to do |format|
       if @story.save
@@ -48,7 +49,7 @@ class StoriesController < ApplicationController
 
   #-------------------------------
   private
-  
+
   def find_story
     @story = Story.find(params[:id])
   end

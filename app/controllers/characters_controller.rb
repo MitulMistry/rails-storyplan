@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
   before_action :find_character, only: [:show, :edit, :update, :destroy]
 
   def index #?
-    @characters = Character.all
+    @characters = Character.order(created_at: :desc).page(params[:page]) #kaminari
   end
 
   def show
@@ -39,7 +39,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to my_stories_path, notice: 'Character was successfully deleted.' }
     end
@@ -47,7 +47,7 @@ class CharactersController < ApplicationController
 
   #-------------------------------
   private
-  
+
   def find_character
     @character = Character.find(params[:id])
   end

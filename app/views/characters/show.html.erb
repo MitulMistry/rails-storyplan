@@ -2,8 +2,8 @@
 <h3>Written by: <%= link_to @character.user.username, writer_path(@character.user) %></h3>
 <p>Appears in:
   <% @character.stories.each do |story| %>
-  <%= link_to story.name, story %>
+    <%= link_to story.name, story %>
   <% end %>
 </p>
-<p>Bio: <%= @character.bio %></p>
-<p>Traits: <%= @character.traits %></p>
+<p>Bio: <%= @character.try(:bio) %></p>
+<p>Traits: <%= @character.try(:traits) %></p>

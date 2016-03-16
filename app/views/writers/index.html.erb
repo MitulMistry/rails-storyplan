@@ -1,6 +1,3 @@
-<% @writers.each_with_index do |writer, index| %>
-  <% if @counter == 0 %><div class="row"><% end %>
-  <%= render partial: 'writer', locals: { writer: writer } %>
-  <% @counter += 1 %>
-  <% if @counter == 3 || index == (@writers.count - 1) %></div><!--/.row--><% @counter = 0 %><% end %>
-<% end %>
+<h1>Writers:</h1>
+<%= render partial: 'writers_grid', locals: { writers: @writers } %>
+<%= paginate @writers %>

@@ -1,0 +1,7 @@
+<% counter = 0 %>
+<% genres.each_with_index do |genre, index| %>
+  <% if counter == 0 %><div class="row"><% end %>
+  <%= render partial: 'genres/genre', locals: { genre: genre } %>
+    <% counter += 1 %>
+  <% if counter == 4 || index == (genres.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
+<% end %>
