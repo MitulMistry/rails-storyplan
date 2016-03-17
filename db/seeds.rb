@@ -72,29 +72,30 @@ end
 end
 
 50.times do
-  ch = Chapter.new(
+  st = Story.order("RANDOM()").first
+  ch = st.chapters.build(
     name: Faker::Book.title,
     objective: Faker::Lorem.sentence,
     target_word_count: (Faker::Number.between(1, 100) * 200),
     overview: Faker::Lorem.paragraph
     )
-  ch.story = Story.order("RANDOM()").first
   ch.save
 end
 
 50.times do
-  #usr = User.order("RANDOM()").first
-  #until usr.chapters
-    #usr = User.order("RANDOM()").first
-  #end
-  char = Character.new(
+  usr = User.order("RANDOM()").first
+  until !usr.chapters.empty?
+    usr = User.order("RANDOM()").first
+  end
+
+  char = usr.characters.build(
     name: Faker::Superhero.name,
     bio: Faker::Lorem.paragraph,
     traits: Faker::Lorem.sentence
     )
   #2.times { char.chapters << usr.chapters.order("RANDOM()").first }
   #char.chapters << usr.chapters.first
-  char.chapters << Chapter.order("RANDOM()").first
+  char.chapters << usr.chapters.order("RANDOM()").first
   char.save
 end
 

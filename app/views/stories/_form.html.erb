@@ -7,13 +7,13 @@
   <%= f.text_field :target_word_count %></div>
 
   <div class="field"><%= f.label "Target Audiences" %><br>
-  <%= f.collection_select :audience_ids, Audience.all, :id, :name, {include_blank: false, :include_hidden => false}, {:multiple => true} %></div>
+  <%= f.collection_check_boxes :audience_ids, Audience.all.order("name ASC"), :id, :name %></div>
 
   <div class="field"><%= f.label :overview %><br>
-  <%= f.text_field :overview %></div>
+  <%= f.text_area :overview, size: "60x4" %></div>
 
-  <div class="field"><%= f.label "Genre 1" %><br>
-  <%= f.collection_select :genre_ids, Genre.all, :id, :name, {include_blank: false, :include_hidden => false}, {:multiple => true} %></div>
+  <div class="field"><%= f.label "Genres" %><br>
+  <%= f.collection_select :genre_ids, Genre.all.order("name ASC"), :id, :name, {}, {:multiple => true} %></div>
 
   <br>
 

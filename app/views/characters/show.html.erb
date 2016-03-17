@@ -1,9 +1,16 @@
 <h1><%= @character.name %></h1>
-<h3>Written by: <%= link_to @character.user.username, writer_path(@character.user) %></h3>
-<p>Appears in:
+<h3><strong>Written by: </strong><%= link_to @character.user.username, writer_path(@character.user) %></h3>
+<% if !@character.stories.empty? %>
+<p><strong>Appears in: </strong>
   <% @character.stories.each do |story| %>
-    <%= link_to story.name, story %>
+  <%= link_to story.name, story, class: "label label-info" %>
   <% end %>
 </p>
-<p>Bio: <%= @character.try(:bio) %></p>
-<p>Traits: <%= @character.try(:traits) %></p>
+<% end %>
+<p><strong>Bio: </strong><%= @character.try(:bio) %></p>
+<p><strong>Traits: </strong><%= @character.try(:traits) %></p>
+
+<% if @character.user == current_user %>
+  <div><%= link_to "Edit", edit_character_path(@character), class: "btn btn-default btn-sm", role: "button" %>
+  <%= link_to "Delete", @character, :method => :delete, :data => {:confirm => "Are you sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
+<% end %>

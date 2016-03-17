@@ -3,11 +3,13 @@
     <div class="caption">
       <h3><%= link_to character.name, character %></h3>
       <p><strong>Written by: </strong><%= link_to character.user.username, writer_path(character.user) %></p>
+      <% if !character.stories.empty? %>
       <p><strong>Appears in: </strong>
         <% character.stories.each do |story| %>
           <%= link_to story.name, story, class: "label label-info" %>
         <% end %>
       </p>
+      <% end %>
       <p><strong>Bio: </strong><%= character.bio %></p>
       <p><strong>Traits: </strong><%= character.traits %></p>
     </div>

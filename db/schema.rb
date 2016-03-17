@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160314164859) do
 
   create_table "chapters", force: :cascade do |t|
     t.string   "name"
+    t.integer  "ch_number"
     t.string   "objective"
     t.integer  "target_word_count"
     t.text     "overview"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160314164859) do
     t.string   "name"
     t.text     "bio"
     t.string   "traits"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

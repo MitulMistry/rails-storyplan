@@ -7,6 +7,8 @@ class Story < ActiveRecord::Base
   has_many :chapters
   has_many :characters, through: :chapters
 
-  validates_presence_of :name, :user_id
-  validates :overview, length: { maximum: 2000 }
+  validates :name, presence: true
+  validates :user_id, presence: true
+  validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
+  validates :overview, length: { maximum: 4000 }
 end

@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   before_action :find_character, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_ownership, only: [:edit, :update, :destroy]
 
   def index #?
     @characters = Character.order(created_at: :desc).page(params[:page]) #kaminari
@@ -13,7 +14,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = Character.new(character_params)
+    @character = current_user.character.build(character_params)
 
     respond_to do |format|
       if @character.save
@@ -38,11 +39,11 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character.destroy
+      @character.destroy
 
-    respond_to do |format|
-      format.html { redirect_to my_stories_path, notice: 'Character was successfully deleted.' }
-    end
+      respond_to do |format|
+        format.html { redirect_to my_stories_path, notice: 'Character was successfully deleted.' }
+      end
   end
 
   #-------------------------------
@@ -52,7 +53,13 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
   end
 
+  def authorize_ownership
+    if @character.user != current_user
+      redirect_to characters_path, alert: 'You do not have required permissions.'
+    end
+  end
+
   def character_params #strong params
-    params.require(:character).permit(:name, :bio, :traits)
+    params.require(:character).permit(:name, :bio, :traits, chapter_ids: [])
   end
 end

@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   before_action :find_story, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize_ownership, only: [:edit, :update, :destroy]
+  
   def index
     @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
   end
@@ -40,11 +41,11 @@ class StoriesController < ApplicationController
   end
 
   def destroy #destroy chapters as well???
-    @story.destroy
+      @story.destroy
 
-    respond_to do |format|
-      format.html { redirect_to my_stories_path, notice: 'Story was successfully deleted.' }
-    end
+      respond_to do |format|
+        format.html { redirect_to my_stories_path, notice: 'Story was successfully deleted.' }
+      end
   end
 
   #-------------------------------
@@ -54,7 +55,13 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
   end
 
+  def authorize_ownership
+    if @story.user != current_user
+      redirect_to stories_path, alert: 'You do not have required permissions.'
+    end
+  end
+
   def story_params #strong params
-    params.require(:story).permit(:name, :target_word_count, :target_audience, :overview, :genre_ids)
+    params.require(:story).permit(:name, :target_word_count, :overview, audience_ids: [], genre_ids: [])
   end
 end

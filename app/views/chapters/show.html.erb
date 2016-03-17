@@ -1,5 +1,10 @@
 <h1>Chapter: <%= @chapter.name %></h1>
-<h3>From: <%= link_to @chapter.story.name, @chapter.story %> by <%= link_to @chapter.user.username, writer_path(@chapter.user) %></h3>
-<p>Objective: <%= @chapter.objective %></p>
-<p>Target word count: <%= @chapter.objective %></p>
-<p>Overview: <%= @chapter.overview %></p>
+<h3><strong>From: </strong><%= link_to @chapter.story.name, @chapter.story %> by <%= link_to @chapter.user.username, writer_path(@chapter.user) %></h3>
+<p><strong>Objective: </strong><%= @chapter.objective %></p>
+<p><strong>Target word count: </strong><%= @chapter.objective %></p>
+<p><strong>Overview: </strong><%= @chapter.overview %></p>
+
+<% if @chapter.user == current_user %>
+  <div><%= link_to "Edit", edit_chapter_path(@chapter), class: "btn btn-default btn-sm", role: "button" %>
+  <%= link_to "Delete", @chapter, :method => :delete, :data => {:confirm => "Are you sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
+<% end %>
