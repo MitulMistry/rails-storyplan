@@ -5,6 +5,11 @@ class ChaptersController < ApplicationController
   end
 
   def new
+    if current_user.stories.empty?
+      redirect_to new_story_path, alert: 'You need at least one story before you can create a chapter.'
+      #redirect_to new_story_path, flash: { error: "You need to create a story before you can create a chapter." }
+    end
+
     @chapter = Chapter.new
   end
 
@@ -15,7 +20,7 @@ class ChaptersController < ApplicationController
       if @chapter.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
       else
-        format.html { render :new, error: 'Chapter creation failed.' }
+        format.html { render :new, alert: 'Chapter creation failed.' }
       end
     end
   end
@@ -28,7 +33,7 @@ class ChaptersController < ApplicationController
       if @chapter.update(chapter_params)
         format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
       else
-        format.html { render :edit, error: 'Chapter update failed.' }
+        format.html { render :edit, alert: 'Chapter update failed.' }
       end
     end
   end
@@ -43,7 +48,7 @@ class ChaptersController < ApplicationController
 
   #-------------------------------
   private
-  
+
   def find_chapter
     @chapter = Chapter.find(params[:id])
   end

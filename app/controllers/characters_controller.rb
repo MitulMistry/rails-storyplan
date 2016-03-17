@@ -19,7 +19,7 @@ class CharactersController < ApplicationController
       if @character.save
         format.html { redirect_to @character, notice: 'Character was successfully created.' }
       else
-        format.html { render :new, error: 'Character creation failed.' }
+        format.html { render :new, alert: 'Character creation failed.' }
       end
     end
   end
@@ -32,7 +32,7 @@ class CharactersController < ApplicationController
       if @character.update(character_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
       else
-        format.html { render :edit, error: 'Character update failed.' }
+        format.html { render :edit, alert: 'Character update failed.' }
       end
     end
   end

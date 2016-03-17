@@ -1,17 +1,22 @@
 <h1><%= @story.name %></h1>
-<h3>By: <%= link_to @story.user.username, writer_path(@story.user) %></h3>
-<p>Target word count: <%= @story.target_word_count %></p>
-<p>Target audience:
+<h3><strong>By: </strong><%= link_to @story.user.username, writer_path(@story.user) %></h3>
+<p><strong>Overview: </strong><%= @story.overview %></p>
+<p><strong>Target word count: </strong><%= @story.target_word_count %></p>
+<% if !@story.audiences.empty? %>
+<p><strong>Target audience:</strong>
   <% @story.audiences.each do |audience| %>
-    <%= link_to audience.name, audience %>
+    <%= link_to audience.name, audience, class: "label label-warning" %>
   <% end %>
 </p>
-<p>Overview: <%= @story.overview %></p>
-<p>Genres:
+<% end %>
+<% if !@story.genres.empty? %>
+<p><strong>Genres: </strong>
   <% @story.genres.each do |genre| %>
-    <%= link_to genre.name, genre %>
+    <%= link_to genre.name, genre, class: "label label-primary" %>
   <% end %>
 </p>
+<% end %>
+
 <% if @story.user == current_user %>
   <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-default btn-sm", role: "button" %>
   <%= link_to "Delete", @story, :method => :delete, :data => {:confirm => "You Sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>

@@ -1,18 +1,20 @@
 <h1><%= @writer.username %></h1>
-<p>Email: <%= @writer.email %></p>
-<p>Full name: <%= @writer.try(:full_name) %></p>
-<p>Bio: <%= @writer.try(:bio) %></p>
-<p>Genres:
+<p><strong>Email: </strong><%= @writer.email %></p>
+<p><strong>Full name: </strong><%= @writer.try(:full_name) %></p>
+<p><strong>Bio: </strong><%= @writer.try(:bio) %></p>
+<% if !@writer.genres.empty? %>
+<p><strong>Genres:</strong>
   <% @writer.genres.each do |genre| %>
-    <%= link_to genre.name, genre %>
+    <%= link_to genre.name, genre, class: "label label-primary" %>
   <% end %>
 </p>
+<% end %>
 
-<h3>Stories:</h3>
-<%= render partial: 'stories/stories_grid', locals: { stories: @writer.stories } %>
+<% if !@writer.stories.empty? %><h3>Stories:</h3>
+<%= render partial: 'stories/stories_grid', locals: { stories: @writer.stories } %><% end %>
 
-<h3>Recently updated chapters:</h3>
-<%= render :partial => "chapters/chapter", :collection => @recent_chapters %>
+<% if !@recent_chapters.empty? %><h3>Recently updated chapters:</h3>
+<%= render :partial => "chapters/chapter", :collection => @recent_chapters %><% end %>
 
-<h3>Characters:</h3>
-<%= render partial: 'characters/characters_grid', locals: { characters: @writer.characters } %>
+<% if !@writer.characters.empty? %><h3>Characters:</h3>
+<%= render partial: 'characters/characters_grid', locals: { characters: @writer.characters } %><% end %>

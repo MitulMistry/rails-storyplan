@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
       if @story.save
         format.html { redirect_to @story, notice: 'Story was successfully created.' }
       else
-        format.html { render :new, error: 'Story creation failed.' }
+        format.html { render :new, alert: 'Story creation failed.' }
       end
     end
   end
@@ -34,7 +34,7 @@ class StoriesController < ApplicationController
       if @story.update(story_params)
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
       else
-        format.html { render :edit, error: 'Story update failed.' }
+        format.html { render :edit, alert: 'Story update failed.' }
       end
     end
   end
