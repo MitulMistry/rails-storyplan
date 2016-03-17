@@ -2,14 +2,14 @@
   <div class="thumbnail">
     <div class="caption">
       <h3><%= link_to character.name, character %></h3>
-      <p>Written by: <% if character.user %><%= link_to character.user.username, writer_path(character.user) %><% end %></p>
-      <p>Appears in:
+      <p><strong>Written by: </strong><%= link_to character.user.username, writer_path(character.user) %></p>
+      <p><strong>Appears in: </strong>
         <% character.stories.each do |story| %>
-          <%= link_to story.name, story %>
+          <%= link_to story.name, story, class: "label label-info" %>
         <% end %>
       </p>
-      <p>Bio: <%= character.bio %></p>
-      <p>Traits: <%= character.traits %></p>
+      <p><strong>Bio: </strong><%= character.bio %></p>
+      <p><strong>Traits: </strong><%= character.traits %></p>
     </div>
   </div>
 </div>

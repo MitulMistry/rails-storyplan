@@ -1,13 +1,14 @@
 <div class="col-sm-12 col-md-4">
   <div class="thumbnail">
-    <img src=".#" alt="...">
     <div class="caption">
       <h3><%= link_to writer.username, writer_path(writer) %></h3>
       <p><%= writer.try(:bio) %></p>
-      <p>Genres
-        <% writer.try(:genres).each do |genre| %>
-          <%= link_to genre.name, genre %>
+      <% if !writer.genres.empty? %>
+      <p><strong>Genres:</strong>
+        <% writer.genres.each do |genre| %>
+          <%= link_to genre.name, genre, class: "label label-primary" %>
         <% end %>
+      <% end %>
       </p>
     </div>
   </div>

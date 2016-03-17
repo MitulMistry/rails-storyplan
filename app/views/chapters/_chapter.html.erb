@@ -1,10 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to chapter.name, chapter %> - <%= link_to chapter.story.name, chapter.story %></h3>
+    <h3 class="panel-title"><strong><%= link_to chapter.name, chapter %> - <%= link_to chapter.story.name, chapter.story %></strong></h3>
   </div>
   <div class="panel-body">
-    <p>Objective: <%= chapter.objective %></p>
-    <p>Target word count: <%= chapter.objective %></p>
-    <p>Overview: <%= chapter.overview %></p>
+    <p><strong>Objective: </strong><%= chapter.objective %></p>
+    <p><strong>Target word count: </strong><%= chapter.target_word_count %></p>
+    <p><strong>Overview: </strong><%= chapter.overview %></p>
   </div>
 </div>
