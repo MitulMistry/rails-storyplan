@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
   before_action :find_story, only: [:show, :edit, :update, :destroy]
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
-  
+
   def index
     @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
   end
@@ -14,9 +14,7 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.new(story_params)
-    @story.user = current_user #sets the user_id of the story to the current user
-    #@story = current_user.stories.build(story_params) #use build to set the story user_id to the current user
+    @story = current_user.stories.build(story_params) #use build to set the story user_id to the current user
 
     respond_to do |format|
       if @story.save

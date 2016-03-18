@@ -17,6 +17,6 @@ class WritersController < ApplicationController
   end
 
   def my_stories
-    @stories = current_user.stories
+    @stories = current_user.stories.order('updated_at DESC')
   end
 end

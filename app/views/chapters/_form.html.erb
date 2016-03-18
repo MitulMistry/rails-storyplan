@@ -24,8 +24,15 @@
   <div class="field"><%= f.label "Characters" %><br>
   <%= f.collection_check_boxes :character_ids, current_user.characters.order("name ASC"), :id, :name %></div>
 
-  <div class="field">Create new characters</div>
+  <br><div class="field"><strong>Create new characters:</strong></div>
+  <%= f.fields_for :characters, chapter.characters.build do |character_fields| %>
 
+    <div class="field"><%= f.label "Character name:" %><br>
+    <%= character_fields.text_field :name %>
+
+    <%= character_fields.hidden_field :user_id, value: current_user.id %>
+
+  <% end %>
   <br>
 
   <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
