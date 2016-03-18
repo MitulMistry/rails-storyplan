@@ -9,6 +9,9 @@
   <div class="field"><%= f.label :bio %><br>
   <%= f.text_area :bio, size: "60x6" %></div>
 
+  <div class="field"><%= f.label "Chapters" %><br>
+  <%= f.collection_check_boxes :chapter_ids, current_user.chapters.order("name ASC"), :id, :name %></div>
+
   <br>
 
   <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>

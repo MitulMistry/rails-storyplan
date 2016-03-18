@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :characters
-  has_many :genres, through: :stories
+  has_many :genres, -> { distinct }, through: :stories
   has_many :chapters, through: :stories
+  #has_many :audiences, -> { uniq }, through: :stories
 
   validates :username, presence: true, uniqueness: true
   validates :full_name, length: { maximum: 200 }

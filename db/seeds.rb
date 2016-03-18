@@ -67,7 +67,10 @@ end
     )
   st.user = User.order("RANDOM()").first
   st.audiences << Audience.order("RANDOM()").first
-  2.times { st.genres << Genre.order("RANDOM()").first }
+  
+  gn = Genre.order("RANDOM()")
+  st.genres << gn.first
+  st.genres << gn.second
   st.save
 end
 
