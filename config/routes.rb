@@ -1,13 +1,15 @@
-Rails.application.routes.draw do  
-  devise_for :users, :controllers => { registrations: 'registrations' } #use custom registrations controller override
+Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" } #use custom registrations controller override
   resources :stories
   resources :characters
   resources :chapters, except: :index
   resources :genres, only: [:index, :show]
-  resources :audiences, only: [:index, :show]  
+  resources :audiences, only: [:index, :show]
 
   get 'writers' => 'writers#index', as: :writers
   get 'writers/profile' => 'writers#profile', as: :profile
+  get 'writers/edit_profile' => 'writers#edit_profile', as: :edit_profile
+  patch 'writers/update_profile' => 'writers#update_profile', as: :update_profile
   get 'writers/my_stories' => 'writers#my_stories', as: :my_stories
   get 'writers/:id' => 'writers#show', as: :writer
 

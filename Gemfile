@@ -35,6 +35,7 @@ gem 'kaminari'
 #gem 'airbrake'
 gem 'faker'
 #gem 'friendly_id'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -62,6 +63,8 @@ group :development, :test do
   #gem "capybara-webkit"
   #gem "guard-rspec", require: false
   #gem "thin"
+
+  gem 'dotenv-rails'
 end
 
 group :production do

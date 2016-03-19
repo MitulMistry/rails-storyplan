@@ -1,5 +1,6 @@
 class WritersController < ApplicationController
-  before_action :authenticate_user!, only: [:profile, :profile_stories]
+  before_action :authenticate_user!, only: [:profile, :profile_stories, :edit_profile]
+  before_action :set_user, only: [:profile, :edit_profile, :update_profile]
 
   def index
     @writers = User.order(created_at: :desc).page(params[:page]) #kaminari
@@ -11,12 +12,33 @@ class WritersController < ApplicationController
   end
 
   def profile
-    @writer = current_user
     @recent_chapters = @writer.chapters.limit(3).order('updated_at DESC')
     render :show
   end
 
+  def edit_profile
+  end
+
+  def update_profile
+    if @writer.update(user_params)
+      redirect_to profile_path, notice: 'Profile was successfully updated.'
+    else
+      render :edit_profile, alert: 'Profile update failed.'
+    end
+  end
+
   def my_stories
     @stories = current_user.stories.order('updated_at DESC')
+  end
+
+  #-------------------------------
+  private
+
+  def set_user
+    @writer = current_user
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :username, :fullname, :bio)
   end
 end
