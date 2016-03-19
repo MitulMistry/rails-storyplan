@@ -1,3 +1,5 @@
+<%= render partial: 'layouts/form_errors', locals: { item: @character } %>
+
 <%= form_for(character) do |f| %>
 
   <div class="field"><%= f.label :name %><br>

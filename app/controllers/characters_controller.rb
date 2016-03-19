@@ -14,7 +14,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.character.build(character_params)
+    @character = current_user.characters.build(character_params)
 
     respond_to do |format|
       if @character.save

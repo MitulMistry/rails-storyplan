@@ -11,6 +11,14 @@ body {
   margin: 0;
 }
 
+.field_with_errors {
+  color: red;
+  input {
+    border-color: red;
+    display: inline-block;
+  }
+}
+
 .custom-footer {
 	//background-color: #1E0C11;
 	padding: 10px;
