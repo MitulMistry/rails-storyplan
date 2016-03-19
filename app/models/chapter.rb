@@ -18,11 +18,12 @@ class Chapter < ActiveRecord::Base
 
   #custom writer/setter for use during mass assignment from form
   def character_attributes=(character_attributes)
-    character_attributes.values.each do |character_attribute|
-      character = Character.all.find_or_create_by(character_attribute)
-      post_tag = self.character_chapters.build(character: character) #using build on self, it already sets the chapter_id to this post for the character_chapter it's building
-      post_tag.save
-
+    if !character_attributes.empty?
+      character_attributes.values.each do |character_attribute|
+        character = Character.all.find_or_create_by(character_attribute)
+        post_tag = self.character_chapters.build(character: character) #using build on self, it already sets the chapter_id to this post for the character_chapter it's building
+        post_tag.save
+      end
     end
   end
 end

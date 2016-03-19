@@ -12,13 +12,10 @@ class ChaptersController < ApplicationController
 
   def create
     @chapter = Chapter.new(chapter_params)
-
-    respond_to do |format|
-      if @chapter.save
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
-      else
-        format.html { render :new, alert: 'Chapter creation failed.' }
-      end
+    if @chapter.save
+      redirect_to @chapter, notice: 'Chapter was successfully created.'
+    else
+      render :new, alert: 'Chapter creation failed.'
     end
   end
 
@@ -26,21 +23,16 @@ class ChaptersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @chapter.update(chapter_params)
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
-      else
-        format.html { render :edit, alert: 'Chapter update failed.' }
-      end
+    if @chapter.update(chapter_params)
+      redirect_to @chapter, notice: 'Chapter was successfully updated.'
+    else
+      render :edit, alert: 'Chapter update failed.'
     end
   end
 
   def destroy
-      @chapter.destroy
-
-      respond_to do |format|
-        format.html { redirect_to my_stories_path, notice: 'Chapter was successfully deleted.' }
-      end
+    @chapter.destroy
+    redirect_to my_stories_path, notice: 'Chapter was successfully deleted.'
   end
 
   #-------------------------------

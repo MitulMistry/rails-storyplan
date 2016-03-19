@@ -8,11 +8,11 @@ class WritersController < ApplicationController
 
   def show
     @writer = User.find(params[:id])
-    @recent_chapters = @writer.chapters.limit(3).order('updated_at DESC')
+    @recent_chapters = @writer.recent_chapters
   end
 
   def profile
-    @recent_chapters = @writer.chapters.limit(3).order('updated_at DESC')
+    @recent_chapters = @writer.recent_chapters
     render :show
   end
 

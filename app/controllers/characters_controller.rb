@@ -15,13 +15,10 @@ class CharactersController < ApplicationController
 
   def create
     @character = current_user.characters.build(character_params)
-
-    respond_to do |format|
-      if @character.save
-        format.html { redirect_to @character, notice: 'Character was successfully created.' }
-      else
-        format.html { render :new, alert: 'Character creation failed.' }
-      end
+    if @character.save
+      redirect_to @character, notice: 'Character was successfully created.'
+    else
+      render :new, alert: 'Character creation failed.'
     end
   end
 
@@ -29,21 +26,16 @@ class CharactersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @character.update(character_params)
-        format.html { redirect_to @character, notice: 'Character was successfully updated.' }
-      else
-        format.html { render :edit, alert: 'Character update failed.' }
-      end
-    end
+    if @character.update(character_params)
+      redirect_to @character, notice: 'Character was successfully updated.'
+    else
+      render :edit, alert: 'Character update failed.'
+    end    
   end
 
   def destroy
-      @character.destroy
-
-      respond_to do |format|
-        format.html { redirect_to my_stories_path, notice: 'Character was successfully deleted.' }
-      end
+    @character.destroy
+    redirect_to my_stories_path, notice: 'Character was successfully deleted.'      
   end
 
   #-------------------------------

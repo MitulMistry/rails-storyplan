@@ -29,21 +29,16 @@ class StoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
-      else
-        format.html { render :edit, alert: 'Story update failed.' }
-      end
+    if @story.update(story_params)
+      redirect_to @story, notice: 'Story was successfully updated.'
+    else
+      render :edit, alert: 'Story update failed.'
     end
   end
 
   def destroy #destroy chapters as well???
-      @story.destroy
-
-      respond_to do |format|
-        format.html { redirect_to my_stories_path, notice: 'Story was successfully deleted.' }
-      end
+    @story.destroy
+    redirect_to my_stories_path, notice: 'Story was successfully deleted.'
   end
 
   #-------------------------------

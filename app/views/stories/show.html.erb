@@ -19,7 +19,7 @@
 
 <% if @story.user == current_user %>
   <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-default btn-sm", role: "button" %>
-  <%= link_to "Delete", @story, :method => :delete, :data => {:confirm => "You Sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
+  <%= link_to "Delete", @story, :method => :delete, :data => {:confirm => "Are you sure? All associated chapters will be deleted as well."}, class: "btn btn-default btn-sm", role: "button" %></div>
 <% end %>
 
 <h2>Chapters:</h2>
