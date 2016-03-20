@@ -1,0 +1,3 @@
+<h4>Edit comment for</h4>
+<p><%= link_to @comment.story.name, @comment.story %>:</p>
+<%= render partial:'comments/form', locals: { comment: @comment } %>

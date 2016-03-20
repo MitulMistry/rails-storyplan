@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 #overrides default Devise controller methods - specified use in routes.rb
   private
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username, :full_name, :bio)
   end
 
   def account_update_params

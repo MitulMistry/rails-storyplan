@@ -102,6 +102,12 @@ end
   char.save
 end
 
+50.times do 
+  usr = User.order("RANDOM()").first
+  cmt =  usr.comments.build(content: Faker::Lorem.paragraph)
+  cmt.story = Story.order("RANDOM()").first
+  cmt.save
+end
 
 =begin
 user1 = User.create(username: "bjones", full_name: "Bob Jones", email: "user1@example.com", password: "password")

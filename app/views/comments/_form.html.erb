@@ -1,0 +1,6 @@
+<%= form_for(comment) do |f| %>
+  <%= f.hidden_field :story_id, value: @story.id %>
+  <div class="field">
+  <%= f.text_area :content, size:'40x3' %></div>
+  <div class="field"><%= f.submit 'Submit', class: 'btn btn-primary btn-sm' %></div>
+<% end %>

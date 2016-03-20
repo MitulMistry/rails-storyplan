@@ -7,6 +7,7 @@ class StoriesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new
@@ -16,12 +17,10 @@ class StoriesController < ApplicationController
   def create
     @story = current_user.stories.build(story_params) #use build to set the story user_id to the current user
 
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-      else
-        format.html { render :new, alert: 'Story creation failed.' }
-      end
+    if @story.save
+      redirect_to @story, notice: 'Story was successfully created.'
+    else
+      render :new, alert: 'Story creation failed.'
     end
   end
 

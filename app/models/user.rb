@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :characters
   has_many :genres, -> { distinct }, through: :stories
   has_many :chapters, through: :stories
+  has_many :comments
   #has_many :audiences, -> { uniq }, through: :stories
 
   validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_-]+\Z/ }
