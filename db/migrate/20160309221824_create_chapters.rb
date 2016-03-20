@@ -6,7 +6,8 @@ class CreateChapters < ActiveRecord::Migration
       t.string :objective
       t.integer :target_word_count
       t.text :overview
-      
+      t.boolean :currently_writing, default: false
+
       t.integer :story_id
 
       t.timestamps null: false

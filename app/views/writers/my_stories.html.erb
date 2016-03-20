@@ -1,1 +1,4 @@
-<%= render :partial => "stories/story", :collection => @stories %>
+<%= render :partial => "stories/stories_grid", locals: { stories: @stories } %>
+
+<h3>Chapters Currently Writing:</h3>
+<%= render :partial => "chapters/chapter", collection: @current_chapters %>

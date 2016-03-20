@@ -7,5 +7,5 @@ class Character < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 200 }
   validates :user_id, presence: true
   validates :bio, length: { maximum: 4000 }
-  validates :traits, length: { maximum: 800 }
+  validates :traits, length: { maximum: 800 }  
 end

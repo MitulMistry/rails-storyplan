@@ -12,6 +12,8 @@ class Chapter < ActiveRecord::Base
   validates :overview, length: { maximum: 4000 }, allow_blank: true
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
 
+  scope :currently_writing, -> { where(currently_writing: true) } #sets Chapter.currently_writing class method
+
   def user
     self.story.user
   end

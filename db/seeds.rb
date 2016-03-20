@@ -67,7 +67,7 @@ end
     )
   st.user = User.order("RANDOM()").first
   st.audiences << Audience.order("RANDOM()").first
-  
+
   gn = Genre.order("RANDOM()")
   st.genres << gn.first
   st.genres << gn.second
@@ -82,6 +82,7 @@ end
     target_word_count: (Faker::Number.between(1, 100) * 200),
     overview: Faker::Lorem.paragraph
     )
+  ch.currently_writing = true if Faker::Number.between(1, 3) == 1
   ch.save
 end
 
@@ -102,7 +103,7 @@ end
   char.save
 end
 
-50.times do 
+50.times do
   usr = User.order("RANDOM()").first
   cmt =  usr.comments.build(content: Faker::Lorem.paragraph)
   cmt.story = Story.order("RANDOM()").first

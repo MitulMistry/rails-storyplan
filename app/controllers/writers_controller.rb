@@ -29,6 +29,7 @@ class WritersController < ApplicationController
 
   def my_stories
     @stories = current_user.stories.order('updated_at DESC')
+    @current_chapters = current_user.chapters.currently_writing #using scope method
   end
 
   #-------------------------------

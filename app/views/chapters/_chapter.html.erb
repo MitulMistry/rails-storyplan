@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><strong><%= link_to chapter.name, chapter %> - <%= link_to chapter.story.name, chapter.story %></strong></h3>
+    <h3 class="panel-title"><strong><%= link_to chapter.name, chapter %> - <%= link_to chapter.story.name, chapter.story %></strong><% if chapter.currently_writing %> <%= content_tag :span, "Currently Writing", class: ["label", 'label-success'] %><br><% end %></h3>
   </div>
   <div class="panel-body">
     <p><strong>Objective: </strong><%= chapter.objective %></p>
