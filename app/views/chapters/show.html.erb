@@ -1,5 +1,6 @@
 <h1>Chapter: <%= @chapter.name %></h1>
 <h3><strong>From: </strong><%= link_to @chapter.story.name, @chapter.story %> by <%= link_to @chapter.user.username, writer_path(@chapter.user) %></h3>
+<% if @chapter.currently_writing %><h4><%= content_tag :span, "Currently Writing", class: ["label", 'label-success'] %></h4><% end %>
 <p><strong>Objective: </strong><%= @chapter.objective %></p>
 <p><strong>Target word count: </strong><%= @chapter.objective %></p>
 <p><strong>Overview: </strong><%= @chapter.overview %></p>

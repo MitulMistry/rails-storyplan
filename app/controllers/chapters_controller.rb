@@ -56,6 +56,6 @@ class ChaptersController < ApplicationController
   end
 
   def chapter_params #strong params
-    params.require(:chapter).permit(:name, :objective, :target_word_count, :overview, :story_id, character_ids: [], characters_attributes: [:name, :user_id])
+    params.require(:chapter).permit(:name, :objective, :target_word_count, :overview, :story_id, :currently_writing, character_ids: [], characters_attributes: [:name, :user_id])
   end
 end
