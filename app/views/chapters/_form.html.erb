@@ -1,7 +1,7 @@
 <%= render partial: 'layouts/form_errors.html.erb', locals: { item: chapter } %>
 
 <%= form_for(chapter) do |f| %>
-  <div class="field"><%= f.label "Story" %><br>
+  <div class="field"><%= f.label :story_id, "Story" %><br>
   <%= f.collection_select :story_id, current_user.stories, :id, :name %></div>
 
   <div class="field"><%= f.label :name %><br>
@@ -23,17 +23,15 @@
   <div class="field"><%= f.label "Characters" %><br>
   <%= f.collection_check_boxes :character_ids, current_user.characters.order("name ASC"), :id, :name %></div>
 
-  <br><div class="field"><strong>Create new characters:</strong></div>
+  <br><div class="field"><strong>Create new character:</strong></div>
   <%= f.fields_for :characters, chapter.characters.build do |character_fields| %>
 
-    <div class="field"><%= f.label "Character name:" %><br>
+    <div class="field"><%= f.label "Character name" %><br>
     <%= character_fields.text_field :name %>
-
-    <%= character_fields.hidden_field :user_id, value: current_user.id %>
 
   <% end %>
   <br>
-
+  <br>
   <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
 
 <% end %>
