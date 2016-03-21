@@ -3,6 +3,14 @@ class ChaptersController < ApplicationController
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
   before_action :check_for_stories, only: [:new, :create]
 
+  def index
+    if params[:writer_id] #check for nested route
+      @chapters = User.find(params[:writer_id]).chapters.page(params[:page]) #kaminari
+    else
+      @chapters = Chapter.order(updated_at: :desc).page(params[:page]) #kaminari
+    end
+  end
+
   def show
   end
 

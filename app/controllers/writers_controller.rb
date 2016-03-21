@@ -8,7 +8,9 @@ class WritersController < ApplicationController
 
   def show
     @writer = User.find(params[:id])
+    @recent_stories = @writer.recent_stories
     @recent_chapters = @writer.recent_chapters
+    @recent_characters = @writer.recent_characters
   end
 
   def profile

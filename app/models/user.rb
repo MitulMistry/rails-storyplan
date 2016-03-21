@@ -24,8 +24,16 @@ class User < ActiveRecord::Base
       #user.image = auth.info.image # assuming the user model has an image
     end
   end
-  
+
+  def recent_stories
+    self.stories.limit(3).order('updated_at DESC')
+  end
+
   def recent_chapters
     self.chapters.limit(3).order('updated_at DESC')
+  end
+
+  def recent_characters
+    self.characters.limit(3).order('updated_at DESC')
   end
 end

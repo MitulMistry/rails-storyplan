@@ -3,11 +3,15 @@ class StoriesController < ApplicationController
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
 
   def index
-    @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
+    if params[:writer_id] #check for nested route
+      @stories = User.find(params[:writer_id]).stories.page(params[:page]) #kaminari
+    else
+      @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
+    end
   end
 
   def show
-    @comment = Comment.new
+    @comment = Comment.new if user_signed_in?
   end
 
   def new
@@ -35,8 +39,8 @@ class StoriesController < ApplicationController
     end
   end
 
-  def destroy #destroy chapters as well???
-    @story.destroy
+  def destroy
+    @story.destroy #this destroys associated chapters as well
     redirect_to my_stories_path, notice: 'Story was successfully deleted.'
   end
 

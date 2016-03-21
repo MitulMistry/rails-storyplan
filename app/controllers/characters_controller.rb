@@ -2,8 +2,12 @@ class CharactersController < ApplicationController
   before_action :find_character, only: [:show, :edit, :update, :destroy]
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
 
-  def index #?
-    @characters = Character.order(created_at: :desc).page(params[:page]) #kaminari
+  def index
+    if params[:writer_id] #check for nested route
+      @characters = User.find(params[:writer_id]).characters.page(params[:page])
+    else
+      @characters = Character.order(created_at: :desc).page(params[:page]) #kaminari
+    end
   end
 
   def show
@@ -30,12 +34,12 @@ class CharactersController < ApplicationController
       redirect_to @character, notice: 'Character was successfully updated.'
     else
       render :edit, alert: 'Character update failed.'
-    end    
+    end
   end
 
   def destroy
     @character.destroy
-    redirect_to my_stories_path, notice: 'Character was successfully deleted.'      
+    redirect_to my_stories_path, notice: 'Character was successfully deleted.'
   end
 
   #-------------------------------

@@ -2,17 +2,23 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => 'users/omniauth_callbacks' } #use custom registrations controller override
   resources :stories
   resources :characters
-  resources :chapters, except: :index
+  resources :chapters
   resources :genres, only: [:index, :show]
   resources :audiences, only: [:index, :show]
   resources :comments, only: [:create, :edit, :update, :destroy]
 
-  get 'writers' => 'writers#index', as: :writers
+  #writer isn't a model, just an alias for devise user to separate logic
   get 'writers/profile' => 'writers#profile', as: :profile
   get 'writers/edit_profile' => 'writers#edit_profile', as: :edit_profile
   patch 'writers/update_profile' => 'writers#update_profile', as: :update_profile
   get 'writers/my_stories' => 'writers#my_stories', as: :my_stories
-  get 'writers/:id' => 'writers#show', as: :writer
+
+  resources :writers, only: [:index, :show] do
+    #nested resources
+    resources :stories, only: [:index]
+    resources :characters, only: [:index]
+    resources :chapters, only: [:index]
+  end
 
   root 'pages#index'
 
