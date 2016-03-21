@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => 'users/omniauth_callbacks' } #use custom registrations controller override
-  resources :stories
-  resources :characters
+  resources :stories do
+    resources :chapters, only: :new #nested chapter creation
+  end
   resources :chapters
+  resources :characters
   resources :genres, only: [:index, :show]
   resources :audiences, only: [:index, :show]
   resources :comments, only: [:create, :edit, :update, :destroy]

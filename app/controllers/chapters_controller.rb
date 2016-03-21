@@ -15,7 +15,16 @@ class ChaptersController < ApplicationController
   end
 
   def new
-    @chapter = Chapter.new
+    if params[:story_id] #check to see if this is a nested route coming from a story
+      story = Story.find(params[:story_id])
+      if story.nil?
+        redirect_to stories_path, alert: "Story not found"
+      elsif story.user != current_user #check to see if the story is owned by the current user
+        redirect_to stories_path, alert: "You do not have required permissions"
+      end
+    end
+
+    @chapter = Chapter.new(story_id: params[:story_id]) #story_id set for nested route if coming from story and set in form collection_select, otherwise it's nil and that's what it would be anyway
   end
 
   def create
