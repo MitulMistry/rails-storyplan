@@ -1,9 +1,17 @@
 <% counter = 0 %>
 <% items_in_row = collection_grid_check_items_in_row(collection) %>
+<% partial_to_render = collection_grid_partial_to_render(collection) %>
 
 <% collection.each_with_index do |item, index| %>
-  <% if counter == 0 %><div class="row"><% end %>
-  <%= collection_grid_render_partial(item) %>
+  <% if counter == 0 %>
+    <div class="row">
+  <% end %>
+
+  <%= render partial: partial_to_render, locals: { item: item } %>
   <% counter += 1 %>
-  <% if counter == items_in_row || (index + 1) == collection.count %></div><!--/.row--><% counter = 0 %><% end %>
+
+  <% if counter == items_in_row || (index + 1) == collection.count %>
+    </div><!--/.row-->
+    <% counter = 0 %>
+  <% end %>
 <% end %>
