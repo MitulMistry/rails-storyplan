@@ -2,14 +2,14 @@
   <div class="thumbnail">
     <div class="caption">
       <h3><%= link_to writer.username, writer_path(writer) %></h3>
-      <p><%= writer.try(:bio) %></p>
+      <p><%= writer_truncated_bio(writer) %></p>
       <% if !writer.genres.empty? %>
       <p><strong>Genres:</strong>
         <% writer.genres.each do |genre| %>
           <%= link_to genre.name, genre, class: "label label-primary" %>
         <% end %>
       </p>
-      <% end %>      
+      <% end %>
     </div>
   </div>
 </div>

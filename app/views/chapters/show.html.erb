@@ -10,5 +10,5 @@
   <%= link_to "Delete", @chapter, :method => :delete, :data => {:confirm => "Are you sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
 <% end %>
 
-<h3>Characters:</h3>
-<%= render partial: 'characters/characters_grid', locals: { characters: @chapter.characters } %>
+<% if !@chapter.characters.empty? %><h3>Characters:</h3>
+<%= render partial: 'characters/characters_grid', locals: { characters: @chapter.characters } %><% end %>

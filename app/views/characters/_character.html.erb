@@ -10,8 +10,8 @@
         <% end %>
       </p>
       <% end %>
-      <p><strong>Bio: </strong><%= character.bio %></p>
-      <p><strong>Traits: </strong><%= character.traits %></p>
+      <p><strong>Bio: </strong><%= character_truncated_bio(character) %></p>
+      <p><strong>Traits: </strong><%= character_truncated_traits(character) %></p>
     </div>
   </div>
 </div>
