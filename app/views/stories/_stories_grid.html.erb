@@ -3,5 +3,5 @@
   <% if counter == 0 %><div class="row"><% end %>
   <%= render partial: 'stories/story', locals: { story: story } %>
     <% counter += 1 %>
-  <% if counter == 3 || index == (stories.count - 1) %></div><!--/.row--><% counter = 0 %><% end %>
+  <% if counter == 3 || (index + 1) == stories.count %></div><!--/.row--><% counter = 0 %><% end %>
 <% end %>
