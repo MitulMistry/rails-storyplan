@@ -25,10 +25,10 @@
 <% end %>
 
 <h2>Chapters:</h2>
-<%= render partial: "chapters/chapter", collection: @story.chapters %>
+<%= render partial: 'chapters/chapter', collection: @story.chapters %>
 
 <h2>Characters:</h2>
-<%= render partial: 'characters/characters_grid', locals: { characters: @story.characters } %>
+<%= render partial: 'layouts/collection_grid', locals: { collection: @story.characters } %>
 
 <% if !@story.comments.empty? %>
 <h3>Recent Comments:</h3>

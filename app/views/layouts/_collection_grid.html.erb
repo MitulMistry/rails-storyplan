@@ -1,6 +1,7 @@
 <% counter = 0 %>
-<% items_in_row = collection_grid_check_items_in_row(collection) %>
-<% partial_to_render = collection_grid_partial_to_render(collection) %>
+<% hash = collection_grid_check(collection) %>
+<% items_in_row = hash[:items_in_row] %>
+<% partial_to_render = hash[:partial_to_render] %>
 
 <% collection.each_with_index do |item, index| %>
   <% if counter == 0 %>

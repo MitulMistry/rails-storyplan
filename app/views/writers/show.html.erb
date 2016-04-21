@@ -11,10 +11,13 @@
 <% end %>
 
 <% if !@recent_stories.empty? %><h3>Recent Stories <%= link_to "(See all)", writer_stories_path(@writer) %></h3>
-<%= render partial: 'stories/stories_grid', locals: { stories: @recent_stories } %><% end %>
+  <%= render partial: 'layouts/collection_grid', locals: { collection: @recent_stories } %>
+<% end %>
 
 <% if !@recent_chapters.empty? %><h3>Recent Chapters <%= link_to "(See all)", writer_chapters_path(@writer) %></h3>
-<%= render :partial => "chapters/chapter", :collection => @recent_chapters %><% end %>
+  <%= render :partial => "chapters/chapter", :collection => @recent_chapters %>
+<% end %>
 
 <% if !@recent_characters.empty? %><h3>Recent Characters <%= link_to "(See all)", writer_characters_path(@writer) %></h3>
-<%= render partial: 'characters/characters_grid', locals: { characters: @recent_characters } %><% end %>
+  <%= render partial: 'layouts/collection_grid', locals: { collection: @recent_characters } %>
+<% end %>
