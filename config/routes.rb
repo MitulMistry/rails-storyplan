@@ -10,10 +10,12 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update, :destroy]
 
   #writer isn't a model, just an alias for devise user to separate logic
-  get 'writers/profile' => 'writers#profile', as: :profile
-  get 'writers/edit_profile' => 'writers#edit_profile', as: :edit_profile
-  patch 'writers/update_profile' => 'writers#update_profile', as: :update_profile
-  get 'writers/my_stories' => 'writers#my_stories', as: :my_stories
+  scope '/writers' do
+    get 'profile' => 'writers#profile'
+    get 'edit_profile' => 'writers#edit_profile'
+    patch 'update_profile' => 'writers#update_profile'
+    get 'my_stories' => 'writers#my_stories'
+  end
 
   resources :writers, only: [:index, :show] do
     #nested resources

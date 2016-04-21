@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
     if params[:writer_id] #check for nested route
       @characters = User.find(params[:writer_id]).characters.page(params[:page])
     else
-      @characters = Character.order(created_at: :desc).page(params[:page]) #kaminari
+      @characters = Character.ordered.page(params[:page]) #kaminari
     end
   end
 
@@ -18,7 +18,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.characters.build(character_params)
+    @character = current_user.characters.build(character_params) #associate character to current user
     if @character.save
       redirect_to @character, notice: 'Character was successfully created.'
     else

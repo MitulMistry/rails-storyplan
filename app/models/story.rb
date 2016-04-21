@@ -13,6 +13,8 @@ class Story < ActiveRecord::Base
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
   validates :overview, length: { maximum: 4000 }
 
+  extend ClassOrderable
+
   def recent_comments
     self.comments.order('created_at DESC').last(10) #self.comments.limit(10).order('created_at DESC').reverse
   end

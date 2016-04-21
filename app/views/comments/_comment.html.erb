@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="thumbnail">
       <div class="caption">
-        <p><%= link_to comment.user.username, writer_path(comment.user) %> - <%= comment.readable_date_time %><p>
+        <p><%= link_to comment.user.username, writer_path(comment.user) %> - <%= readable_date_time(comment) %><p>
         <p><%= comment.content %></p>
         <% if comment.user == current_user %>
         <div><%= link_to "Edit", edit_comment_path(comment), class: "btn btn-default btn-sm", role: "button" %>

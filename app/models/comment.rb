@@ -5,8 +5,4 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true
   validates :story_id, presence: true
   validates :content, presence: true, length: { maximum: 1000 }
-
-  def readable_date_time
-    self.created_at.strftime("%A, %b %d, %Y")
-  end
 end

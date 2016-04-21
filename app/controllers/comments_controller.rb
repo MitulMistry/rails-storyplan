@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
 
   def create
-    @comment = current_user.comments.build(comment_params)
+    @comment = current_user.comments.build(comment_params) #associates comment with current user
     if @comment.save
       redirect_to @comment.story, notice: 'Comment created.'
     else

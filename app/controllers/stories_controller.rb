@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
     if params[:writer_id] #check for nested route
       @stories = User.find(params[:writer_id]).stories.page(params[:page]) #kaminari
     else
-      @stories = Story.order(created_at: :desc).page(params[:page]) #kaminari
+      @stories = Story.ordered.page(params[:page]) #kaminari
     end
   end
 

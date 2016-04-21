@@ -16,7 +16,7 @@ class ChaptersController < ApplicationController
 
   def new
     if params[:story_id] #check to see if this is a nested route coming from a story
-      story = Story.find(params[:story_id])
+      story = Story.find_by_id(params[:story_id])
       if story.nil?
         redirect_to stories_path, alert: "Story not found"
       elsif story.user != current_user #check to see if the story is owned by the current user

@@ -15,10 +15,8 @@
     <%= content_tag(:div, flash[:alert], :id => "flash_alert", class: "alert alert-warning", role: "alert") if flash[:alert] %>
 
 
-
     <%= yield %>
 </div>
     <%= render "layouts/footer" %>
-
   </body>
 </html>
