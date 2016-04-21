@@ -1,28 +1,4 @@
-# rails-storyplan
-Rails project - story planner
+# Rails Storyplan
+Storyplan is a narrative development tool being built using Rails to help users plan out stories and connect with others as their projects evolve. It has started out as a CRUD application involving the creation of stories, chapters, and characters, but there is room for greater functionality going forward.
 
-Run rake db:seed to populate the database
-
----
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In order to get the application to work, install dependencies, run migrations, then rake db:seed to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key.
