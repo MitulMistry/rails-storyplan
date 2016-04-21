@@ -25,6 +25,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.ordered
+    order('created_at DESC')
+  end
+
+  def ordered_updated_stories
+    self.stories.order('updated_at DESC')
+  end
+
+  def current_chapters
+    self.chapters.currently_writing #using scope method
+  end
+
   def recent_stories
     self.stories.limit(3).order('updated_at DESC')
   end

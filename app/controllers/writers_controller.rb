@@ -1,22 +1,17 @@
 class WritersController < ApplicationController
   before_action :authenticate_user!, only: [:profile, :profile_stories, :edit_profile]
-  before_action :set_user, only: [:profile, :edit_profile, :update_profile]
+  before_action :get_user, only: :show
+  before_action :set_current_user, only: [:profile, :edit_profile, :update_profile]
+  before_action :get_recent, only: [:show, :profile]
 
   def index
-    @writers = User.order(created_at: :desc).page(params[:page]) #kaminari
+    @writers = User.ordered.page(params[:page]) #kaminari
   end
 
   def show
-    @writer = User.find(params[:id])
-    @recent_stories = @writer.recent_stories
-    @recent_chapters = @writer.recent_chapters
-    @recent_characters = @writer.recent_characters
   end
 
   def profile
-    @recent_stories = @writer.recent_stories
-    @recent_chapters = @writer.recent_chapters
-    @recent_characters = @writer.recent_characters
     render :show
   end
 
@@ -32,15 +27,25 @@ class WritersController < ApplicationController
   end
 
   def my_stories
-    @stories = current_user.stories.order('updated_at DESC')
-    @current_chapters = current_user.chapters.currently_writing #using scope method
+    @stories = current_user.ordered_updated_stories
+    @current_chapters = current_user.current_chapters
   end
 
   #-------------------------------
   private
 
-  def set_user
+  def get_user
+    @writer = User.find(params[:id])
+  end
+
+  def set_current_user
     @writer = current_user
+  end
+
+  def get_recent
+    @recent_stories = @writer.recent_stories
+    @recent_chapters = @writer.recent_chapters
+    @recent_characters = @writer.recent_characters
   end
 
   def user_params #strong params

@@ -14,6 +14,10 @@ class Chapter < ActiveRecord::Base
 
   scope :currently_writing, -> { where(currently_writing: true) } #sets Chapter.currently_writing class method
 
+  def self.ordered
+    order("updated_at DESC")
+  end
+
   def user
     self.story.user
   end

@@ -5,6 +5,6 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @genre_stories = @genre.stories.order(created_at: :desc).page(params[:page]) #kaminari
+    @genre_stories = @genre.ordered_stories.page(params[:page]) #kaminari
   end
 end

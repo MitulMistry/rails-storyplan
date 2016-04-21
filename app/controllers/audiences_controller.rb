@@ -5,6 +5,6 @@ class AudiencesController < ApplicationController
 
   def show
     @audience = Audience.find(params[:id])
-    @audience_stories = @audience.stories.order(created_at: :desc).page(params[:page]) #kaminari
+    @audience_stories = @audience.ordered_stories.page(params[:page]) #kaminari
   end
 end
