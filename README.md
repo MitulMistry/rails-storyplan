@@ -3,4 +3,6 @@ Storyplan is a narrative development tool being built using Rails to help users 
 
 In order to get the application to work, install dependencies, run migrations, then rake db:seed to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key.
 
+For more, see this post: http://mitulmistry.github.io/ruby/rails/rails-project/
+
 https://github.com/learn-co-students/rails-assessment-v-000
