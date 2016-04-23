@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :full_name, length: { maximum: 200 }
   validates :bio, length: { maximum: 4000 }
 
-  include OAuthMethods
+  extend Generatable
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
