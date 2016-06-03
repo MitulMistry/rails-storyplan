@@ -1,5 +1,5 @@
 class WritersController < ApplicationController
-  before_action :authenticate_user!, only: [:profile, :profile_stories, :edit_profile]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :get_user, only: :show
   before_action :set_current_user, only: [:profile, :edit_profile, :update_profile]
   before_action :get_recent, only: [:show, :profile]
