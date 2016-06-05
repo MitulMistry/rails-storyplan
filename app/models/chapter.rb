@@ -3,6 +3,8 @@ class Chapter < ActiveRecord::Base
   has_many :character_chapters
   has_many :characters, through: :character_chapters
 
+  delegate :user, to: :story #exposes story's user method to be used by chapter (get story's user) - equivalent to: def user; self.story.user; end
+
   #accepts_nested_attributes_for :characters #, reject_if: :all_blank #allows creating characters in the chapter creation form
 
   validates :name, presence: true
@@ -15,10 +17,6 @@ class Chapter < ActiveRecord::Base
   scope :currently_writing, -> { where(currently_writing: true) } #sets Chapter.currently_writing class method
 
   extend ClassOrderable
-
-  def user
-    self.story.user
-  end
 
   #custom writer/setter for use during mass assignment from form
   def characters_attributes=(characters_attributes)
