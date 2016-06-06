@@ -5,7 +5,7 @@ class ChaptersController < ApplicationController
 
   def index
     if params[:writer_id] #check for nested route
-      @chapters = User.find(params[:writer_id]).chapters.page(params[:page]) #kaminari
+      @chapters = User.find(params[:writer_id]).chapters.ordered.page(params[:page]) #kaminari
     else
       @chapters = Chapter.ordered.page(params[:page]) #kaminari
     end

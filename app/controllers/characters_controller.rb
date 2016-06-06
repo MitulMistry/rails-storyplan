@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
 
   def index
     if params[:writer_id] #check for nested route
-      @characters = User.find(params[:writer_id]).characters.page(params[:page])
+      @characters = User.find(params[:writer_id]).characters.ordered.page(params[:page])
     else
       @characters = Character.ordered.page(params[:page]) #kaminari
     end

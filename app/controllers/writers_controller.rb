@@ -49,6 +49,6 @@ class WritersController < ApplicationController
   end
 
   def user_params #strong params
-    params.require(:user).permit(:email, :username, :fullname, :bio)
+    params.require(:user).permit(:fullname, :bio)
   end
 end
