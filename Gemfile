@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.7.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -37,34 +37,41 @@ gem 'faker'
 #gem 'friendly_id'
 gem 'omniauth-facebook'
 
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+end
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem "rspec-rails"
-  gem "capybara"
-  #gem "selenium-webdriver"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+
   #gem "better_errors"
   #gem "sprockets_better_errors"
   #gem "binding_of_caller"
-  #gem "factory_girl_rails"
   #gem "simplecov"
-  #gem "database_cleaner"
-  gem "pry"
+  gem 'pry'
   #gem "rack_session_access"
 
-  #gem "launchy"
   #gem "capybara-webkit"
   #gem "guard-rspec", require: false
   #gem "thin"
 
   gem 'dotenv-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :production do
