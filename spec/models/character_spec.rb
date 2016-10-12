@@ -22,25 +22,27 @@ RSpec.describe Character, type: :model do
 
   describe "bio length" do
     it "is valid with a bio under 4000 characters" do
-      pending "implement"
-      raise "fail"
+      character = Character.new(name: 'Bob', user_id: 1, bio: Faker::Lorem.characters(3999))
+      expect(character).to be_valid
     end
 
     it "is invalid with a bio over 4000 characters" do
-      pending "implement"
-      raise "fail"
+      character = Character.new(name: 'Bob', user_id: 1, bio: Faker::Lorem.characters(4001))
+      character.valid?
+      expect(character.errors[:bio]).to include("is too long (maximum is 4000 characters)")
     end
   end
 
   describe "traits length" do
     it "is valid with traits under 800 characters" do
-      pending "implement"
-      raise "fail"
+      character = Character.new(name: 'Bob', user_id: 1, traits: Faker::Lorem.characters(799))
+      expect(character).to be_valid
     end
 
     it "is invalid with traits over 800 characters" do
-      pending "implement"
-      raise "fail"
+      character = Character.new(name: 'Bob', user_id: 1, traits: Faker::Lorem.characters(801))
+      character.valid?
+      expect(character.errors[:traits]).to include("is too long (maximum is 800 characters)")
     end
   end
 
