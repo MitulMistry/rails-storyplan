@@ -6,48 +6,14 @@ RSpec.describe Character, type: :model do
   end
 
   describe "required validations" do
-    it "is valid with a name and user_id" do
-      character = build(:character, name: 'Bob', user_id: 1)
-      expect(character).to be_valid
-    end
-
-    it "is invalid without a name" do
-      character = build(:character, name: nil)
-      character.valid?
-      expect(character.errors[:name]).to include("can't be blank")
-    end
-
-    it "is invalid without a user_id" do
-      character = build(:character, user_id: nil)
-      character.valid?
-      expect(character.errors[:user_id]).to include("can't be blank")
-    end
+    it { should validate_presence_of(:name) } #using shoulda-matchers
+    it { should validate_length_of(:name).is_at_most(200) }
+    it { should belong_to(:user) }
   end
 
-  describe "bio length" do
-    it "is valid with a bio under 4000 characters" do
-      character = build(:character, bio: Faker::Lorem.characters(3999))
-      expect(character).to be_valid
-    end
-
-    it "is invalid with a bio over 4000 characters" do
-      character = build(:character, bio: Faker::Lorem.characters(4001))
-      character.valid?
-      expect(character.errors[:bio]).to include("is too long (maximum is 4000 characters)")
-    end
-  end
-
-  describe "traits length" do
-    it "is valid with traits under 800 characters" do
-      character = build(:character, traits: Faker::Lorem.characters(799))
-      expect(character).to be_valid
-    end
-
-    it "is invalid with traits over 800 characters" do
-      character = build(:character, traits: Faker::Lorem.characters(801))
-      character.valid?
-      expect(character.errors[:traits]).to include("is too long (maximum is 800 characters)")
-    end
+  describe "other validations" do
+    it { should validate_length_of(:bio).is_at_most(4000) }
+    it { should validate_length_of(:traits).is_at_most(800) }
   end
 
   describe "sort" do
