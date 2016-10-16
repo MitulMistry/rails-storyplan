@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :character do
-    name Faker::Superhero.name
-    user_id Faker::Number.between(1, 10)
-    bio Faker::Lorem.paragraph
-    traits Faker::Lorem.sentence
+    name { Faker::Superhero.name }
+    bio { Faker::Lorem.paragraph }
+    traits { Faker::Lorem.sentence }
+    association :user
   end
 end
