@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 4000 }
 
   extend Generatable
+  extend ClassOrderable
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,10 +26,6 @@ class User < ActiveRecord::Base
       user.username = generate_username_for_oauth(auth.info.name) #user.full_name.parameterize.underscore + "_" + rand.to_s[2..5]
       #user.image = auth.info.image # assuming the user model has an image
     end
-  end
-
-  def self.ordered
-    order('created_at DESC')
   end
 
   def ordered_updated_stories
