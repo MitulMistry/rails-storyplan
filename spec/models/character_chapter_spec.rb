@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CharacterChapter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+    it { should belong_to(:character) } #using shoulda-matchers
+    it { should belong_to(:chapter) }
+  end
 end

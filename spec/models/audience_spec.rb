@@ -6,12 +6,12 @@ RSpec.describe Audience, type: :model do
   end
 
   describe "associations" do
-    it { should have_many(:stories) }
+    it { should have_many(:stories) } #using shoulda-matchers
   end
 
   describe "validations" do
     context "required validations" do
-      it { should validate_presence_of(:name) } #using shoulda-matchers
+      it { should validate_presence_of(:name) }
       it { should validate_length_of(:name).is_at_most(200) }
     end
   end

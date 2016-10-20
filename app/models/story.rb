@@ -16,6 +16,6 @@ class Story < ActiveRecord::Base
   extend ClassOrderable
 
   def recent_comments
-    self.comments.order('created_at DESC').last(10) #self.comments.limit(10).order('created_at DESC').reverse
+    self.comments.order('created_at DESC').limit(10) #self.comments.limit(10).order('created_at DESC').reverse #self.comments.order('created_at DESC').last(10)
   end
 end

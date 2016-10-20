@@ -6,14 +6,14 @@ RSpec.describe Chapter, type: :model do
   end
 
   describe "associations" do
-    it { should belong_to(:story) }
+    it { should belong_to(:story) } #using shoulda-matchers
     it { should have_many(:characters) }
     it { should delegate_method(:user).to(:story) }
   end
 
   describe "validations" do
     context "required validations" do
-      it { should validate_presence_of(:name) } #using shoulda-matchers
+      it { should validate_presence_of(:name) }
       it { should belong_to(:story) }
     end
 
@@ -34,8 +34,11 @@ RSpec.describe Chapter, type: :model do
     end
 
     it "returns an array of chapters set to 'currently writing'" do
-      pending "implement"
-      raise "fail"
+      chapter1 = create(:chapter, currently_writing: true)
+      chapter2 = create(:chapter, currently_writing: true)
+      chapter3 = create(:chapter)
+
+      expect(Chapter.currently_writing).to eq [chapter1, chapter2]
     end
   end
 end
