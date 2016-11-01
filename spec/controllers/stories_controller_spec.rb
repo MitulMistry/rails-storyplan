@@ -146,9 +146,9 @@ RSpec.describe StoriesController, type: :controller do
       }.to change(Chapter, :count).by(-2)
     end
 
-    it "redirects to stories#index" do
+    it "redirects to writers#my_stories" do
       delete :destroy, id: @story
-      expect(response).to redirect_to stories_url
+      expect(response).to redirect_to my_stories_url
     end
   end
 end

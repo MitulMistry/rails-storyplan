@@ -5,7 +5,7 @@ FactoryGirl.define do
     overview { Faker::Lorem.paragraph }
     association :user
 
-    factory :ivalid_story do #child factory
+    factory :invalid_story do #child factory
       name nil
     end
   end
