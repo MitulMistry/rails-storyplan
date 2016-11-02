@@ -6,6 +6,11 @@ RSpec.describe StoriesController, type: :controller do
   # devise authentication
   # authorize_ownership
 
+  before :each do
+    @user = create(:user)
+    sign_in @user # Devise test ControllerHelpers
+  end
+
   describe "GET #index" do
     it "populates an array of stories per page (by creation date)" do
       story1 = create(:story)
