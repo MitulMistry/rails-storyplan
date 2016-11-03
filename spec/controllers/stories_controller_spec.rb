@@ -3,10 +3,8 @@ require 'rails_helper'
 RSpec.describe StoriesController, type: :controller do
 
   # kaminari page
-  # devise authentication
-  # authorize_ownership
 
-  shared_examples_for 'public access to stories' do
+  shared_examples_for "public access to stories" do
     describe "GET #index" do
       it "populates an array of stories per page (by creation date)" do
         story1 = create(:story)
@@ -14,6 +12,15 @@ RSpec.describe StoriesController, type: :controller do
         story3 = create(:story)
         get :index
         expect(assigns(:stories)).to match_array([story3, story2, story1])
+      end
+
+      it "populates an array of a writer's stories per page (by creation date)" do
+        user = create(:user)
+        story1 = create(:story, user: user)
+        story2 = create(:story)
+        story3 = create(:story, user: user)
+        get :index, writer_id: user.id
+        expect(assigns(:stories)).to match_array([story3, story1])
       end
 
       it "renders the :index template" do
@@ -37,7 +44,7 @@ RSpec.describe StoriesController, type: :controller do
     end
   end
 
-  shared_examples_for 'full access to owned stories' do #define @user for these tests
+  shared_examples_for "full access to owned stories" do #define @user for these tests
     describe "GET #new" do
       it "assigns a new Story to @story" do
         get :new
@@ -156,6 +163,54 @@ RSpec.describe StoriesController, type: :controller do
     end
   end
 
+  shared_examples_for "no modification access to non-owned stories" do #define @user for these tests
+    before :each do
+      @user2 = create(:user)
+      @story = create(:story, name: "Test Story", overview: "Test overview", user: @user2)
+    end
+
+    describe "GET #edit" do
+      it "redirects to stories#index" do
+        get :edit, id: @story
+        expect(response).to redirect_to stories_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "it does not change the story's attributes" do
+        patch :update, id: @story, story: attributes_for(:story, name: "Updated Story")
+        @story.reload #use reload to check that the changes are actually persisted
+        expect(@story.name).to eq "Test Story"
+      end
+
+      it "redirects to stories#index" do
+        patch :update, id: @story, story: attributes_for(:story)
+        expect(response).to redirect_to stories_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "does not delete the story from the database" do
+        expect{
+          delete :destroy, id: @story
+        }.to_not change(Story, :count)
+      end
+
+      it "does not delete associated chapters from the database" do
+        @story.chapters << create(:chapter)
+        @story.chapters << create(:chapter)
+        expect{
+          delete :destroy, id: @story
+        }.to_not change(Chapter, :count)
+      end
+
+      it "redirects to stories#index" do
+        delete :destroy, id: @story
+        expect(response).to redirect_to stories_path
+      end
+    end
+  end
+
   describe "user access" do
     before :each do
       @user = create(:user)
@@ -164,7 +219,7 @@ RSpec.describe StoriesController, type: :controller do
 
     it_behaves_like "public access to stories"
     it_behaves_like "full access to owned stories"
-    # it_behaves_like "no access to non-owned stories"
+    it_behaves_like "no modification access to non-owned stories"
   end
 
   describe "guest access" do
@@ -173,7 +228,7 @@ RSpec.describe StoriesController, type: :controller do
     describe 'GET #new' do
       it "requires login" do
         get :new
-        expect(response).to redirect_to new_user_session_url
+        expect(response).to require_login #custom matcher under support/matchers/require_login.rb
       end
     end
 
@@ -181,28 +236,28 @@ RSpec.describe StoriesController, type: :controller do
       it "requires login" do
         story = create(:story)
         get :edit, id: story
-        expect(response).to redirect_to new_user_session_url
+        expect(response).to require_login
       end
     end
 
     describe "POST #create" do
       it "requires login" do
         post :create, story: attributes_for(:story)
-        expect(response).to redirect_to new_user_session_url
+        expect(response).to require_login
       end
     end
 
     describe 'PUT #update' do
       it "requires login" do
         patch :update, id: create(:story), story: attributes_for(:story)
-        expect(response).to redirect_to new_user_session_url
+        expect(response).to require_login
       end
     end
 
     describe 'DELETE #destroy' do
       it "requires login" do
         delete :destroy, id: create(:story)
-        expect(response).to redirect_to new_user_session_url
+        expect(response).to require_login
       end
     end
   end
