@@ -214,7 +214,7 @@ RSpec.describe StoriesController, type: :controller do
   describe "user access" do
     before :each do
       @user = create(:user)
-      sign_in @user # Devise test ControllerHelpers
+      sign_in @user # sign in via Devise::Test::ControllerHelpers
     end
 
     it_behaves_like "public access to stories"
