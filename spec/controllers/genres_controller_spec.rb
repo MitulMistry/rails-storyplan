@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe GenresController, type: :controller do
   shared_examples_for "public access to genres" do
     describe "GET #index" do
-      it "populates an array of all genres" do
-        genre1 = create(:genre)
-        genre2 = create(:genre)
-        genre3 = create(:genre)
+      it "populates an array of all genres alphabetically" do
+        genre1 = create(:genre, name: "Z Genre")
+        genre2 = create(:genre, name: "A Genre")
+        genre3 = create(:genre, name: "D Genre")
         get :index
-        expect(assigns(:genres)).to match_array([genre1, genre2, genre3])
+        expect(assigns(:genres)).to eq [genre2, genre3, genre1]
       end
 
       it "renders the :index template" do

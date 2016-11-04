@@ -19,6 +19,13 @@ RSpec.describe Genre, type: :model do
   end
 
   describe "sort" do
+    it "returns an array of all genres sorted alphabetically" do
+      genre1 = create(:genre, name: "Z Genre")
+      genre2 = create(:genre, name: "A Genre")
+      genre3 = create(:genre, name: "D Genre")
+      expect(Genre.alphabetized).to eq [genre2, genre3, genre1]
+    end
+
     it "returns a sorted array of genre's stories by creation date (newest first)" do
       genre = create(:genre)
       story1 = create(:story)

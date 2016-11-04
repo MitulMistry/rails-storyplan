@@ -59,7 +59,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   # Include to enable Devise authentication in tests
-  config.include Devise::Test::ControllerHelpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|

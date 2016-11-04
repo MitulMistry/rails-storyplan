@@ -6,4 +6,8 @@ class Genre < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 1000 }
 
   include Orderable
+
+  def self.alphabetized
+    order(:name) # default :asc
+  end
 end
