@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to @story, notice: 'Comment updated.'
     else
-      redirect_to @story, alert: 'Comment update failed.'
+      render :edit, alert: 'Comment update failed.'
     end
   end
 

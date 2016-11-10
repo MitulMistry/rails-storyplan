@@ -11,7 +11,7 @@ RSpec.describe StoriesController, type: :controller do
         story2 = create(:story)
         story3 = create(:story)
         get :index
-        expect(assigns(:stories)).to match_array([story3, story2, story1])
+        expect(assigns(:stories)).to eq [story3, story2, story1]
       end
 
       it "populates an array of a writer's stories per page (by creation date)" do
@@ -20,7 +20,7 @@ RSpec.describe StoriesController, type: :controller do
         story2 = create(:story)
         story3 = create(:story, user: user)
         get :index, writer_id: user.id
-        expect(assigns(:stories)).to match_array([story3, story1])
+        expect(assigns(:stories)).to eq [story3, story1]
       end
 
       it "renders the :index template" do
@@ -75,12 +75,17 @@ RSpec.describe StoriesController, type: :controller do
       context "with valid attributes" do
         it "saves the new story in the database" do
           expect{ #proc - evaluates code before and after
-            post :create, story: attributes_for(:story, user: @user) #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, story: attributes_for(:story) #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
           }.to change(Story, :count).by(1)
         end
 
+        it "assigns current user as owner of the story" do
+          post :create, story: attributes_for(:story)
+          expect(Story.last.user).to eq @user
+        end
+
         it "redirects to stories#show" do
-          post :create, story: attributes_for(:story, user: @user)
+          post :create, story: attributes_for(:story)
           expect(response).to redirect_to story_path(assigns[:story]) #the path of @story in controller
         end
       end
@@ -88,12 +93,12 @@ RSpec.describe StoriesController, type: :controller do
       context "with invalid attributes" do
         it "does not save the new story in the database" do
           expect{
-            post :create, story: attributes_for(:invalid_story, user: @user)
+            post :create, story: attributes_for(:invalid_story)
           }.not_to change(Story, :count)
         end
 
         it "re-renders the :new template" do
-          post :create, story: attributes_for(:invalid_story, user: @user)
+          post :create, story: attributes_for(:invalid_story)
           expect(response).to render_template :new
         end
       end
@@ -225,14 +230,14 @@ RSpec.describe StoriesController, type: :controller do
   describe "guest access" do
     it_behaves_like "public access to stories"
 
-    describe 'GET #new' do
+    describe "GET #new" do
       it "requires login" do
         get :new
-        expect(response).to require_login #custom matcher under support/matchers/require_login.rb
+        expect(response).to require_login # custom matcher under support/matchers/require_login.rb
       end
     end
 
-    describe 'GET #edit' do
+    describe "GET #edit" do
       it "requires login" do
         story = create(:story)
         get :edit, id: story
@@ -247,14 +252,14 @@ RSpec.describe StoriesController, type: :controller do
       end
     end
 
-    describe 'PUT #update' do
+    describe "PATCH #update" do
       it "requires login" do
         patch :update, id: create(:story), story: attributes_for(:story)
         expect(response).to require_login
       end
     end
 
-    describe 'DELETE #destroy' do
+    describe "DELETE #destroy" do
       it "requires login" do
         delete :destroy, id: create(:story)
         expect(response).to require_login

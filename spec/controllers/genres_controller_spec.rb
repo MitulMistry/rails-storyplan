@@ -36,7 +36,7 @@ RSpec.describe GenresController, type: :controller do
         @genre.stories << story3
 
         get :show, id: @genre
-        expect(assigns(:genre_stories)).to match_array([story3, story1])
+        expect(assigns(:genre_stories)).to eq [story3, story1]
       end
 
       it "renders the :show template" do
