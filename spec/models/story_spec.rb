@@ -5,6 +5,10 @@ RSpec.describe Story, type: :model do
     expect(build(:story)).to be_valid #using FactoryGirl syntax methods in rails_helper.rb
   end
 
+  it "has an invalid child factory" do
+    expect(build(:invalid_story)).to be_invalid
+  end
+
   describe "associations" do
     it { should belong_to(:user) } #using shoulda-matchers
     it { should have_many(:audiences) }

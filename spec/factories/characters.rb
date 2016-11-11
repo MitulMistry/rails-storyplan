@@ -4,5 +4,9 @@ FactoryGirl.define do
     bio { Faker::Lorem.paragraph }
     traits { Faker::Lorem.sentence }
     association :user
+
+    factory :invalid_character do
+      name nil
+    end
   end
 end

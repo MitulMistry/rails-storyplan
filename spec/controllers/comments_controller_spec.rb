@@ -17,11 +17,11 @@ RSpec.describe CommentsController, type: :controller do
     end
 
     describe "POST #create" do
-      context "with valid attributes" do
-        before :each do
-          @story = create(:story)
-        end
+      before :each do
+        @story = create(:story)
+      end
 
+      context "with valid attributes" do
         it "saves the new comment in the database" do
           expect{ #proc - evaluates code before and after
             post :create, comment: attributes_for(:comment, story_id: @story.id) #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
@@ -42,15 +42,13 @@ RSpec.describe CommentsController, type: :controller do
       context "with invalid attributes" do
         it "does not save the new comment in the database" do
           expect{
-            post :create, comment: attributes_for(:invalid_comment)
+            post :create, comment: attributes_for(:invalid_comment, story_id: @story.id)
           }.not_to change(Comment, :count)
         end
 
-        it "re-renders the :new template" do
-          #post :create, story: attributes_for(:invalid_comment, user: @user)
-          #expect(response).to render_template :new
-          pending "implement"
-          raise "fail"
+        it "re-renders the story :show template" do
+          post :create, comment: attributes_for(:invalid_comment, story_id: @story.id)
+          expect(response).to render_template "stories/show"
         end
       end
     end
@@ -113,7 +111,44 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   shared_examples_for "no modification access to non-owned comments" do # define @user for these tests
+    before :each do
+      @user2 = create(:user)
+      @story = create(:story)
+      @comment = create(:comment, story: @story, user: @user2, content: "Test content")
+    end
 
+    describe "GET #edit" do
+      it "redirects to stories#index" do
+        get :edit, id: @comment
+        expect(response).to redirect_to stories_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "it does not change the comment's attributes" do
+        patch :update, id: @comment, comment: attributes_for(:comment, content: "Updated content")
+        @comment.reload #use reload to check that the changes are actually persisted
+        expect(@comment.content).to eq "Test content"
+      end
+
+      it "redirects to stories#index" do
+        patch :update, id: @comment, comment: attributes_for(:comment)
+        expect(response).to redirect_to stories_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "does not delete the comment from the database" do
+        expect{
+          delete :destroy, id: @comment
+        }.to_not change(Comment, :count)
+      end
+
+      it "redirects to stories#index" do
+        delete :destroy, id: @comment
+        expect(response).to redirect_to stories_path
+      end
+    end
   end
 
   describe "user access" do

@@ -5,6 +5,10 @@ RSpec.describe Comment, type: :model do
     expect(build(:comment)).to be_valid #using FactoryGirl syntax methods in rails_helper.rb
   end
 
+  it "has an invalid child factory" do
+    expect(build(:invalid_comment)).to be_invalid
+  end
+
   describe "associations" do
     it { should belong_to(:user) } #using shoulda-matchers
     it { should belong_to(:story) }

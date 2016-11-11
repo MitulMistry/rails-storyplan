@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @comment.story, notice: 'Comment created.'
     else
-      redirect_to stories_path, alert: 'Comment creation failed.'
+      @story = @comment.story
+      render "stories/show", alert: 'Comment creation failed.'
     end
   end
 

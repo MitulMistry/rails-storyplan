@@ -37,8 +37,7 @@ RSpec.describe StoriesController, type: :controller do
       end
 
       it "renders the :show template" do
-        story = create(:story)
-        get :show, id: story
+        get :show, id: create(:story)
         expect(response).to render_template :show #response is finished product returned from controller
       end
     end
@@ -239,8 +238,7 @@ RSpec.describe StoriesController, type: :controller do
 
     describe "GET #edit" do
       it "requires login" do
-        story = create(:story)
-        get :edit, id: story
+        get :edit, id: create(:story)
         expect(response).to require_login
       end
     end
