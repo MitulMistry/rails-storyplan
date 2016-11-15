@@ -6,5 +6,9 @@ FactoryGirl.define do
     overview { Faker::Lorem.paragraph }
     currently_writing { false }
     association :story
+
+    factory :invalid_chapter do
+      name nil
+    end
   end
 end
