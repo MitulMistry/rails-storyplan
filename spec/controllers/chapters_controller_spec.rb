@@ -44,16 +44,48 @@ RSpec.describe ChaptersController, type: :controller do
     end
   end
 
-  shared_examples_for "full access to owned chapters" do
+  shared_examples_for "full access to owned chapters" do # define @user for these tests
     describe "GET #new" do
-      it "assigns a new Chapter to @chapter" do
-        get :new
-        expect(assigns(:chapter)).to be_a_new(Chapter)
+      context "if user has at least one story" do
+        before :each do
+          @story = create(:story, user: @user)
+        end
+
+        context "with no nested story route" do
+          it "assigns a new Chapter to @chapter" do
+            get :new
+            expect(assigns(:chapter)).to be_a_new(Chapter)
+          end
+
+          it "renders the :new template" do
+            get :new
+            expect(response).to render_template :new
+          end
+        end
+
+        context "with nested story route" do
+          it "assigns a new Chapter to @chapter" do
+            get :new, story_id: @story.id
+            expect(assigns(:chapter)).to be_a_new(Chapter)
+          end
+
+          it "associates a new Chapter with story" do
+            get :new, story_id: @story.id
+            expect(assigns(:chapter).story_id).to eq @story.id
+          end
+
+          it "renders the :new template" do
+            get :new, story_id: @story.id
+            expect(response).to render_template :new
+          end
+        end
       end
 
-      it "renders the :new template" do
-        get :new
-        expect(response).to render_template :new
+      context "if user does not have any stories" do
+        it "redirects to stories#new" do
+          get :new
+          expect(response).to redirect_to new_story_path
+        end
       end
     end
 
@@ -169,8 +201,55 @@ RSpec.describe ChaptersController, type: :controller do
     end
   end
 
-  shared_examples_for "no modification access to non-owned chapters" do
+  shared_examples_for "no modification access to non-owned chapters" do # define @user for these tests
+    before :each do
+      @user2 = create(:user)
+      @story = create(:story, user: @user2)
+      @chapter = create(:chapter, name: "Test Chapter", overview: "Test overview", story: @story)
+    end
 
+    describe "GET #new" do
+      context "with non-owned nested story" do
+        it "redirects to stories#index" do
+          create(:story, user: @user) # create a story for user so doesn't redirect due to no user stories
+          get :new, story_id: @story.id
+          expect(response).to redirect_to stories_path
+        end
+      end
+    end
+
+    describe "GET #edit" do
+      it "redirects to root" do
+        get :edit, id: @chapter
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    describe "PATCH #update" do
+      it "it does not change the chapter's attributes" do
+        patch :update, id: @chapter, chapter: attributes_for(:chapter, name: "Updated Chapter")
+        @chapter.reload #use reload to check that the changes are actually persisted
+        expect(@chapter.name).to eq "Test Chapter"
+      end
+
+      it "redirects to root" do
+        patch :update, id: @chapter, chapter: attributes_for(:chapter)
+        expect(response).to redirect_to root_path
+      end
+    end
+
+    describe "DELETE #destroy" do
+      it "does not delete the chapter from the database" do
+        expect{
+          delete :destroy, id: @chapter
+        }.to_not change(Chapter, :count)
+      end
+
+      it "redirects to root" do
+        delete :destroy, id: @chapter
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 
   describe "user access" do
@@ -182,7 +261,6 @@ RSpec.describe ChaptersController, type: :controller do
     it_behaves_like "public access to chapters"
     it_behaves_like "full access to owned chapters"
     it_behaves_like "no modification access to non-owned chapters"
-
   end
 
   describe "guest access" do
