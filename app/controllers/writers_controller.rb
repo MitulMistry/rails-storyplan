@@ -1,7 +1,7 @@
 class WritersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :get_user, only: :show
-  before_action :set_current_user, only: [:profile, :edit_profile, :update_profile]
+  before_action :set_current_user, only: [:profile, :edit_profile, :update_profile, :my_stories]
   before_action :get_recent, only: [:show, :profile]
 
   def index
@@ -27,8 +27,8 @@ class WritersController < ApplicationController
   end
 
   def my_stories
-    @stories = current_user.ordered_updated_stories
-    @current_chapters = current_user.current_chapters
+    @stories = @writer.ordered_updated_stories
+    @current_chapters = @writer.current_chapters
   end
 
   #-------------------------------
@@ -39,7 +39,7 @@ class WritersController < ApplicationController
   end
 
   def set_current_user
-    @writer = current_user
+    @writer = current_user # devise
   end
 
   def get_recent
@@ -49,6 +49,6 @@ class WritersController < ApplicationController
   end
 
   def user_params #strong params
-    params.require(:user).permit(:fullname, :bio)
+    params.require(:user).permit(:full_name, :bio)
   end
 end
