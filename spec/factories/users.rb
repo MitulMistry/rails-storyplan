@@ -5,5 +5,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(8, 20) }
     bio { Faker::Lorem.paragraph }
+
+    factory :invalid_user do
+      full_name { Faker::Lorem.characters(201) }
+    end
   end
 end
