@@ -99,10 +99,6 @@ RSpec.describe WritersController, type: :controller do
     end
   end
 
-  shared_examples_for "no modification access to non-owned writers" do #define @user for these tests
-
-  end
-
   describe "user access" do
     before :each do
       @user = create(:user)
@@ -111,7 +107,6 @@ RSpec.describe WritersController, type: :controller do
 
     it_behaves_like "public access to writers"
     it_behaves_like "full access to owned writers"
-    it_behaves_like "no modification access to non-owned writers"
   end
 
   describe "guest access" do
