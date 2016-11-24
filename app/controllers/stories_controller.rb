@@ -54,6 +54,7 @@ class StoriesController < ApplicationController
   def authorize_ownership
     if @story.user != current_user
       redirect_to stories_path, alert: 'You do not have required permissions.'
+      return #guard clause
     end
   end
 

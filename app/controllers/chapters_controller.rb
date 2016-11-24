@@ -63,12 +63,14 @@ class ChaptersController < ApplicationController
     if current_user.stories.empty?
       redirect_to new_story_path, alert: 'You need at least one story before you can create a chapter.'
       #redirect_to new_story_path, flash: { error: "You need to create a story before you can create a chapter." }
+      return #guard clause
     end
   end
 
   def authorize_ownership
     if @chapter.user != current_user
       redirect_to root_path, alert: 'You do not have required permissions.'
+      return #guard clause
     end
   end
 

@@ -52,6 +52,7 @@ class CharactersController < ApplicationController
   def authorize_ownership
     if @character.user != current_user
       redirect_to characters_path, alert: 'You do not have required permissions.'
+      return #guard clause
     end
   end
 

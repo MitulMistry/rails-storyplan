@@ -39,6 +39,7 @@ class CommentsController < ApplicationController
   def authorize_ownership
     if @comment.user != current_user
       redirect_to stories_path, alert: 'You do not have required permissions.'
+      return #guard clause
     end
   end
 
