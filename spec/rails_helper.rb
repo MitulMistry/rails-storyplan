@@ -60,6 +60,8 @@ RSpec.configure do |config|
 
   # Include to enable Devise authentication in tests
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include LoginMacros
 end
 
 Shoulda::Matchers.configure do |config|
