@@ -7,9 +7,9 @@ feature "Story management" do
       sign_in_with_form(@user) #login macro
     end
 
-    scenario "creates story" do
-      create(:audience, name: "Adult")
-      create(:genre, name: "Adventure")
+    scenario "creates story through form" do
+      audience = create(:audience, name: "Adult")
+      genre = create(:genre, name: "Adventure")
 
       visit root_path #with capybara
       click_link "New Story"
@@ -26,14 +26,14 @@ feature "Story management" do
       story = Story.last
       expect(story.name).to eq "Test Name"
       expect(story.target_word_count).to eq 90000
-      expect(story.audiences.first.name).to eq "Adult"
+      expect(story.audiences).to include audience
       expect(story.overview).to eq "Test overview."
-      expect(story.genres.first.name).to eq "Adventure"
+      expect(story.genres).to include genre
 
       expect(page).to have_content("Story was successfully created.")
     end
 
-    scenario "edits story" do
+    scenario "edits story through form" do
       story = create(:story, user: @user)
       audience = create(:audience, name: "Adult")
       genre = create(:genre, name: "Adventure")
@@ -61,8 +61,9 @@ feature "Story management" do
       expect(page).to have_content("Story was successfully updated.")
     end
 
-    scenario "deletes story", js: true do #enable selenium-webdriver for js
+    scenario "deletes story through button", js: true do #enable selenium-webdriver for js
       story = create(:story, user: @user)
+      
       visit root_path #with capybara
       click_link "My Stories"
       click_link story.name
