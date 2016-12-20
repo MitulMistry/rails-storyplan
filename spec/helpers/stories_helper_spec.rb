@@ -11,5 +11,17 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe StoriesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "with text over character limit" do
+    it "truncates story overview to 150 characters" do
+      story = create(:story, overview: Faker::Lorem.characters(175))
+      expect(helper.story_truncated_overview(story).length).to eq(150)
+    end
+  end
+
+  context "with text below character limit" do
+    it "doesn't truncate story overview" do
+      story = create(:story, overview: Faker::Lorem.characters(100))
+      expect(helper.story_truncated_overview(story).length).to eq(100)
+    end
+  end
 end

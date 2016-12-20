@@ -4,6 +4,6 @@ module CharactersHelper
   end
 
   def character_truncated_traits(character)
-    truncate(character.bio, length: 80, separator: /\s/)
+    truncate(character.traits, length: 80, separator: /\s/)
   end
 end
