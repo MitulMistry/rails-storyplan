@@ -1,3 +1,5 @@
 <h1>Stories:</h1>
-<%= render partial: 'layouts/collection_grid', locals: { collection: @stories } %>
+<div class="card-columns">
+  <%= render partial: "story", collection: @stories %>
+</div>
 <%= paginate @stories %>

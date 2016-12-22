@@ -1,18 +1,13 @@
-<% character = item unless character %>
-<div class="col-sm-12 col-md-4">
-  <div class="thumbnail">
-    <div class="caption">
-      <h3><%= link_to character.name, character %></h3>
-      <p><strong>Written by: </strong><%= link_to character.user.username, writer_path(character.user) %></p>
-      <% if !character.stories.empty? %>
-      <p><strong>Appears in: </strong>
-        <% character.stories.each do |story| %>
-          <%= link_to story.name, story, class: "label label-info" %>
-        <% end %>
-      </p>
-      <% end %>
-      <p><strong>Bio: </strong><%= character_truncated_bio(character) %></p>
-      <p><strong>Traits: </strong><%= character_truncated_traits(character) %></p>
-    </div>
-  </div>
+<div class="card card-block">
+  <h4 class="card-title"><%= link_to character.name, character, class: "card-link" %></h4>
+  <p class="card-text"><strong>Written by: </strong><%= link_to character.user.username, writer_path(character.user), class: "card-link" %></p>
+  <% if !character.stories.empty? %>
+  <p class="card-text"><strong>Appears in: </strong>
+    <% character.stories.each do |story| %>
+      <%= link_to story.name, story, class: "tag tag-info" %>
+    <% end %>
+  </p>
+  <% end %>
+  <% if character.bio? %><p class="card-text"><strong>Bio: </strong><%= character_truncated_bio(character) %></p><% end %>
+  <% if character.traits? %><p class="card-text"><strong>Traits: </strong><%= character_truncated_traits(character) %></p><% end %>
 </div>

@@ -1,2 +1,4 @@
 <h1>Genres:</h1>
-<%= render partial: 'layouts/collection_grid', locals: { collection: @genres } %>
+<div class="card-columns">
+  <%= render partial: "genre", collection: @genres %>
+</div>

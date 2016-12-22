@@ -1,16 +1,11 @@
-<% writer = item unless writer %>
-<div class="col-sm-12 col-md-4">
-  <div class="thumbnail">
-    <div class="caption">
-      <h3><%= link_to writer.username, writer_path(writer) %></h3>
-      <p><%= writer_truncated_bio(writer) %></p>
-      <% if !writer.genres.empty? %>
-      <p><strong>Genres:</strong>
-        <% writer.genres.each do |genre| %>
-          <%= link_to genre.name, genre, class: "label label-primary" %>
-        <% end %>
-      </p>
-      <% end %>
-    </div>
-  </div>
+<div class="card card-block">
+  <h4 class="card-title"><%= link_to writer.username, writer_path(writer), class: "card-link" %></h4>
+  <p class="card-text"><%= writer_truncated_bio(writer) %></p>
+  <% if !writer.genres.empty? %>
+  <p class="card-text"><strong>Genres:</strong>
+    <% writer.genres.each do |genre| %>
+      <%= link_to genre.name, genre, class: "tag tag-primary" %>
+    <% end %>
+  </p>
+  <% end %>
 </div>

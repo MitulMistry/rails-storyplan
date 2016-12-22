@@ -5,14 +5,14 @@
 <% if !@story.audiences.empty? %>
 <p><strong>Target audience:</strong>
   <% @story.audiences.each do |audience| %>
-    <%= link_to audience.name, audience, class: "label label-warning" %>
+    <%= link_to audience.name, audience, class: "tag tag-warning" %>
   <% end %>
 </p>
 <% end %>
 <% if !@story.genres.empty? %>
 <p><strong>Genres: </strong>
   <% @story.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "label label-primary" %>
+    <%= link_to genre.name, genre, class: "tag tag-primary" %>
   <% end %>
 </p>
 <% end %>
@@ -24,18 +24,18 @@
 <div><%= link_to "Create new chapter for story", new_story_chapter_path(@story), class: "btn btn-default btn-sm", role: "button" %></div>
 <% end %>
 
-<h2>Chapters:</h2>
-<%= render partial: 'chapters/chapter', collection: @story.chapters %>
+<% if !@story.chapters.empty? %><h2>Chapters:</h2>
+<%= render partial: "chapters/chapter", collection: @story.chapters %><% end %>
 
-<h2>Characters:</h2>
-<%= render partial: 'layouts/collection_grid', locals: { collection: @story.characters } %>
+<% if !@story.characters.empty? %><h2>Characters:</h2>
+<%= render partial: "characters/character", collection: @story.characters %><% end %>
 
 <% if !@story.comments.empty? %>
 <h3>Recent Comments:</h3>
-<%= render partial: 'comments/comment', collection: @story.recent_comments %>
+<%= render partial: "comments/comment", collection: @story.recent_comments %>
 <% end %>
 
 <% if user_signed_in? %>
 <h4>Add Comment:</h4>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
+<%= render partial: "comments/form", locals: { comment: @comment } %>
 <% end %>

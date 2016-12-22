@@ -5,19 +5,19 @@
 <% if !@writer.genres.empty? %>
 <p><strong>Genres:</strong>
   <% @writer.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "label label-primary" %>
+    <%= link_to genre.name, genre, class: "tag tag-primary" %>
   <% end %>
 </p>
 <% end %>
 
 <% if !@recent_stories.empty? %><h3>Recent Stories <%= link_to "(See all)", writer_stories_path(@writer) %></h3>
-  <%= render partial: 'layouts/collection_grid', locals: { collection: @recent_stories } %>
+  <%= render partial: "stories/story", collection: @recent_stories %>
 <% end %>
 
 <% if !@recent_chapters.empty? %><h3>Recent Chapters <%= link_to "(See all)", writer_chapters_path(@writer) %></h3>
-  <%= render :partial => "chapters/chapter", :collection => @recent_chapters %>
+  <%= render partial: "chapters/chapter", collection: @recent_chapters %>
 <% end %>
 
 <% if !@recent_characters.empty? %><h3>Recent Characters <%= link_to "(See all)", writer_characters_path(@writer) %></h3>
-  <%= render partial: 'layouts/collection_grid', locals: { collection: @recent_characters } %>
+  <%= render partial: "characters/character", collection: @recent_characters %>
 <% end %>

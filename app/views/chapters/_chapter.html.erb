@@ -1,10 +1,6 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><strong>CH: <%= link_to chapter.name, chapter %></strong> - from <%= link_to chapter.story.name, chapter.story %> by <%= link_to chapter.user.username, writer_path(chapter.user) %><% if chapter.currently_writing %> <%= content_tag :span, "Currently Writing", class: ["label", 'label-success'] %><br><% end %></h3>
-  </div>
-  <div class="panel-body">
-    <p><strong>Objective: </strong><%= chapter_truncated_objective(chapter) %></p>
-    <p><strong>Target word count: </strong><%= chapter.target_word_count %></p>
-    <p><strong>Overview: </strong><%= chapter_truncated_overview(chapter) %></p>
-  </div>
+<div class="card card-block">
+  <h4 class="card-title"><strong>CH: <%= link_to chapter.name, chapter, class: "card-link" %></strong> - from <%= link_to chapter.story.name, chapter.story, class: "card-link" %> by <%= link_to chapter.user.username, writer_path(chapter.user), class: "card-link" %><% if chapter.currently_writing %> <%= content_tag :span, "Currently Writing", class: ["tag", "tag-success"] %><br><% end %></h4>
+  <% if chapter.objective? %><p class="card-text"><strong>Objective: </strong><%= chapter_truncated_objective(chapter) %></p><% end %>
+  <% if chapter.target_word_count? %><p class="card-text"><strong>Target word count: </strong><%= chapter.target_word_count %></p><% end %>
+  <% if chapter.overview? %><p class="card-text"><strong>Overview: </strong><%= chapter_truncated_overview(chapter) %></p><% end %>
 </div>
