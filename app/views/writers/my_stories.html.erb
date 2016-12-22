@@ -1,4 +1,11 @@
-<%= render :partial => "stories/stories_grid", locals: { stories: @stories } %>
+<% if !@stories.empty? %>
+<h3>My Stories:</h3>
+<%= render partial: "stories/story", collection: @stories %>
+<% else %>
+<h3>You have no stories. <%= link_to "Create one now.", new_story_path %></h3>
+<% end %>
 
+<% if !@current_chapters.empty? %>
 <h3>Chapters Currently Writing:</h3>
-<%= render :partial => "chapters/chapter", collection: @current_chapters %>
+<%= render partial: "chapters/chapter", collection: @current_chapters %>
+<% end %>
