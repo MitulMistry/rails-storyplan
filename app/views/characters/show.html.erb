@@ -11,6 +11,6 @@
 <p><strong>Traits: </strong><%= @character.try(:traits) %></p>
 
 <% if @character.user == current_user %>
-  <div><%= link_to "Edit", edit_character_path(@character), class: "btn btn-default btn-sm", role: "button" %>
-  <%= link_to "Delete", @character, :method => :delete, :data => {:confirm => "Are you sure?"}, class: "btn btn-default btn-sm", role: "button" %></div>
+  <div><%= link_to "Edit", edit_character_path(@character), class: "btn btn-secondary btn-sm" %>
+  <%= link_to "Delete", @character, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %></div>
 <% end %>
