@@ -1,43 +1,86 @@
 <%= render partial: 'layouts/form_errors.html.erb', locals: { item: chapter } %>
 
 <%= form_for(chapter) do |f| %>
-  <div class="field"><%= f.label :story_id, "Story" %><br>
-  <%= f.collection_select :story_id, current_user.stories, :id, :name %></div>
+  <div class="form-group">
+    <%= f.label :story_id, "Story" %><br>
+    <%= f.collection_select :story_id, current_user.stories, :id, :name, {}, {class: "form-control"} %>
+  </div>
 
-  <div class="field"><%= f.label :name %><br>
-  <%= f.text_field :name %></div>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :objective %><br>
-  <%= f.text_area :objective, size: "60x4" %></div>
+  <div class="form-group">
+    <%= f.label :objective %><br>
+    <%= f.text_area :objective, class: "form-control", size: "60x4" %>
+  </div>
 
-  <div class="field"><%= f.label :target_word_count %><br>
-  <%= f.text_field :target_word_count %></div>
+  <div class="form-group">
+    <%= f.label :target_word_count %><br>
+    <%= f.text_field :target_word_count, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :currently_writing %><br>
-  <%= f.radio_button :currently_writing, true, checked: chapter.currently_writing %><%= f.label :currently_writing, "Yes" %>
-   <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing %><%= f.label :currently_writing, "No" %></div>
+  <fieldset class="form-group">
+    <%= f.label :currently_writing %><br>
+    <div class="form-check">
+      <!-- <%= f.label :currently_writing, class: "form-check-label" do %> -->
+      <label class="form-check-label">
+        <%= f.radio_button :currently_writing, true, checked: chapter.currently_writing, class: "form-check-input" %>
+        Yes
+      </label>
+      <!-- <% end %> -->
+    </div>
 
-  <div class="field"><%= f.label :overview %><br>
-  <%= f.text_area :overview, size: "60x8" %></div>
+    <div class="form-check">
+      <!-- <%= f.label :currently_writing, class: "form-check-label" do %> -->
+      <label class="form-check-label">
+        <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing, class: "form-check-input" %>
+        No
+      </label>
+      <!-- <% end %> -->
+      <!-- <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing, class: "form-check-input" %><%= f.label :currently_writing, "No" %> -->
 
-  <div class="field"><%= f.label "Characters" %><br>
-  <%= f.collection_check_boxes :character_ids, current_user.characters.order("name ASC"), :id, :name %></div>
+      <!-- <%= f.radio_button :currently_writing, true, checked: chapter.currently_writing %><%= f.label :currently_writing, "Yes" %>
+      <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing %><%= f.label :currently_writing, "No" %> -->
+    </div>
+  </fieldset>
 
-  <br><div class="field"><strong>Create new characters:</strong></div>
-  <%= f.fields_for :characters, chapter.characters.build do |character_fields| %>
+  <div class="form-group">
+    <%= f.label :overview %><br>
+    <%= f.text_area :overview, class: "form-control", size: "60x8" %>
+  </div>
 
-    <div class="field"><%= f.label "Character name" %><br>
-    <%= character_fields.text_field :name %>
-
+  <% if !current_user.characters.empty? %>
+  <div class="form-group">
+    <%= f.label "Characters" %><br>
+    <%= f.collection_check_boxes(:character_ids, current_user.characters.order("name ASC"), :id, :name) do |b| %>
+      <%= b.label(class: "custom-control custom-checkbox") do %>
+        <%= b.check_box(class: "custom-control-input") %>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description"><%= b.object.name %></span>
+      <% end %>
+    <% end %>
+  </div>
   <% end %>
+
+  <br><strong>Create new characters:</strong>
   <%= f.fields_for :characters, chapter.characters.build do |character_fields| %>
-
-    <div class="field"><%= f.label "Character name" %><br>
-    <%= character_fields.text_field :name %>
-
+    <div class="form-group">
+      <%= f.label "Character name" %><br>
+      <%= character_fields.text_field :name, class: "form-control" %>
+    </div>
   <% end %>
-  <br>
-  <br>
-  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
 
+  <%= f.fields_for :characters, chapter.characters.build do |character_fields| %>
+    <div class="form-group">
+      <%= f.label "Character name" %><br>
+      <%= character_fields.text_field :name, class: "form-control" %>
+    </div>
+  <% end %>
+
+  <br>
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
 <% end %>

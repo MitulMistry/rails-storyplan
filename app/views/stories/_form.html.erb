@@ -1,24 +1,40 @@
-<%= render partial: 'layouts/form_errors.html.erb', locals: { item: story } %>
+<%= render partial: "layouts/form_errors.html.erb", locals: { item: story } %>
 
 <%= form_for(story) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :name %><br>
-  <%= f.text_field :name %></div>
+  <div class="form-group">
+    <%= f.label :target_word_count %>
+    <%= f.text_field :target_word_count, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :target_word_count %><br>
-  <%= f.text_field :target_word_count %></div>
+  <div class="form-group">
+    <%= f.label "Target Audiences" %><br>
+    <%= f.collection_check_boxes(:audience_ids, Audience.all.order("name ASC"), :id, :name) do |b| %>
+      <%= b.label(class: "custom-control custom-checkbox") do %>
+        <%= b.check_box(class: "custom-control-input") %>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description"><%= b.object.name %></span>
+      <% end %>
+    <% end %>
+  </div>
 
-  <div class="field"><%= f.label "Target Audiences" %><br>
-  <%= f.collection_check_boxes :audience_ids, Audience.all.order("name ASC"), :id, :name %></div>
+  <div class="form-group">
+    <%= f.label :overview %>
+    <%= f.text_area :overview, class: "form-control", size: "60x4" %>
+  </div>
 
-  <div class="field"><%= f.label :overview %><br>
-  <%= f.text_area :overview, size: "60x4" %></div>
-
-  <div class="field"><%= f.label "Genres" %><br>
-  <%= f.collection_select :genre_ids, Genre.all.order("name ASC"), :id, :name, {}, {:multiple => true} %></div>
+  <div class="form-group">
+    <%= f.label "Genres" %><br>
+    <%= f.collection_select :genre_ids, Genre.all.order("name ASC"), :id, :name, {}, {multiple: true, class: "form-control"} %>
+  </div>
 
   <br>
 
-  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
-
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>
