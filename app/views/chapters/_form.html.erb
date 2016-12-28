@@ -24,25 +24,17 @@
   <fieldset class="form-group">
     <%= f.label :currently_writing %><br>
     <div class="form-check">
-      <!-- <%= f.label :currently_writing, class: "form-check-label" do %> -->
       <label class="form-check-label">
         <%= f.radio_button :currently_writing, true, checked: chapter.currently_writing, class: "form-check-input" %>
         Yes
       </label>
-      <!-- <% end %> -->
     </div>
 
     <div class="form-check">
-      <!-- <%= f.label :currently_writing, class: "form-check-label" do %> -->
       <label class="form-check-label">
         <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing, class: "form-check-input" %>
         No
       </label>
-      <!-- <% end %> -->
-      <!-- <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing, class: "form-check-input" %><%= f.label :currently_writing, "No" %> -->
-
-      <!-- <%= f.radio_button :currently_writing, true, checked: chapter.currently_writing %><%= f.label :currently_writing, "Yes" %>
-      <%= f.radio_button :currently_writing, false, checked: !chapter.currently_writing %><%= f.label :currently_writing, "No" %> -->
     </div>
   </fieldset>
 

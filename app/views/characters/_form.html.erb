@@ -1,21 +1,34 @@
 <%= render partial: 'layouts/form_errors', locals: { item: character } %>
 
 <%= form_for(character) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :name %><br>
-  <%= f.text_field :name %></div>
+  <div class="form-group">
+    <%= f.label :traits %>
+    <%= f.text_field :traits, class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :traits %><br>
-  <%= f.text_field :traits %></div>
+  <div class="form-group">
+    <%= f.label :bio %>
+    <%= f.text_area :bio, size: "60x6", class: "form-control" %>
+  </div>
 
-  <div class="field"><%= f.label :bio %><br>
-  <%= f.text_area :bio, size: "60x6" %></div>
-
-  <div class="field"><%= f.label "Chapters" %><br>
-  <%= f.collection_check_boxes :chapter_ids, current_user.chapters.order("name ASC"), :id, :name %></div>
+  <div class="form-group">
+    <%= f.label "Chapters" %><br>
+    <%= f.collection_check_boxes(:chapter_ids, current_user.chapters.order("name ASC"), :id, :name) do |b| %>
+      <%= b.label(class: "custom-control custom-checkbox") do %>
+        <%= b.check_box(class: "custom-control-input") %>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description"><%= b.object.name %></span>
+      <% end %>
+    <% end %>
+  </div>
 
   <br>
-
-  <div class="actions"><%= f.submit 'Submit', :class => 'btn btn-primary' %></div>
-
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>

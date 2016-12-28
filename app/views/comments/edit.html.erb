@@ -1,3 +1,4 @@
-<h4>Edit comment for</h4>
-<p><%= link_to @comment.story.name, @comment.story %>:</p>
-<%= render partial:'comments/form', locals: { comment: @comment } %>
+<%= render partial: 'layouts/form_errors', locals: { item: @comment } %>
+
+<h4>Edit comment for <%= link_to @comment.story.name, @comment.story %>:</h4>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
