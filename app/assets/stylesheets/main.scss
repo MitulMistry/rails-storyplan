@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+$teal: #78A39D;
+$orange: #E7992A;
+
 body {
-    //background-color: #F8FFEF;
+  font-family: 'PT Serif', serif;
+  background-color: #F8FFEF;
 }
 
 h1, h2, h3 {
@@ -13,11 +19,12 @@ p {
 .navbar-main {
   @extend .navbar-dark;
   margin-bottom: 20px;
+  border-bottom: 3px solid $orange;
 }
 
 .navbar-main-bg {
-  @extend .bg-inverse;
-  // background-color: #57685c;
+  // @extend .bg-inverse;
+  background-color: $teal;
 }
 
 .jumbotron {
@@ -26,7 +33,16 @@ p {
   //background-size: cover;
   //height: 400px;
   //padding: 0;
+  background-color: white;
+  border: 1px solid #DDDDDD;
   margin: 0;
+}
+
+.card {
+
+  a {
+    // color: $teal;
+  }
 }
 
 .field_with_errors {
@@ -39,7 +55,9 @@ p {
 }
 
 .custom-footer {
-	background-color: #edf1f2;
+	background-color: $teal;
+  border-top: 3px solid $orange;
+  color: white;
   margin-top: 20px;
 	padding: 10px 10px 40px 10px;
 
@@ -51,5 +69,14 @@ p {
 
   li {
     margin-bottom: 4px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, .6);
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
   }
 }
