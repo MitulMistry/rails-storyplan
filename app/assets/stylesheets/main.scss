@@ -2,6 +2,24 @@ body {
     //background-color: #F8FFEF;
 }
 
+h1, h2, h3 {
+  margin: .5em 0 .5em 0;
+}
+
+p {
+  margin: .6em 0 .6em 0;
+}
+
+.navbar-main {
+  @extend .navbar-dark;
+  margin-bottom: 20px;
+}
+
+.navbar-main-bg {
+  @extend .bg-inverse;
+  // background-color: #57685c;
+}
+
 .jumbotron {
   //background-image:url("../assets/jumbo.jpg");
   //background-repeat: no-repeat;
@@ -21,8 +39,9 @@ body {
 }
 
 .custom-footer {
-	//background-color: #1E0C11;
-	padding: 10px;
+	background-color: #edf1f2;
+  margin-top: 20px;
+	padding: 10px 10px 40px 10px;
 
   ul {
     list-style-type: none;
