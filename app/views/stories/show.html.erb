@@ -24,18 +24,18 @@
 <div><%= link_to "Create new chapter for story", new_story_chapter_path(@story), class: "btn btn-secondary btn-sm" %></div>
 <% end %>
 
-<% if !@story.chapters.empty? %><h2>Chapters:</h2>
+<% if !@story.chapters.empty? %><h2>Chapters</h2>
 <%= render partial: "chapters/chapter", collection: @story.chapters %><% end %>
 
-<% if !@story.characters.empty? %><h2>Characters:</h2>
+<% if !@story.characters.empty? %><h2>Characters</h2>
 <%= render partial: "characters/character", collection: @story.characters %><% end %>
 
 <% if !@story.comments.empty? %>
-<h3>Recent Comments:</h3>
+<h3>Recent Comments</h3>
 <%= render partial: "comments/comment", collection: @story.recent_comments %>
 <% end %>
 
 <% if user_signed_in? %>
-<h4>Add Comment:</h4>
+<h4>Add Comment</h4>
 <%= render partial: "comments/form", locals: { comment: @comment } %>
 <% end %>

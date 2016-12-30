@@ -2,18 +2,31 @@
 
 $teal: #78A39D;
 $orange: #E7992A;
+$dark-orange: #BF7000;
 
 body {
   font-family: 'PT Serif', serif;
+  font-size: 1.1rem;
   background-color: #F8FFEF;
 }
 
 h1, h2, h3 {
-  margin: .5em 0 .5em 0;
+  margin: 1rem 0 1rem 0;
 }
 
 p {
-  margin: .6em 0 .6em 0;
+  margin: .6rem 0 .6rem 0;
+}
+
+a {
+  // color: #159482;
+  color: #EB8A00;
+  // color: #137CED;
+}
+
+a:hover {
+  color: #BF7000;
+  text-decoration: none;
 }
 
 .navbar-main {
@@ -25,6 +38,24 @@ p {
 .navbar-main-bg {
   // @extend .bg-inverse;
   background-color: $teal;
+}
+
+.navbar {
+  font-size: 1.15rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.btn-primary {
+  background-color: $orange;
+  border-color: $orange;
+}
+
+.btn-primary:hover {
+  background-color: $dark-orange;
+  border-color: $dark-orange;
 }
 
 .jumbotron {
