@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
 $teal: #78A39D;
+$dark-teal: #5D8C86;
 $orange: #E7992A;
 $dark-orange: #BF7000;
 
@@ -24,7 +25,7 @@ a {
   // color: #137CED;
 }
 
-a:hover {
+a:hover, a:focus {
   color: #BF7000;
   text-decoration: none;
 }
@@ -33,6 +34,17 @@ a:hover {
   @extend .navbar-dark;
   margin-bottom: 20px;
   border-bottom: 3px solid $orange;
+
+  .nav-item {
+    .nav-link {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .nav-link:hover {
+      color: white;
+    }
+  }
+
 }
 
 .navbar-main-bg {
@@ -42,6 +54,7 @@ a:hover {
 
 .navbar {
   font-size: 1.15rem;
+  color: red;
 }
 
 .navbar-brand {
@@ -56,6 +69,22 @@ a:hover {
 .btn-primary:hover {
   background-color: $dark-orange;
   border-color: $dark-orange;
+}
+
+.tag-primary {
+  background-color: $teal;
+}
+
+.tag-primary[href]:focus, .tag-primary[href]:hover {
+  background-color: $dark-teal;
+}
+
+.tag-warning {
+  background-color: $orange;
+}
+
+.tag-warning[href]:focus, .tag-warning[href]:hover {
+  background-color: $dark-orange;
 }
 
 .jumbotron {
