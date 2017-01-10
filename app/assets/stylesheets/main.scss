@@ -32,7 +32,7 @@ a:hover, a:focus {
 }
 
 .navbar-main {
-  @extend .navbar-dark;
+  @extend .navbar-inverse;
   margin-bottom: 20px;
   border-bottom: 3px solid $orange;
 

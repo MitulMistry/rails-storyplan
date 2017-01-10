@@ -1,45 +1,50 @@
-<nav class="navbar navbar-main navbar-main-bg">
+<nav class="navbar navbar-toggleable-sm navbar-main navbar-main-bg">
   <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <%= link_to "Storyplan", root_path, class: "navbar-brand" %>
-    <ul class="nav navbar-nav float-xs-right">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
-        <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-          <%= link_to "Stories", stories_path, class: "dropdown-item" %>
-          <%= link_to "Genres", genres_path, class: "dropdown-item" %>
-          <%= link_to "Writers", writers_path, class: "dropdown-item" %>
-          <%= link_to "Characters", characters_path, class: "dropdown-item" %>
-          <%= link_to "Audiences", audiences_path, class: "dropdown-item" %>
-          <%= link_to "Chapters", chapters_path, class: "dropdown-item" %>
-        </div>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
+          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <%= link_to "Stories", stories_path, class: "dropdown-item" %>
+            <%= link_to "Genres", genres_path, class: "dropdown-item" %>
+            <%= link_to "Writers", writers_path, class: "dropdown-item" %>
+            <%= link_to "Characters", characters_path, class: "dropdown-item" %>
+            <%= link_to "Audiences", audiences_path, class: "dropdown-item" %>
+            <%= link_to "Chapters", chapters_path, class: "dropdown-item" %>
+          </div>
+        </li>
 
-      <% if user_signed_in? %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
-        <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-          <%= link_to "New Story", new_story_path, class: "dropdown-item" %>
-          <%= link_to "New Chapter", new_chapter_path, class: "dropdown-item" %>
-          <%= link_to "New Character", new_character_path, class: "dropdown-item" %>
-        </div>
-      </li>
+        <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
+          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <%= link_to "New Story", new_story_path, class: "dropdown-item" %>
+            <%= link_to "New Chapter", new_chapter_path, class: "dropdown-item" %>
+            <%= link_to "New Character", new_character_path, class: "dropdown-item" %>
+          </div>
+        </li>
 
-      <li class="nav-item"><%= link_to "My Stories", my_stories_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "Profile", profile_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "My Stories", my_stories_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Profile", profile_path, class: "nav-link" %></li>
 
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-        <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-          <%= link_to "Edit Profile", edit_profile_path, class: "dropdown-item" %>
-          <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item" %>
-          <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
-        </div>
-      </li>
-      <% else %>
-      <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "nav-link" %></li>
-      <% end %>
-    </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <%= link_to "Edit Profile", edit_profile_path, class: "dropdown-item" %>
+            <%= link_to "User Settings", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+        <% else %>
+        <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
