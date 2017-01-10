@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
+$default: black;
 $teal: #78A39D;
 $dark-teal: #5D8C86;
 $orange: #E7992A;
@@ -102,6 +103,17 @@ a:hover, a:focus {
 
   a {
     // color: $teal;
+  }
+}
+
+ul.pagination {
+  a.page-link {
+    color: $default;
+  }
+
+  .page-item.active .page-link {
+    background-color: $orange;
+    border-color: $dark-orange;
   }
 }
 
