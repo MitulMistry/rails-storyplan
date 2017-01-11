@@ -88,6 +88,22 @@ a:hover, a:focus {
   background-color: $dark-orange;
 }
 
+.badge-audience {
+  @extend .badge-warning;
+}
+
+.badge-genre {
+  @extend .badge-primary;
+}
+
+.badge-story {
+  @extend .badge-info;
+}
+
+.badge-currently-writing {
+  @extend .badge-success;
+}
+
 .jumbotron {
   //background-image:url("../assets/jumbo.jpg");
   //background-repeat: no-repeat;
@@ -100,6 +116,7 @@ a:hover, a:focus {
 }
 
 .card {
+  margin: .5rem 0 1rem 0;
 
   a {
     // color: $teal;

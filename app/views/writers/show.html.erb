@@ -5,7 +5,7 @@
 <% if !@writer.genres.empty? %>
 <p><strong>Genres:</strong>
   <% @writer.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "tag tag-primary" %>
+    <%= link_to genre.name, genre, class: "badge badge-genre" %>
   <% end %>
 </p>
 <% end %>

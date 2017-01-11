@@ -3,7 +3,7 @@
 <% if !@character.stories.empty? %>
 <p><strong>Appears in: </strong>
   <% @character.stories.each do |story| %>
-  <%= link_to story.name, story, class: "tag tag-info" %>
+  <%= link_to story.name, story, class: "badge badge-story" %>
   <% end %>
 </p>
 <% end %>

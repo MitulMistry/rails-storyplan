@@ -5,14 +5,14 @@
 <% if !@story.audiences.empty? %>
 <p><strong>Target audience:</strong>
   <% @story.audiences.each do |audience| %>
-    <%= link_to audience.name, audience, class: "tag tag-warning" %>
+    <%= link_to audience.name, audience, class: "badge badge-audience" %>
   <% end %>
 </p>
 <% end %>
 <% if !@story.genres.empty? %>
 <p><strong>Genres: </strong>
   <% @story.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "tag tag-primary" %>
+    <%= link_to genre.name, genre, class: "badge badge-genre" %>
   <% end %>
 </p>
 <% end %>
