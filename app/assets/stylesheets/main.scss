@@ -6,6 +6,10 @@ $dark-teal: #5D8C86;
 $orange: #E7992A;
 $dark-orange: #BF7000;
 
+html {
+  background-color: $teal;
+}
+
 body {
   font-family: 'PT Serif', serif;
   font-size: 1.1rem;
