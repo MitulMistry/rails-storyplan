@@ -6,22 +6,10 @@ $dark-teal: #5D8C86;
 $orange: #E7992A;
 $dark-orange: #BF7000;
 
-$footer-height: 270px;
-
-html {
-  /* For making footer move to bottom of screen even if not enough content on page */
-  /* http://v4-alpha.getbootstrap.com/examples/sticky-footer/ */
-  position: relative;
-  min-height: 100%;
-}
-
 body {
   font-family: 'PT Serif', serif;
   font-size: 1.1rem;
   background-color: #F8FFEF;
-
-  /* Margin bottom by footer height */
-  margin-bottom: $footer-height;
 }
 
 h1, h2, h3 {
@@ -161,15 +149,6 @@ ul.pagination {
   color: white;
   margin-top: 20px;
 	padding: 10px 10px 40px 10px;
-
-  /* Make footer move to bottom of screen even if not enough content on page */
-  /* http://v4-alpha.getbootstrap.com/examples/sticky-footer/ */
-  position: absolute;
-  bottom: -40px; // 0
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: $footer-height;
-  // line-height: 60px; /* Vertically center the text there */
 
   ul {
     list-style-type: none;
