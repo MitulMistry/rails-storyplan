@@ -1,6 +1,9 @@
 **TODO:**
--upgrade to Bootstrap 4
-  -change view templates to use Bootstrap 4
+-Update to Rails 5
+
+-Fix brand and toggle icon overlap on smallest media query break (for header)
+-Center pagination
+
 -Overhaul front end - design and implementation
 -change authorizations to use Pundit
 -set up image uploading with Paperclip
