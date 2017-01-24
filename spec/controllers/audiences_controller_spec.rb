@@ -23,7 +23,7 @@ RSpec.describe AudiencesController, type: :controller do
       end
 
       it "assigns the requested audience to @audience" do
-        get :show, id: @audience # make a GET request with id for audience
+        get :show, params: { id: @audience } # make a GET request with id for audience
         expect(assigns(:audience)).to eq @audience # assigns checks value of @audience in controller
       end
 
@@ -35,12 +35,12 @@ RSpec.describe AudiencesController, type: :controller do
         @audience.stories << story1
         @audience.stories << story3
 
-        get :show, id: @audience
+        get :show, params: { id: @audience }
         expect(assigns(:audience_stories)).to eq [story3, story1]
       end
 
       it "renders the :show template" do
-        get :show, id: @audience
+        get :show, params: { id: @audience }
         expect(response).to render_template :show # response is finished product returned from controller
       end
     end

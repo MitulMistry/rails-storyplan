@@ -23,7 +23,7 @@ RSpec.describe GenresController, type: :controller do
       end
 
       it "assigns the requested genre to @genre" do
-        get :show, id: @genre # make a GET request with id for genre
+        get :show, params: { id: @genre } # make a GET request with id for genre
         expect(assigns(:genre)).to eq @genre # assigns checks value of @genre in controller
       end
 
@@ -35,12 +35,12 @@ RSpec.describe GenresController, type: :controller do
         @genre.stories << story1
         @genre.stories << story3
 
-        get :show, id: @genre
+        get :show, params: { id: @genre }
         expect(assigns(:genre_stories)).to eq [story3, story1]
       end
 
       it "renders the :show template" do
-        get :show, id: @genre
+        get :show, params: { id: @genre }
         expect(response).to render_template :show # response is finished product returned from controller
       end
     end

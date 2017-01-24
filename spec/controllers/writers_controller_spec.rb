@@ -20,12 +20,12 @@ RSpec.describe WritersController, type: :controller do
     describe "GET #show" do
       it "assigns the requested writer to @writer" do
         writer = create(:user) #FactoryGirl, invoke user factory
-        get :show, id: writer #make a GET request with id for user
+        get :show, params: { id: writer } #make a GET request with id for user
         expect(assigns(:writer)).to eq writer #assigns checks value of @story in controller
       end
 
       it "renders the :show template" do
-        get :show, id: create(:user)
+        get :show, params: { id: create(:user) }
         expect(response).to render_template :show #response is finished product returned from controller
       end
     end
@@ -67,18 +67,18 @@ RSpec.describe WritersController, type: :controller do
     describe "PATCH #update_profile" do
       context "with valid attributes" do
         it "assigns the current user to @writer" do
-          patch :update_profile, user: attributes_for(:user)
+          patch :update_profile, params: { user: attributes_for(:user) }
           expect(assigns(:writer)).to eq @user
         end
 
         it "changes the writer's attributes" do
-          patch :update_profile, user: attributes_for(:user, bio: "Updated bio")
+          patch :update_profile, params: { user: attributes_for(:user, bio: "Updated bio") }
           @user.reload #use reload to check that the changes are actually persisted
           expect(@user.bio).to eq "Updated bio"
         end
 
         it "redirects to the updated profile" do
-          patch :update_profile, user: attributes_for(:user)
+          patch :update_profile, params: { user: attributes_for(:user) }
           expect(response).to redirect_to profile_path
         end
       end
@@ -86,13 +86,13 @@ RSpec.describe WritersController, type: :controller do
       context "with invalid attributes" do
         it "does not update the writer's attributes" do
           name = @user.full_name
-          patch :update_profile, user: attributes_for(:user, full_name: Faker::Lorem.characters(201))
+          patch :update_profile, params: { user: attributes_for(:user, full_name: Faker::Lorem.characters(201)) }
           @user.reload
           expect(@user.full_name).to eq name
         end
 
         it "re-renders the :edit_profile template" do
-          patch :update_profile, user: attributes_for(:invalid_user)
+          patch :update_profile, params: { user: attributes_for(:invalid_user) }
           expect(response).to render_template :edit_profile
         end
       end
@@ -135,7 +135,7 @@ RSpec.describe WritersController, type: :controller do
 
     describe "PATCH #update_profile" do
       it "requires login" do
-        patch :update_profile, user: attributes_for(:user)
+        patch :update_profile, params: { user: attributes_for(:user) }
         expect(response).to require_login
       end
     end

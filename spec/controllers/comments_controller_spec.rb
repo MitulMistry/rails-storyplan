@@ -5,13 +5,13 @@ RSpec.describe CommentsController, type: :controller do
     describe "GET #edit" do
       it "assigns the requested comment to @comment" do
         comment = create(:comment, user: @user)
-        get :edit, id: comment
+        get :edit, params: { id: comment }
         expect(assigns(:comment)).to eq comment
       end
 
       it "renders the :edit template" do
         comment = create(:comment, user: @user)
-        get :edit, id: comment
+        get :edit, params: { id: comment }
         expect(response).to render_template :edit
       end
     end
@@ -23,18 +23,18 @@ RSpec.describe CommentsController, type: :controller do
 
       context "with valid attributes" do
         it "saves the new comment in the database" do
-          expect{ #proc - evaluates code before and after
-            post :create, comment: attributes_for(:comment, story_id: @story.id) #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+          expect { #proc - evaluates code before and after
+            post :create, params: { comment: attributes_for(:comment, story_id: @story.id) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
           }.to change(Comment, :count).by(1)
         end
 
         it "assigns current user as owner of the comment" do
-          post :create, comment: attributes_for(:comment, story_id: @story.id)
+          post :create, params: { comment: attributes_for(:comment, story_id: @story.id) }
           expect(Comment.last.user).to eq @user
         end
 
         it "redirects to stories#show" do
-          post :create, comment: attributes_for(:comment, story_id: @story.id)
+          post :create, params: { comment: attributes_for(:comment, story_id: @story.id) }
           expect(response).to redirect_to story_path(@story)
         end
       end
@@ -42,12 +42,12 @@ RSpec.describe CommentsController, type: :controller do
       context "with invalid attributes" do
         it "does not save the new comment in the database" do
           expect{
-            post :create, comment: attributes_for(:invalid_comment, story_id: @story.id)
+            post :create, params: { comment: attributes_for(:invalid_comment, story_id: @story.id) }
           }.not_to change(Comment, :count)
         end
 
         it "re-renders the story :show template" do
-          post :create, comment: attributes_for(:invalid_comment, story_id: @story.id)
+          post :create, params: { comment: attributes_for(:invalid_comment, story_id: @story.id) }
           expect(response).to render_template "stories/show"
         end
       end
@@ -61,31 +61,31 @@ RSpec.describe CommentsController, type: :controller do
 
       context "with valid attributes" do
         it "locates the requested comment" do
-          patch :update, id: @comment, comment: attributes_for(:comment)
+          patch :update, params: { id: @comment, comment: attributes_for(:comment) }
           expect(assigns(:comment)).to eq(@comment)
         end
 
         it "changes the story's attributes" do
-          patch :update, id: @comment, comment: attributes_for(:comment, content: "Updated comment")
+          patch :update, params: { id: @comment, comment: attributes_for(:comment, content: "Updated comment") }
           @comment.reload #use reload to check that the changes are actually persisted
           expect(@comment.content).to eq "Updated comment"
         end
 
         it "redirects to the updated comment's story" do
-          patch :update, id: @comment, comment: attributes_for(:comment)
+          patch :update, params: { id: @comment, comment: attributes_for(:comment) }
           expect(response).to redirect_to @story
         end
       end
 
       context "with invalid attributes" do
         it "does not update the story's attributes" do
-          patch :update, id: @comment, comment: attributes_for(:invalid_comment)
+          patch :update, params: { id: @comment, comment: attributes_for(:invalid_comment) }
           @comment.reload
           expect(@comment.content).not_to be_nil
         end
 
         it "re-renders the :edit template" do
-          patch :update, id: @comment, comment: attributes_for(:invalid_comment)
+          patch :update, params: { id: @comment, comment: attributes_for(:invalid_comment) }
           expect(response).to render_template :edit
         end
       end
@@ -98,13 +98,13 @@ RSpec.describe CommentsController, type: :controller do
       end
 
       it "deletes the comment from the database" do
-        expect{
-          delete :destroy, id: @comment
+        expect {
+          delete :destroy, params: { id: @comment }
         }.to change(Comment, :count).by(-1)
       end
 
       it "redirects to the comment's story" do
-        delete :destroy, id: @comment
+        delete :destroy, params: { id: @comment }
         expect(response).to redirect_to @story
       end
     end
@@ -119,33 +119,33 @@ RSpec.describe CommentsController, type: :controller do
 
     describe "GET #edit" do
       it "redirects to stories#index" do
-        get :edit, id: @comment
+        get :edit, params: { id: @comment }
         expect(response).to redirect_to stories_path
       end
     end
 
     describe "PATCH #update" do
       it "it does not change the comment's attributes" do
-        patch :update, id: @comment, comment: attributes_for(:comment, content: "Updated content")
+        patch :update, params: { id: @comment, comment: attributes_for(:comment, content: "Updated content") }
         @comment.reload #use reload to check that the changes are actually persisted
         expect(@comment.content).to eq "Test content"
       end
 
       it "redirects to stories#index" do
-        patch :update, id: @comment, comment: attributes_for(:comment)
+        patch :update, params: { id: @comment, comment: attributes_for(:comment) }
         expect(response).to redirect_to stories_path
       end
     end
 
     describe "DELETE #destroy" do
       it "does not delete the comment from the database" do
-        expect{
-          delete :destroy, id: @comment
+        expect {
+          delete :destroy, params: { id: @comment }
         }.to_not change(Comment, :count)
       end
 
       it "redirects to stories#index" do
-        delete :destroy, id: @comment
+        delete :destroy, params: { id: @comment }
         expect(response).to redirect_to stories_path
       end
     end
@@ -165,28 +165,28 @@ RSpec.describe CommentsController, type: :controller do
     describe "GET #edit" do
       it "requires login" do
         comment = create(:comment)
-        get :edit, id: comment
+        get :edit, params: { id: comment }
         expect(response).to require_login # custom matcher under support/matchers/require_login.rb
       end
     end
 
     describe "POST #create" do
       it "requires login" do
-        post :create, comment: attributes_for(:comment)
+        post :create, params: { comment: attributes_for(:comment) }
         expect(response).to require_login
       end
     end
 
     describe "PUT #update" do
       it "requires login" do
-        patch :update, id: create(:comment), comment: attributes_for(:comment)
+        patch :update, params: { id: create(:comment), comment: attributes_for(:comment) }
         expect(response).to require_login
       end
     end
 
     describe "DELETE #destroy" do
       it "requires login" do
-        delete :destroy, id: create(:comment)
+        delete :destroy, params: { id: create(:comment) }
         expect(response).to require_login
       end
     end
