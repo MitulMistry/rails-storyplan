@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
+# Use PostgreSQL as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -53,8 +55,6 @@ group :development do
 end
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
@@ -85,9 +85,7 @@ group :test do
 end
 
 group :production do
-  #gem "pg"
   #gem "google-analytics-rails"
-  #gem "rails_12factor"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
