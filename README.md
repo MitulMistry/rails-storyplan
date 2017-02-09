@@ -13,7 +13,7 @@ In addition to creating models, users can view the stories, chapters, and charac
 
 ## Application Info
 - Authentication (user registration and login) is handled by the [Rails Devise][devise] gem. Facebook authentication is enabled via OAuth for Devise.
-- The back end uses [ActiveRecord][active-record] as the ORM. It uses [postgres][PostgreSQL] for the database via the [pg gem][pg].
+- The back end uses [ActiveRecord][active-record] as the ORM. It uses [PostgreSQL][postgres] for the database via the [pg gem][pg].
 - The front end leverages Bootstrap 4 via the [Bootstrap gem][bootstrap-gem] in conjunction with Rails ERB templates. Styling uses [SCSS][scss].
 - Pagination uses the [Kaminari gem][kaminari].
 
@@ -22,7 +22,7 @@ In order to get the application to work, install dependencies from the [Gemfile]
 
 Since the application uses PostgreSQL, you need to have it installed locally on your machine with a user that has table creation privileges. You can get further instructions [here][postgres-local-setup]. If you'd rather not bother with PostgreSQL, you can use an older version of the application that uses SQLite3 [here][old-version-1].
 
-Run migrations with `bundle exec rake db:migrate`, then run `bundle exec rake db:seed` to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key for Facebook.
+Create the database with `bundle exec rails db:create` and run migrations with `bundle exec rails db:migrate`, then run `bundle exec rails db:seed` to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key for Facebook.
 
 ## Testing
 The test suite is developed using Rspec via the [rspec-rails gem][rspec-rails] with [shoulda-matchers][shoulda]. [Capybara][capybara] is used for integration (feature) testing to mimic user browser interaction, while model factories are set up with [FactoryGirl][factory-girl].
@@ -34,6 +34,10 @@ For more, see this post: http://mitulmistry.github.io/ruby/rails/rails-project/
 
 This project began as a Rails assessment for Flatiron School's Learn Verified Full Stack Development program:
 https://github.com/learn-co-students/rails-assessment-v-000
+
+## License
+
+This project is open source under the terms of the [MIT License][mit].
 
 [rails]: http://rubyonrails.org/
 [devise]: https://github.com/plataformatec/devise
@@ -51,3 +55,4 @@ https://github.com/learn-co-students/rails-assessment-v-000
 [shoulda]: https://github.com/thoughtbot/shoulda-matchers
 [capybara]: https://github.com/teamcapybara/capybara
 [factory-girl]: https://github.com/thoughtbot/factory_girl_rails
+[mit]: http://opensource.org/licenses/MIT
