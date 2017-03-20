@@ -36,7 +36,6 @@ This project began as a Rails assessment for Flatiron School's Learn Verified Fu
 https://github.com/learn-co-students/rails-assessment-v-000
 
 ## License
-
 This project is open source under the terms of the [MIT License][mit].
 
 [rails]: http://rubyonrails.org/

@@ -1,6 +1,4 @@
 **TODO:**
--Update to Rails 5
-
 -Fix brand and toggle icon overlap on smallest media query break (for header)
 -Center pagination
 
