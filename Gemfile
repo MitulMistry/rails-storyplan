@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0', '>= 5.0.2'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -38,12 +38,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
-gem 'devise'
-gem 'kaminari'
-#gem 'airbrake'
+gem 'devise'  # For authentication
+gem 'kaminari'  # For pagination
+gem 'paperclip' # For image attachments
 gem 'faker'
-#gem 'friendly_id'
 gem 'omniauth-facebook'
+
+#gem 'airbrake'
+#gem 'friendly_id'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -70,7 +72,6 @@ group :development, :test do
 
   #gem "capybara-webkit"
   #gem "guard-rspec", require: false
-  #gem "thin"
 
   gem 'dotenv-rails'
 end
