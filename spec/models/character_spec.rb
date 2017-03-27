@@ -21,6 +21,16 @@ RSpec.describe Character, type: :model do
       it { should validate_length_of(:name).is_at_most(200) }
     end
 
+    context "image (portrait) validations" do
+      it { should have_attached_file(:portrait) }
+      it { should validate_attachment_presence(:portrait) }
+      it { should validate_attachment_content_type(:portrait).
+        allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
+        rejecting("text/plain", "text/xml") }
+      it { should validate_attachment_size(:portrait).less_than(2.megabytes) }
+      #it should validate dimensions (600 x 900?)
+    end
+
     context "other validations" do
       it { should validate_length_of(:bio).is_at_most(4000) }
       it { should validate_length_of(:traits).is_at_most(800) }
