@@ -9,7 +9,7 @@ FactoryGirl.define do
       name nil
     end
 
-    factory :story_with_cover do
+    factory :story_with_cover do #use test file for attached Paperclip image
       cover { File.new("#{Rails.root}/spec/support/fixtures/images/test_story_cover_400x625.png") }
     end
 

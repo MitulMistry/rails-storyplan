@@ -10,7 +10,7 @@ FactoryGirl.define do
       full_name { Faker::Lorem.characters(201) }
     end
 
-    factory :user_with_avatar do
+    factory :user_with_avatar do #use test file for attached Paperclip image
       avatar { File.new("#{Rails.root}/spec/support/fixtures/images/test_user_avatar_400.png") }
     end
 

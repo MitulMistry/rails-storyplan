@@ -9,7 +9,7 @@ FactoryGirl.define do
       name nil
     end
 
-    factory :character_with_portrait do
+    factory :character_with_portrait do #use test file for attached Paperclip image
       portrait { File.new("#{Rails.root}/spec/support/fixtures/images/test_character_portrait_400.png") }
     end
 
