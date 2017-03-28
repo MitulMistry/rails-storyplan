@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :full_name, length: { maximum: 200 }
   validates :bio, length: { maximum: 4000 }
 
-  validates_attachment :avatar, presence: true,
+  validates_attachment :avatar, #presence: true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
     size: { in: 0..1.megabytes }
 

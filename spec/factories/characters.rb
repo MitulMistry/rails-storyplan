@@ -4,10 +4,13 @@ FactoryGirl.define do
     bio { Faker::Lorem.paragraph }
     traits { Faker::Lorem.sentence }
     association :user
-    portrait { File.new("#{Rails.root}/spec/support/fixtures/images/test_character_portrait_400.png") }
 
     factory :invalid_character do
       name nil
+    end
+
+    factory :character_with_portrait do
+      portrait { File.new("#{Rails.root}/spec/support/fixtures/images/test_character_portrait_400.png") }
     end
 
     factory :character_with_uploaded_portrait do #use this child factory when making a post/patch request with attributes_for

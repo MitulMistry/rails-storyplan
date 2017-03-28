@@ -14,7 +14,7 @@ class Story < ActiveRecord::Base
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
   validates :overview, length: { maximum: 4000 }
 
-  validates_attachment :cover, presence: true,
+  validates_attachment :cover, #presence: true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
     size: { in: 0..2.megabytes }
 

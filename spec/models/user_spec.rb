@@ -5,6 +5,14 @@ RSpec.describe User, type: :model do
     expect(build(:user)).to be_valid #using FactoryGirl syntax methods in rails_helper.rb
   end
 
+  it "has an invalid child factory" do
+    expect(build(:invalid_user)).to be_invalid
+  end
+
+  it "has a valid child factory with avatar image" do
+    expect(build(:user_with_avatar)).to be_valid
+  end
+
   describe "associations" do
     it { should have_many(:stories) } #using shoulda-matchers
     it { should have_many(:characters) }
@@ -43,7 +51,7 @@ RSpec.describe User, type: :model do
 
     context "image (avatar) validations" do
       it { should have_attached_file(:avatar) }
-      it { should validate_attachment_presence(:avatar) }
+      # it { should validate_attachment_presence(:avatar) }
       it { should validate_attachment_content_type(:avatar).
         allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
         rejecting("text/plain", "text/xml") }

@@ -9,6 +9,10 @@ RSpec.describe Character, type: :model do
     expect(build(:invalid_character)).to be_invalid
   end
 
+  it "has a valid child factory with portrait image" do
+    expect(build(:character_with_portrait)).to be_valid
+  end
+
   describe "associations" do
     it { should belong_to(:user) } #using shoulda-matchers
     it { should have_many(:chapters) }
@@ -23,7 +27,7 @@ RSpec.describe Character, type: :model do
 
     context "image (portrait) validations" do
       it { should have_attached_file(:portrait) }
-      it { should validate_attachment_presence(:portrait) }
+      # it { should validate_attachment_presence(:portrait) }
       it { should validate_attachment_content_type(:portrait).
         allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
         rejecting("text/plain", "text/xml") }

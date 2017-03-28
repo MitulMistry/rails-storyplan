@@ -10,7 +10,7 @@ class Character < ActiveRecord::Base
   validates :bio, length: { maximum: 4000 }
   validates :traits, length: { maximum: 800 }
 
-  validates_attachment :portrait, presence: true,
+  validates_attachment :portrait, #presence: true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
     size: { in: 0..2.megabytes }
 

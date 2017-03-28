@@ -9,6 +9,10 @@ RSpec.describe Story, type: :model do
     expect(build(:invalid_story)).to be_invalid
   end
 
+  it "has a valid child factory with cover image" do
+    expect(build(:story_with_cover)).to be_valid
+  end
+
   describe "associations" do
     it { should belong_to(:user) } #using shoulda-matchers
     it { should have_many(:audiences) }
@@ -24,7 +28,7 @@ RSpec.describe Story, type: :model do
 
     context "image (cover) validations" do
       it { should have_attached_file(:cover) }
-      it { should validate_attachment_presence(:cover) }
+      # it { should validate_attachment_presence(:cover) }
       it { should validate_attachment_content_type(:cover).
         allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
         rejecting("text/plain", "text/xml") }

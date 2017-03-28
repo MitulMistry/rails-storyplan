@@ -5,10 +5,13 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(8, 20) }
     bio { Faker::Lorem.paragraph }
-    avatar { File.new("#{Rails.root}/spec/support/fixtures/images/test_user_avatar_400.png") }
 
     factory :invalid_user do
       full_name { Faker::Lorem.characters(201) }
+    end
+
+    factory :user_with_avatar do
+      avatar { File.new("#{Rails.root}/spec/support/fixtures/images/test_user_avatar_400.png") }
     end
 
     factory :user_with_uploaded_avatar do #use this child factory when making a post/patch request with attributes_for
