@@ -31,7 +31,8 @@ RSpec.describe User, type: :model do
       story2.genres << genre1
       story2.genres << genre2
 
-      expect(user.genres).to eq [genre1, genre2]
+      expect(user.genres.length).to eq 2
+      expect(user.genres).to include(genre1, genre2)
     end
   end
 
