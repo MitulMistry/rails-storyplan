@@ -7,11 +7,16 @@ class Story < ActiveRecord::Base
   has_many :chapters, dependent: :destroy #destroys all chapters belonging to it when the story is destroyed
   has_many :characters, through: :chapters
   has_many :comments
+  has_attached_file :cover, styles: { medium: "400x625>", small: "205x320>" }, default_url: "/images/paperclip/:style/default_story_cover.png"
 
   validates :name, presence: true
   validates :user_id, presence: true
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
   validates :overview, length: { maximum: 4000 }
+
+  validates_attachment :cover, presence: true,
+    content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+    size: { in: 0..2.megabytes }
 
   extend ClassOrderable
 
