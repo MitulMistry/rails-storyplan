@@ -81,7 +81,7 @@ RSpec.describe CharactersController, type: :controller do
             post :create, params: { character: attributes_for(:character_with_uploaded_portrait) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
           }.to change(Character, :count).by(1)
 
-          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400"
+          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400.png"
         end
 
         it "assigns current user as owner of the character" do
@@ -129,7 +129,7 @@ RSpec.describe CharactersController, type: :controller do
         it "uploads a new character portrait" do
           patch :update, params: { id: @character, character: attributes_for(:character_with_uploaded_portrait) }
           @character.reload
-          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400"
+          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400.png"
         end
 
         it "redirects to the updated character" do
@@ -153,6 +153,28 @@ RSpec.describe CharactersController, type: :controller do
       end
     end
 
+    describe "PATCH #delete_character_portrait" do
+      before :each do
+        @character = create(:character_with_portrait, user: @user)
+        patch :delete_portrait, params: { id: @character }
+      end
+
+      it "deletes the character portrait from the database" do
+        @character.reload
+        expect(@character.portrait).to be_nil
+        # expect(@character.portrait.original_filename).to be_nil
+      end
+
+      it "doesn't delete the character" do
+        @character.reload
+        expect(@character).not_to be_nil
+      end
+
+      it "redirects to the character" do
+        expect(response).to redirect_to @character
+      end
+    end
+
     describe "DELETE #destroy" do
       before :each do
         @character = create(:character, user: @user)
@@ -167,21 +189,6 @@ RSpec.describe CharactersController, type: :controller do
       it "redirects to writers#my_stories" do
         delete :destroy, params: { id: @character }
         expect(response).to redirect_to my_stories_url
-      end
-    end
-
-    describe "DELETE #destroy_portrait" do
-      before :each do
-        @character = create(:character_with_portrait, user: @user)
-        delete :destroy_portrait, params: { id: @character }
-      end
-
-      it "deletes the character portrait from the database" do
-        expect(@character.portrait).to be_nil
-      end
-
-      it "doesn't delete the character" do
-        expect(@character).to exist
       end
     end
   end
@@ -209,6 +216,14 @@ RSpec.describe CharactersController, type: :controller do
       it "redirects to characters#index" do
         patch :update, params: { id: @character, character: attributes_for(:character) }
         expect(response).to redirect_to characters_path
+      end
+    end
+
+    describe "PATCH #delete_character_portrait" do
+      it "does not delete the character portrait from the database" do
+        character = create(:character_with_portrait, user: @user2)
+        patch :delete_portrait, params: { id: character }
+        expect(character.portrait).to exist
       end
     end
 
@@ -264,6 +279,13 @@ RSpec.describe CharactersController, type: :controller do
     describe "PATCH #update" do
       it "requires login" do
         patch :update, params: { id: create(:character), character: attributes_for(:character) }
+        expect(response).to require_login
+      end
+    end
+
+    describe "PATCH #delete_portrait" do
+      it "requires login" do
+        patch :delete_portrait, params: { id: create(:character_with_portrait) }
         expect(response).to require_login
       end
     end
