@@ -76,6 +76,14 @@ RSpec.describe CharactersController, type: :controller do
           }.to change(Character, :count).by(1)
         end
 
+        it "saves the new character with uploaded portrait in the database" do
+          expect { #proc - evaluates code before and after
+            post :create, params: { character: attributes_for(:character_with_uploaded_portrait) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+          }.to change(Character, :count).by(1)
+
+          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400"
+        end
+
         it "assigns current user as owner of the character" do
           post :create, params: { character: attributes_for(:character) }
           expect(Character.last.user).to eq @user
@@ -118,6 +126,12 @@ RSpec.describe CharactersController, type: :controller do
           expect(@character.name).to eq "Updated Name"
         end
 
+        it "uploads a new character portrait" do
+          patch :update, params: { id: @character, character: attributes_for(:character_with_uploaded_portrait) }
+          @character.reload
+          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400"
+        end
+
         it "redirects to the updated character" do
           patch :update, params: { id: @character, character: attributes_for(:character) }
           expect(response).to redirect_to @character
@@ -153,6 +167,21 @@ RSpec.describe CharactersController, type: :controller do
       it "redirects to writers#my_stories" do
         delete :destroy, params: { id: @character }
         expect(response).to redirect_to my_stories_url
+      end
+    end
+
+    describe "DELETE #destroy_portrait" do
+      before :each do
+        @character = create(:character_with_portrait, user: @user)
+        delete :destroy_portrait, params: { id: @character }
+      end
+
+      it "deletes the character portrait from the database" do
+        expect(@character.portrait).to be_nil
+      end
+
+      it "doesn't delete the character" do
+        expect(@character).to exist
       end
     end
   end
