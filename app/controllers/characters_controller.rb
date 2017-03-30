@@ -1,6 +1,7 @@
 class CharactersController < ApplicationController
-  before_action :find_character, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_ownership, only: [:edit, :update, :destroy]
+  before_action :find_character, only: [:show, :edit, :update, :delete_portrait, :destroy]
+  before_action :authorize_ownership, only: [:edit, :update, :delete_portrait, :destroy]
+  # before_action :authenticate_user!, only: :delete_portrait #devise authentication only for actions specific to this controller, others covered in application_controller.rb
 
   def index
     if params[:writer_id] #check for nested route
@@ -37,6 +38,12 @@ class CharactersController < ApplicationController
     end
   end
 
+  def delete_portrait
+    @character.portrait.destroy
+    @character.save
+    redirect_to @character, notice: 'Image was successfully deleted.'
+  end
+
   def destroy
     @character.destroy
     redirect_to my_stories_path, notice: 'Character was successfully deleted.'
@@ -57,6 +64,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params #strong params
-    params.require(:character).permit(:name, :bio, :traits, chapter_ids: [])
+    params.require(:character).permit(:name, :bio, :traits, :portrait, chapter_ids: [])
   end
 end

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :audiences, only: [:index, :show]
   resources :comments, only: [:create, :edit, :update, :destroy]
 
+  #delete image routes
+  patch 'delete_character_portrait', to: 'characters#delete_portrait'
+
   #writer isn't a model, just an alias for devise user to separate logic
   scope '/writers' do
     get 'profile' => 'writers#profile'
