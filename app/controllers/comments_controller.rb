@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user! #apply to all actions in this controller - Devise authentication - check if user is logged in
   before_action :find_comment, only: [:edit, :update, :destroy]
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
 

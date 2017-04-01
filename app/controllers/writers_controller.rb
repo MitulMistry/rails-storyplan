@@ -1,5 +1,5 @@
 class WritersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show] #Devise authentication - check if user is logged in
   before_action :get_user, only: :show
   before_action :set_current_user, only: [:profile, :edit_profile, :update_profile, :my_stories]
   before_action :get_recent, only: [:show, :profile]

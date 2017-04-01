@@ -1,4 +1,5 @@
 class ChaptersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show] #Devise authentication - check if user is logged in
   before_action :find_chapter, only: [:show, :edit, :update, :destroy]
   before_action :authorize_ownership, only: [:edit, :update, :destroy]
   before_action :check_for_stories, only: [:new, :create]

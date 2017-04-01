@@ -1,7 +1,7 @@
 class CharactersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show] #Devise authentication - check if user is logged in
   before_action :find_character, only: [:show, :edit, :update, :delete_portrait, :destroy]
   before_action :authorize_ownership, only: [:edit, :update, :delete_portrait, :destroy]
-  # before_action :authenticate_user!, only: :delete_portrait #devise authentication only for actions specific to this controller, others covered in application_controller.rb
 
   def index
     if params[:writer_id] #check for nested route
