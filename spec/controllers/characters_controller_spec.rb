@@ -161,8 +161,7 @@ RSpec.describe CharactersController, type: :controller do
 
       it "deletes the character portrait from the database" do
         @character.reload
-        expect(@character.portrait).to be_nil
-        # expect(@character.portrait.original_filename).to be_nil
+        expect(@character.portrait).not_to exist
       end
 
       it "doesn't delete the character" do
