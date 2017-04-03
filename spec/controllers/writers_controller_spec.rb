@@ -61,7 +61,6 @@ RSpec.describe WritersController, type: :controller do
         get :my_stories
         expect(assigns(:writer)).to eq @user
       end
-
     end
 
     describe "PATCH #update_profile" do
@@ -75,6 +74,12 @@ RSpec.describe WritersController, type: :controller do
           patch :update_profile, params: { user: attributes_for(:user, bio: "Updated bio") }
           @user.reload #use reload to check that the changes are actually persisted
           expect(@user.bio).to eq "Updated bio"
+        end
+
+        it "uploads a new story cover" do
+          patch :update, params: { user: attributes_for(:user_with_uploaded_avatar) }
+          @user.reload
+          expect(@user.avatar.original_filename).to eq "test_user_avatar_400.png"
         end
 
         it "redirects to the updated profile" do
@@ -95,6 +100,27 @@ RSpec.describe WritersController, type: :controller do
           patch :update_profile, params: { user: attributes_for(:invalid_user) }
           expect(response).to render_template :edit_profile
         end
+      end
+    end
+
+    describe "PATCH #delete_user_avatar" do
+      before :each do
+        patch :update, params: { user: attributes_for(:user_with_uploaded_avatar) } #upload avatar for current user
+        patch :delete_avatar
+      end
+
+      it "deletes the writer avatar from the database" do
+        @user.reload
+        expect(@user.avatar).not_to exist
+      end
+
+      it "doesn't delete the writer" do
+        @user.reload
+        expect(@users).not_to be_nil
+      end
+
+      it "redirects to the writer" do
+        expect(response).to redirect_to @user
       end
     end
   end
@@ -136,6 +162,13 @@ RSpec.describe WritersController, type: :controller do
     describe "PATCH #update_profile" do
       it "requires login" do
         patch :update_profile, params: { user: attributes_for(:user) }
+        expect(response).to require_login
+      end
+    end
+
+    describe "PATCH #delete_avatar" do
+      it "requires login" do
+        patch :delete_avatar, params: { id: create(:user_with_avatar) }
         expect(response).to require_login
       end
     end

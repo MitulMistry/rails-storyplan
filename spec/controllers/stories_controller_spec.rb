@@ -78,6 +78,14 @@ RSpec.describe StoriesController, type: :controller do
           }.to change(Story, :count).by(1)
         end
 
+        it "saves the new story with uploaded cover in the database" do
+          expect { #proc - evaluates code before and after
+            post :create, params: { story: attributes_for(:story_with_uploaded_cover) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+          }.to change(Story, :count).by(1)
+
+          expect(Story.last.cover.original_filename).to eq "test_story_cover_400x625.png"
+        end
+
         it "assigns current user as owner of the story" do
           post :create, params: { story: attributes_for(:story) }
           expect(Story.last.user).to eq @user
@@ -120,6 +128,12 @@ RSpec.describe StoriesController, type: :controller do
           expect(@story.name).to eq "Updated Story"
         end
 
+        it "uploads a new story cover" do
+          patch :update, params: { id: @story, story: attributes_for(:story_with_uploaded_cover) }
+          @story.reload
+          expect(Story.last.cover.original_filename).to eq "test_story_cover_400x625.png"
+        end
+
         it "redirects to the updated story" do
           patch :update, params: { id: @story, story: attributes_for(:story) }
           expect(response).to redirect_to @story
@@ -138,6 +152,27 @@ RSpec.describe StoriesController, type: :controller do
           patch :update, params: { id: @story, story: attributes_for(:invalid_story) }
           expect(response).to render_template :edit
         end
+      end
+    end
+
+    describe "PATCH #delete_story_cover" do
+      before :each do
+        @story = create(:story_with_cover, user: @user)
+        patch :delete_cover, params: { id: @story }
+      end
+
+      it "deletes the story cover from the database" do
+        @story.reload
+        expect(@story.cover).not_to exist
+      end
+
+      it "doesn't delete the story" do
+        @story.reload
+        expect(@story).not_to be_nil
+      end
+
+      it "redirects to the story" do
+        expect(response).to redirect_to @story
       end
     end
 
@@ -190,6 +225,14 @@ RSpec.describe StoriesController, type: :controller do
       it "redirects to stories#index" do
         patch :update, params: { id: @story, story: attributes_for(:story) }
         expect(response).to redirect_to stories_path
+      end
+    end
+
+    describe "PATCH #delete_story_cover" do
+      it "does not delete the story cover from the database" do
+        story = create(:story_with_cover, user: @user2)
+        patch :delete_cover, params: { id: story }
+        expect(story.cover).to exist
       end
     end
 
@@ -253,6 +296,13 @@ RSpec.describe StoriesController, type: :controller do
     describe "PATCH #update" do
       it "requires login" do
         patch :update, params: { id: create(:story), story: attributes_for(:story) }
+        expect(response).to require_login
+      end
+    end
+
+    describe "PATCH #delete_cover" do
+      it "requires login" do
+        patch :delete_cover, params: { id: create(:story_with_cover) }
         expect(response).to require_login
       end
     end
