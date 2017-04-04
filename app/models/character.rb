@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
   has_many :character_chapters
   has_many :chapters, through: :character_chapters
   has_many :stories, ->{ distinct }, through: :chapters
-  has_attached_file :portrait, styles: { medium: "400x400>", thumb: "50x50>" }, default_url: "/images/paperclip/:style/default_character_portrait.png"
+  has_attached_file :portrait, styles: { medium: "400x400>", thumb: "50x50>" }, default_url: "paperclip/:style/default_character_portrait.png"
 
   validates :name, presence: true, length: { maximum: 200 }
   validates :user_id, presence: true
