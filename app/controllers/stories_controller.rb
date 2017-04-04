@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show] #Devise authentication - check if user is logged in
-  before_action :find_story, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_ownership, only: [:edit, :update, :destroy]
+  before_action :find_story, only: [:show, :edit, :update, :delete_cover, :destroy]
+  before_action :authorize_ownership, only: [:edit, :update, :delete_cover, :destroy]
 
   def index
     if params[:writer_id] #check for nested route
@@ -40,6 +40,11 @@ class StoriesController < ApplicationController
     end
   end
 
+  def delete_cover
+    @story.cover.destroy
+    redirect_to @story, notice: 'Image was successfully deleted.'
+  end
+
   def destroy
     @story.destroy #this destroys associated chapters as well
     redirect_to my_stories_path, notice: 'Story was successfully deleted.'
@@ -60,6 +65,6 @@ class StoriesController < ApplicationController
   end
 
   def story_params #strong params
-    params.require(:story).permit(:name, :target_word_count, :overview, audience_ids: [], genre_ids: [])
+    params.require(:story).permit(:name, :target_word_count, :overview, :cover, audience_ids: [], genre_ids: [])
   end
 end

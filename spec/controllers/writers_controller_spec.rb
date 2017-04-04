@@ -77,7 +77,7 @@ RSpec.describe WritersController, type: :controller do
         end
 
         it "uploads a new story cover" do
-          patch :update, params: { user: attributes_for(:user_with_uploaded_avatar) }
+          patch :update_profile, params: { user: attributes_for(:user_with_uploaded_avatar) }
           @user.reload
           expect(@user.avatar.original_filename).to eq "test_user_avatar_400.png"
         end
@@ -105,7 +105,7 @@ RSpec.describe WritersController, type: :controller do
 
     describe "PATCH #delete_user_avatar" do
       before :each do
-        patch :update, params: { user: attributes_for(:user_with_uploaded_avatar) } #upload avatar for current user
+        patch :update_profile, params: { user: attributes_for(:user_with_uploaded_avatar) } #upload avatar for current user
         patch :delete_avatar
       end
 
@@ -116,11 +116,11 @@ RSpec.describe WritersController, type: :controller do
 
       it "doesn't delete the writer" do
         @user.reload
-        expect(@users).not_to be_nil
+        expect(@user).not_to be_nil
       end
 
       it "redirects to the writer" do
-        expect(response).to redirect_to @user
+        expect(response).to redirect_to profile_path
       end
     end
   end

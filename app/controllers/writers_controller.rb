@@ -1,7 +1,7 @@
 class WritersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show] #Devise authentication - check if user is logged in
   before_action :get_user, only: :show
-  before_action :set_current_user, only: [:profile, :edit_profile, :update_profile, :my_stories]
+  before_action :set_current_user, except: [:index, :show]
   before_action :get_recent, only: [:show, :profile]
 
   def index
@@ -31,6 +31,11 @@ class WritersController < ApplicationController
     @current_chapters = @writer.current_chapters
   end
 
+  def delete_avatar
+    @writer.avatar.destroy
+    redirect_to profile_path, notice: 'Image was successfully deleted.'
+  end
+
   #-------------------------------
   private
 
@@ -49,6 +54,6 @@ class WritersController < ApplicationController
   end
 
   def user_params #strong params
-    params.require(:user).permit(:full_name, :bio)
+    params.require(:user).permit(:full_name, :bio, :avatar)
   end
 end
