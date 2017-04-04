@@ -1,14 +1,21 @@
 <h1><%= @character.name %></h1>
-<h3><strong>Written by: </strong><%= link_to @character.user.username, writer_path(@character.user) %></h3>
-<% if !@character.stories.empty? %>
-<p><strong>Appears in: </strong>
-  <% @character.stories.each do |story| %>
-  <%= link_to story.name, story, class: "badge badge-story" %>
-  <% end %>
-</p>
-<% end %>
-<p><strong>Bio: </strong><%= @character.try(:bio) %></p>
-<p><strong>Traits: </strong><%= @character.try(:traits) %></p>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @character.portrait.url(:medium), class: "img-fluid" %>
+  </div>
+  <div class="col-md-9">
+    <h3><strong>Written by: </strong><%= link_to @character.user.username, writer_path(@character.user) %></h3>
+    <% if !@character.stories.empty? %>
+    <p><strong>Appears in: </strong>
+      <% @character.stories.each do |story| %>
+      <%= link_to story.name, story, class: "badge badge-story" %>
+      <% end %>
+    </p>
+    <% end %>
+    <p><strong>Bio: </strong><%= @character.try(:bio) %></p>
+    <p><strong>Traits: </strong><%= @character.try(:traits) %></p>
+  </div>
+</div>
 
 <% if @character.user == current_user %>
   <div><%= link_to "Edit", edit_character_path(@character), class: "btn btn-secondary btn-sm" %>

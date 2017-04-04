@@ -1,21 +1,29 @@
 <h1><%= @story.name %></h1>
 <h3><strong>By: </strong><%= link_to @story.user.username, writer_path(@story.user) %></h3>
-<p><strong>Overview: </strong><%= @story.overview %></p>
-<p><strong>Target word count: </strong><%= @story.target_word_count %></p>
-<% if !@story.audiences.empty? %>
-<p><strong>Target audience:</strong>
-  <% @story.audiences.each do |audience| %>
-    <%= link_to audience.name, audience, class: "badge badge-audience" %>
-  <% end %>
-</p>
-<% end %>
-<% if !@story.genres.empty? %>
-<p><strong>Genres: </strong>
-  <% @story.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "badge badge-genre" %>
-  <% end %>
-</p>
-<% end %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @story.cover.url(:medium), class: "img-fluid" %>
+  </div>
+  <div class="col-md-9">
+    <p><strong>Overview: </strong><%= @story.overview %></p>
+    <p><strong>Target word count: </strong><%= @story.target_word_count %></p>
+    <% if !@story.audiences.empty? %>
+    <p><strong>Target audience:</strong>
+      <% @story.audiences.each do |audience| %>
+        <%= link_to audience.name, audience, class: "badge badge-audience" %>
+      <% end %>
+    </p>
+    <% end %>
+    <% if !@story.genres.empty? %>
+    <p><strong>Genres: </strong>
+      <% @story.genres.each do |genre| %>
+        <%= link_to genre.name, genre, class: "badge badge-genre" %>
+      <% end %>
+    </p>
+    <% end %>
+  </div>
+</div>
 
 <% if @story.user == current_user %>
   <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-secondary btn-sm" %>

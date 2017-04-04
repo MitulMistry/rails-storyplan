@@ -1,14 +1,21 @@
 <h1><%= @writer.username %></h1>
-<p><strong>Email: </strong><%= @writer.email %></p>
-<p><strong>Full name: </strong><%= @writer.try(:full_name) %></p>
-<p><strong>Bio: </strong><%= @writer.try(:bio) %></p>
-<% if !@writer.genres.empty? %>
-<p><strong>Genres:</strong>
-  <% @writer.genres.each do |genre| %>
-    <%= link_to genre.name, genre, class: "badge badge-genre" %>
-  <% end %>
-</p>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @writer.avatar.url(:medium), class: "img-fluid" %>
+  </div>
+  <div class="col-md-9">
+    <p><strong>Email: </strong><%= @writer.email %></p>
+    <p><strong>Full name: </strong><%= @writer.try(:full_name) %></p>
+    <p><strong>Bio: </strong><%= @writer.try(:bio) %></p>
+    <% if !@writer.genres.empty? %>
+    <p><strong>Genres:</strong>
+      <% @writer.genres.each do |genre| %>
+        <%= link_to genre.name, genre, class: "badge badge-genre" %>
+      <% end %>
+    </p>
+    <% end %>
+  </div>
+</div>
 
 <% if !@recent_stories.empty? %><h3>Recent Stories <%= link_to "(See all)", writer_stories_path(@writer) %></h3>
   <%= render partial: "stories/story", collection: @recent_stories %>
