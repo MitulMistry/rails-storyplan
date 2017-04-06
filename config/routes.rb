@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update, :destroy]
 
   #delete image routes
-  patch 'delete_writer_avatar', to: 'writers#delete_avatar'
-  patch 'delete_story_cover', to: 'stories#delete_cover'
-  patch 'delete_character_portrait', to: 'characters#delete_portrait'
+  patch 'writers/delete_writer_avatar', to: 'writers#delete_avatar', as: 'delete_writer_avatar'
+  patch 'stories/:id/delete_story_cover', to: 'stories#delete_cover', as: 'delete_story_cover'
+  patch 'characters/:id/delete_character_portrait', to: 'characters#delete_portrait', as: 'delete_character_portrait'
 
   #writer isn't a model, just an alias for devise user to separate logic
   scope '/writers' do
