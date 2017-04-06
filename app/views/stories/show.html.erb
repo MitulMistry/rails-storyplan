@@ -4,6 +4,14 @@
 <div class="row">
   <div class="col-md-3">
     <%= image_tag @story.cover.url(:medium), class: "img-fluid" %>
+
+    <% if @story.user == current_user %>
+      <div><%= link_to "Edit Story", edit_story_path(@story), class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Delete Image", delete_story_cover_path(@story), :method => :patch, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Delete Story", @story, :method => :delete, data: {confirm: "Are you sure? All associated chapters will be deleted as well."}, class: "btn btn-secondary btn-sm" %></div>
+    <br>
+    <div><%= link_to "Create new chapter for story", new_story_chapter_path(@story), class: "btn btn-secondary btn-sm" %></div>
+    <% end %>
   </div>
   <div class="col-md-9">
     <p><strong>Overview: </strong><%= @story.overview %></p>
@@ -24,13 +32,6 @@
     <% end %>
   </div>
 </div>
-
-<% if @story.user == current_user %>
-  <div><%= link_to "Edit", edit_story_path(@story), class: "btn btn-secondary btn-sm" %>
-  <%= link_to "Delete", @story, :method => :delete, data: {confirm: "Are you sure? All associated chapters will be deleted as well."}, class: "btn btn-secondary btn-sm" %></div>
-<br>
-<div><%= link_to "Create new chapter for story", new_story_chapter_path(@story), class: "btn btn-secondary btn-sm" %></div>
-<% end %>
 
 <% if !@story.chapters.empty? %><h2>Chapters</h2>
 <%= render partial: "chapters/chapter", collection: @story.chapters %><% end %>
