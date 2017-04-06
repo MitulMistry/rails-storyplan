@@ -32,7 +32,8 @@ class WritersController < ApplicationController
   end
 
   def delete_avatar
-    @writer.avatar.destroy
+    @writer.avatar = nil
+    @writer.save
     redirect_to profile_path, notice: 'Image was successfully deleted.'
   end
 

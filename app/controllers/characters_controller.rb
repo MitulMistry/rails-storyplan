@@ -39,7 +39,8 @@ class CharactersController < ApplicationController
   end
 
   def delete_portrait
-    @character.portrait.destroy
+    @character.portrait = nil
+    @character.save
     redirect_to @character, notice: 'Image was successfully deleted.'
   end
 

@@ -41,7 +41,8 @@ class StoriesController < ApplicationController
   end
 
   def delete_cover
-    @story.cover.destroy
+    @story.cover = nil
+    @story.save
     redirect_to @story, notice: 'Image was successfully deleted.'
   end
 
