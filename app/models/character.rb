@@ -1,3 +1,5 @@
+require 'open-uri' #for URI.parse
+
 class Character < ActiveRecord::Base
   belongs_to :user
   has_many :character_chapters
@@ -15,4 +17,8 @@ class Character < ActiveRecord::Base
     size: { in: 0..2.megabytes }
 
   extend ClassOrderable
+
+  def portrait_from_url(url) #save model after calling method
+    self.portrait = URI.parse(url)
+  end
 end

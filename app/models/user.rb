@@ -1,3 +1,5 @@
+require 'open-uri' #for URI.parse
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -31,6 +33,10 @@ class User < ActiveRecord::Base
       user.username = generate_username_for_oauth(auth.info.name) #user.full_name.parameterize.underscore + "_" + rand.to_s[2..5]
       #user.image = auth.info.image # assuming the user model has an image
     end
+  end
+
+  def avatar_from_url(url) #save model after calling method
+    self.avatar = URI.parse(url)
   end
 
   def ordered_updated_stories

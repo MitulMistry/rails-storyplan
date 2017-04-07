@@ -1,3 +1,5 @@
+require 'open-uri' #for URI.parse
+
 class Story < ActiveRecord::Base
   belongs_to :user
   has_many :story_genres
@@ -19,6 +21,10 @@ class Story < ActiveRecord::Base
     size: { in: 0..2.megabytes }
 
   extend ClassOrderable
+
+  def cover_from_url(url) #save model after calling method
+    self.cover = URI.parse(url)
+  end
 
   def recent_comments
     self.comments.order('created_at DESC').limit(10) #self.comments.limit(10).order('created_at DESC').reverse #self.comments.order('created_at DESC').last(10)
