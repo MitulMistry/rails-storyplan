@@ -50,83 +50,67 @@ audiences.each do |audience|
 end
 
 25.times do
-  User.create(
+  user = User.new(
     username: Faker::Internet.user_name,
     full_name: Faker::Name.name,
     email: Faker::Internet.email,
     password: "password",
     bio: Faker::Lorem.paragraph
     )
+  user.avatar_from_url("http://loremflickr.com/400/400/portrait")
+  user.save
 end
 
 35.times do
-  st = Story.new(
+  story = Story.new(
     name: Faker::Book.title,
     target_word_count: (Faker::Number.between(1, 100) * 1000),
     overview: Faker::Lorem.paragraph
     )
-  st.user = User.order("RANDOM()").first
-  st.audiences << Audience.order("RANDOM()").first
+  story.user = User.order("RANDOM()").first
+  story.audiences << Audience.order("RANDOM()").first
 
-  gn = Genre.order("RANDOM()")
-  st.genres << gn.first
-  st.genres << gn.second
-  st.save
+  genre = Genre.order("RANDOM()")
+  story.genres << genre.first
+  story.genres << genre.second
+
+  story.cover_from_url("http://loremflickr.com/400/625/cover")
+  story.save
 end
 
 50.times do
-  st = Story.order("RANDOM()").first
-  ch = st.chapters.build(
+  story = Story.order("RANDOM()").first
+  chapter = story.chapters.build(
     name: Faker::Book.title,
     objective: Faker::Lorem.sentence,
     target_word_count: (Faker::Number.between(1, 100) * 200),
     overview: Faker::Lorem.paragraph
     )
-  ch.currently_writing = true if Faker::Number.between(1, 3) == 1
-  ch.save
+  chapter.currently_writing = true if Faker::Number.between(1, 3) == 1
+  chapter.save
 end
 
 50.times do
-  usr = User.order("RANDOM()").first
-  until !usr.chapters.empty?
-    usr = User.order("RANDOM()").first
+  user = User.order("RANDOM()").first
+  until !user.chapters.empty?
+    user = User.order("RANDOM()").first
   end
 
-  char = usr.characters.build(
+  character = user.characters.build(
     name: Faker::Superhero.name,
     bio: Faker::Lorem.paragraph,
     traits: Faker::Lorem.sentence
     )
   #2.times { char.chapters << usr.chapters.order("RANDOM()").first }
   #char.chapters << usr.chapters.first
-  char.chapters << usr.chapters.order("RANDOM()").first
-  char.save
+  character.chapters << user.chapters.order("RANDOM()").first
+  character.portrait_from_url("https://robohash.org/" + Faker::Crypto.md5 + "/size_400x400/set_any/bgset_any")
+  character.save
 end
 
-50.times do
-  usr = User.order("RANDOM()").first
-  cmt =  usr.comments.build(content: Faker::Lorem.paragraph)
-  cmt.story = Story.order("RANDOM()").first
-  cmt.save
+100.times do
+  user = User.order("RANDOM()").first
+  comment =  user.comments.build(content: Faker::Lorem.paragraph)
+  comment.story = Story.order("RANDOM()").first
+  comment.save
 end
-
-=begin
-user1 = User.create(username: "bjones", full_name: "Bob Jones", email: "user1@example.com", password: "password")
-user2 = User.create(username: "sylvestrin", full_name: "Sarah Parker", email: "user2@example.com", password: "password")
-
-story1 = Story.new(name: Faker::Book.title, target_word_count: (Faker::Number.between(1, 100) * 100), target_audience: "Adult", overview: Faker::Lorem.paragraph)
-story1.user = user1
-story1.save
-
-story2 = Story.new(name: Faker::Book.title, target_word_count: (Faker::Number.between(1, 100) * 100), target_audience: "Adult", overview: Faker::Lorem.paragraph)
-story2.user = user1
-story2.save
-
-story3 = Story.new(name: Faker::Book.title, target_word_count: (Faker::Number.between(1, 100) * 100), target_audience: "Young Adult", overview: Faker::Lorem.paragraph)
-story3.user = user2
-story3.save
-
-story4 = Story.new(name: Faker::Book.title, target_word_count: (Faker::Number.between(1, 100) * 100), target_audience: "Young Adult", overview: Faker::Lorem.paragraph)
-story4.user = user2
-story4.save
-=end
