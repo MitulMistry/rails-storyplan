@@ -102,6 +102,12 @@ RSpec.describe CharactersController, type: :controller do
           }.not_to change(Character, :count)
         end
 
+        it "does not save the new character with uploaded portrait (invalid dimensions) in the database" do
+          expect {
+            post :create, params: { character: attributes_for(:character_with_uploaded_wrong_portrait) }
+          }.not_to change(Character, :count)
+        end
+
         it "re-renders the :new template" do
           post :create, params: { character: attributes_for(:invalid_character) }
           expect(response).to render_template :new
@@ -144,6 +150,12 @@ RSpec.describe CharactersController, type: :controller do
           @character.reload
           expect(@character.bio).not_to eq "Updated bio"
           expect(@character.name).to eq "Test Name"
+        end
+
+        it "does not upload a new character portrait with invalid dimensions" do
+          patch :update, params: { id: @character, character: attributes_for(:character_with_uploaded_wrong_portrait) }
+          @character.reload
+          expect(@character.portrait).not_to exist
         end
 
         it "re-renders the :edit template" do

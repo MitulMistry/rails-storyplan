@@ -76,7 +76,7 @@ RSpec.describe WritersController, type: :controller do
           expect(@user.bio).to eq "Updated bio"
         end
 
-        it "uploads a new story cover" do
+        it "uploads a new user avatar" do
           patch :update_profile, params: { user: attributes_for(:user_with_uploaded_avatar) }
           @user.reload
           expect(@user.avatar.original_filename).to eq "test_user_avatar_400.png"
@@ -94,6 +94,12 @@ RSpec.describe WritersController, type: :controller do
           patch :update_profile, params: { user: attributes_for(:user, full_name: Faker::Lorem.characters(201)) }
           @user.reload
           expect(@user.full_name).to eq name
+        end
+
+        it "does not upload a new writer avatar with invalid dimensions" do
+          patch :update_profile, params: { user: attributes_for(:user_with_uploaded_wrong_avatar) }
+          @user.reload
+          expect(@user.avatar).not_to exist
         end
 
         it "re-renders the :edit_profile template" do
