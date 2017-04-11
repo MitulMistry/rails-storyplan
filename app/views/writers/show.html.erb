@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-3">
     <%= image_tag @writer.avatar.url(:medium), class: "img-fluid" %>
-    
+
     <% if @writer == current_user %>
     <div>
       <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-secondary btn-sm" %>
@@ -25,7 +25,9 @@
 </div>
 
 <% if !@recent_stories.empty? %><h3>Recent Stories <%= link_to "(See all)", writer_stories_path(@writer) %></h3>
-  <%= render partial: "stories/story", collection: @recent_stories %>
+  <div class="card-columns">
+    <%= render partial: "stories/story", collection: @recent_stories %>
+  </div>
 <% end %>
 
 <% if !@recent_chapters.empty? %><h3>Recent Chapters <%= link_to "(See all)", writer_chapters_path(@writer) %></h3>
@@ -33,5 +35,7 @@
 <% end %>
 
 <% if !@recent_characters.empty? %><h3>Recent Characters <%= link_to "(See all)", writer_characters_path(@writer) %></h3>
-  <%= render partial: "characters/character", collection: @recent_characters %>
+  <div class="card-columns">
+    <%= render partial: "characters/character", collection: @recent_characters %>
+  </div>
 <% end %>
