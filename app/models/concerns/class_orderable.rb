@@ -4,4 +4,8 @@ module ClassOrderable
   def ordered
     order(created_at: :desc)
   end
+
+  def randomized(count)
+    order("RANDOM()").first(count)
+  end
 end
