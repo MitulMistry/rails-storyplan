@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :chapters, through: :stories
   has_many :comments
   #has_many :audiences, -> { uniq }, through: :stories
-  has_attached_file :avatar, styles: { medium: "400x400>", thumb: "50x50>" }, default_url: "paperclip/:style/default_user_avatar.png"
+  has_attached_file :avatar, styles: { medium: "400x400#", thumb: "50x50#" }, default_url: "paperclip/:style/default_user_avatar.png" # 400x625# means crop to that size regardless of what's uploaded, use > to preserve aspect ratio
 
   validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_-]+\Z/ }
   validates :full_name, length: { maximum: 200 }

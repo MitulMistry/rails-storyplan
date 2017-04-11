@@ -9,7 +9,7 @@ class Story < ActiveRecord::Base
   has_many :chapters, dependent: :destroy #destroys all chapters belonging to it when the story is destroyed
   has_many :characters, through: :chapters
   has_many :comments
-  has_attached_file :cover, styles: { medium: "400x625>", small: "205x320>" }, default_url: "paperclip/:style/default_story_cover.png"
+  has_attached_file :cover, styles: { medium: "400x625#", small: "205x320#" }, default_url: "paperclip/:style/default_story_cover.png" # 400x625# means crop to that size regardless of what's uploaded, use > to preserve aspect ratio
 
   validates :name, presence: true
   validates :user_id, presence: true
