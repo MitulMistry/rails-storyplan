@@ -2,6 +2,28 @@
   <div class="container">
     <h1>Plot out your next great adventure</h1>
     <p>Use our system to map out your short story or novel.</p>
-    <p><%= link_to "Learn more", stories_path, class: "btn btn-primary btn-lg" %></p>
+    <p><%= link_to "Explore", stories_path, class: "btn btn-primary btn-lg" %></p>
   </div>
 </div>
+
+<h1>Stories</h1>
+<p>Explore stories currently being written.</p>
+<div class="card-deck">
+  <%= render partial: "stories/story", collection: @stories %>
+</div>
+
+<h1>Writers</h1>
+<p>Meet some of our writers.</p>
+<div class="card-deck">
+  <%= render partial: "writers/writer", collection: @writers %>
+</div>
+
+<h1>Characters</h1>
+<p>See some of the characters that drive our writers' stories.</p>
+<div class="card-deck">
+  <%= render partial: "characters/character", collection: @characters %>
+</div>
+
+<% if !user_signed_in? %>
+<p class="text-sm-center"><%= link_to "Get Started Today!", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+<% end %>
