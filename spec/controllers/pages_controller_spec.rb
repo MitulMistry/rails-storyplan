@@ -6,18 +6,21 @@ RSpec.describe PagesController, type: :controller do
       it "populates an array of 3 stories" do
         4.times { create(:story) }
         get :index
+        expect(assigns(:stories).first).to be_a(Story)
         expect(assigns(:stories).length).to eq 3
       end
 
       it "populates an array of 3 writers" do
         4.times { create(:user) }
         get :index
+        expect(assigns(:writers).first).to be_a(User)
         expect(assigns(:writers).length).to eq 3
       end
 
       it "populates an array of 3 characters" do
         4.times { create(:character) }
         get :index
+        expect(assigns(:characters).first).to be_a(Character)
         expect(assigns(:characters).length).to eq 3
       end
 
