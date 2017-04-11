@@ -25,7 +25,7 @@
 </div>
 
 <% if !@recent_stories.empty? %><h3>Recent Stories <%= link_to "(See all)", writer_stories_path(@writer) %></h3>
-  <div class="card-columns">
+  <div class="card-deck">
     <%= render partial: "stories/story", collection: @recent_stories %>
   </div>
 <% end %>
@@ -35,7 +35,7 @@
 <% end %>
 
 <% if !@recent_characters.empty? %><h3>Recent Characters <%= link_to "(See all)", writer_characters_path(@writer) %></h3>
-  <div class="card-columns">
+  <div class="card-deck">
     <%= render partial: "characters/character", collection: @recent_characters %>
   </div>
 <% end %>
