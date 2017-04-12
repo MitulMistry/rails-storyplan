@@ -6,7 +6,7 @@
     <% if @character.user == current_user %>
     <div>
       <%= link_to "Edit", edit_character_path(@character), class: "btn btn-secondary btn-sm" %>
-      <%= link_to "Delete Image", delete_character_portrait_path(@character), :method => :patch, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
+      <% if @character.portrait.exists? %><%= link_to "Delete Image", delete_character_portrait_path(@character), :method => :patch, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %><% end %>
       <%= link_to "Delete Character", @character, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
     </div>
     <% end %>

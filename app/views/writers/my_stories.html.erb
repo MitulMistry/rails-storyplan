@@ -1,6 +1,8 @@
 <% if !@stories.empty? %>
 <h3>My Stories</h3>
-<%= render partial: "stories/story", collection: @stories %>
+<div class="card-columns">
+  <%= render partial: "stories/story", collection: @stories %>
+</div>
 <% else %>
 <h3>You have no stories. <%= link_to "Create one now.", new_story_path %></h3>
 <% end %>
