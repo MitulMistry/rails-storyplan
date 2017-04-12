@@ -104,12 +104,6 @@ RSpec.describe StoriesController, type: :controller do
           }.not_to change(Story, :count)
         end
 
-        it "does not save the new story with uploaded cover (invalid dimensions) in the database" do
-          expect{
-            post :create, params: { story: attributes_for(:story_with_uploaded_wrong_cover) }
-          }.not_to change(Story, :count)
-        end
-
         it "re-renders the :new template" do
           post :create, params: { story: attributes_for(:invalid_story) }
           expect(response).to render_template :new
@@ -152,12 +146,6 @@ RSpec.describe StoriesController, type: :controller do
           @story.reload
           expect(@story.overview).not_to eq "Updated overview"
           expect(@story.name).to eq "Test Story"
-        end
-
-        it "does not upload a new story cover with invalid dimensions" do
-          patch :update, params: { id: @story, story: attributes_for(:story_with_uploaded_wrong_cover) }
-          @story.reload
-          expect(@story.cover).not_to exist
         end
 
         it "re-renders the :edit template" do
