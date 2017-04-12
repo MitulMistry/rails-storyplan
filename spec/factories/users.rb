@@ -18,10 +18,6 @@ FactoryGirl.define do
       avatar { Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/images/test_user_avatar_400.png", "image/png") } #issues multi-part request
     end
 
-    factory :user_with_uploaded_wrong_avatar do #image with wrong dimensions - use this child factory when making a post/patch request with attributes_for
-      avatar { Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/images/test_story_cover_400x625.png", "image/png") } #issues multi-part request
-    end
-
     factory :invalid_user_with_uploaded_avatar do #use this child factory when making a post/patch request with attributes_for
       avatar { Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/images/test_user_avatar_400.png", "image/png") } #issues multi-part request
       name nil
