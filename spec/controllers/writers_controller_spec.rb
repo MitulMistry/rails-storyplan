@@ -76,7 +76,7 @@ RSpec.describe WritersController, type: :controller do
           expect(@user.bio).to eq "Updated bio"
         end
 
-        it "uploads a new story cover" do
+        it "uploads a new writer avatar" do
           patch :update_profile, params: { user: attributes_for(:user_with_uploaded_avatar) }
           @user.reload
           expect(@user.avatar.original_filename).to eq "test_user_avatar_400.png"
