@@ -41,6 +41,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
 gem 'devise'  # For authentication
 gem 'kaminari'  # For pagination
 gem 'paperclip' # For image attachments
+gem 'aws-sdk', '~> 2.9', '>= 2.9.7' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
