@@ -74,7 +74,7 @@ end
   story.genres << genre.first
   story.genres << genre.second
 
-  story.cover_from_url("http://loremflickr.com/400/625/cover")
+  story.cover_from_url("http://loremflickr.com/400/625/nature,landscape,urban,abstract")
   story.save
 end
 
