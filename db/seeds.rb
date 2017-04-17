@@ -74,7 +74,7 @@ end
   story.genres << genre.first
   story.genres << genre.second
 
-  story.cover_from_url("http://loremflickr.com/400/625/nature,landscape,urban,abstract")
+  story.cover_from_url("http://loremflickr.com/400/625/nature,landscape,urban,abstract,graphic")
   story.save
 end
 
@@ -104,7 +104,8 @@ end
   #2.times { char.chapters << usr.chapters.order("RANDOM()").first }
   #char.chapters << usr.chapters.first
   character.chapters << user.chapters.order("RANDOM()").first
-  character.portrait_from_url("https://robohash.org/" + Faker::Crypto.md5 + "/size_400x400/set_any/bgset_any")
+  # character.portrait_from_url("https://robohash.org/" + Faker::Crypto.md5 + "/size_400x400/set_any/bgset_any")
+  character.portrait_from_url("http://loremflickr.com/400/400/portrait")
   character.save
 end
 
