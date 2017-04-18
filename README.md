@@ -16,6 +16,7 @@ In addition to creating models, users can view the stories, chapters, and charac
 - The back end uses [ActiveRecord][active-record] as the ORM. It uses [PostgreSQL][postgres] for the database via the [pg gem][pg].
 - The front end leverages Bootstrap 4 via the [Bootstrap gem][bootstrap-gem] in conjunction with Rails ERB templates. Styling uses [SCSS][scss].
 - Pagination uses the [Kaminari gem][kaminari].
+- Image uploading is managed by the [Rails Paperclip][paperclip]. For production, it's configured to use [AWS S3][s3] to store images.
 
 ## Install Instructions
 In order to get the application to work, install dependencies from the [Gemfile][gemfile] via [Bundler][bundler] by running `bundle install`.
@@ -23,6 +24,8 @@ In order to get the application to work, install dependencies from the [Gemfile]
 Since the application uses PostgreSQL, you need to have it installed locally on your machine with a user that has table creation privileges. You can get further instructions [here][postgres-local-setup]. If you'd rather not bother with PostgreSQL, you can use an older version of the application that uses SQLite3 [here][old-version-1].
 
 Create the database with `bundle exec rails db:create` and run migrations with `bundle exec rails db:migrate`, then run `bundle exec rails db:seed` to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key for Facebook.
+
+For production, the application is configured to use [AWS S3][s3] for image uploads. You can read more about setting up S3 [here][heroku-s3-setup] (with Heroku).
 
 ## Testing
 The test suite is developed using Rspec via the [rspec-rails gem][rspec-rails] with [shoulda-matchers][shoulda]. [Capybara][capybara] is used for integration (feature) testing to mimic user browser interaction, while model factories are set up with [FactoryGirl][factory-girl].
@@ -46,10 +49,13 @@ This project is open source under the terms of the [MIT License][mit].
 [bootstrap-gem]: https://github.com/twbs/bootstrap-rubygem
 [scss]: http://sass-lang.com/
 [kaminari]: https://github.com/kaminari/kaminari
+[paperclip]: https://github.com/thoughtbot/paperclip
+[s3]: https://aws.amazon.com/s3/
 [bundler]: http://bundler.io/
 [gemfile]: https://github.com/MitulMistry/rails-storyplan/blob/master/Gemfile
 [postgres-local-setup]: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 [old-version-1]: https://github.com/MitulMistry/rails-storyplan/tree/0ef797e90b02720d9f6c44a22a99bea8388c1bc8
+[heroku-s3-setup]: https://devcenter.heroku.com/articles/s3
 [rspec-rails]: https://github.com/rspec/rspec-rails
 [shoulda]: https://github.com/thoughtbot/shoulda-matchers
 [capybara]: https://github.com/teamcapybara/capybara
