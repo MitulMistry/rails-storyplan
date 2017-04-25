@@ -31,5 +31,7 @@ Rails.application.routes.draw do
     resources :chapters, only: [:index]
   end
 
+  get 'search', to: 'searches#search'
+
   root 'pages#index'
 end
