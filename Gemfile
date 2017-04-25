@@ -38,6 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
+gem 'font-awesome-rails'
 gem 'devise'  # For authentication
 gem 'kaminari'  # For pagination
 gem 'paperclip' # For image attachments
