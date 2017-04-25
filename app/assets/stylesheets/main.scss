@@ -44,7 +44,9 @@ a:hover, a:focus {
 
 .navbar-main {
   @extend .navbar-inverse;
-  border-bottom: 3px solid $primary;
+  border-bottom: 4px solid $primary;
+  border-image: linear-gradient(to right, #81D5F2 0%, #0071BC 100%);
+	border-image-slice: 1;
 
   .nav-item {
     .nav-link {
@@ -80,6 +82,18 @@ a:hover, a:focus {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+.card {
+  border: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
+  -moz-box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
+  box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
+}
+
+.card-img-top {
+  border-radius: 0;
+}
+
 .btn-primary {
   background-color: $primary;
   border-color: $primary;
@@ -104,6 +118,11 @@ a:hover, a:focus {
 
 .tag-warning[href]:focus, .tag-warning[href]:hover {
   background-color: $primary-dark;
+}
+
+.badge {
+  border-radius: 0;
+  font-size: 80%
 }
 
 .badge-audience {
@@ -163,7 +182,9 @@ ul.pagination {
 
 .custom-footer {
 	background-color: #F2F2F2;
-  border-top: 3px solid $primary;
+  border-top: 4px solid $primary;
+  border-image: linear-gradient(to right, #81D5F2 0%, #0071BC 100%);
+	border-image-slice: 1;
   color: $main-black;
 	padding: 10px 10px 40px 10px;
 
@@ -188,7 +209,7 @@ ul.pagination {
 }
 
 #footer-social-icons i {
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 #footer-pages-nav {
