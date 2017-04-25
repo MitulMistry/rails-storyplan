@@ -1,43 +1,42 @@
 <div class="custom-footer">
-  <div class="container-fluid" style="margin-top: 30px;">
-    <div class="row no-pad text-sm-center">
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-2">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact</a></li>
+  <div class="container">
+    <div class="row no-pad">
+      <div class="col-md-8">
+        <ul class="nav flex-column flex-sm-row" id="footer-pages-nav">
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Press</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Terms</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Navigation</h5>
-        <ul>
-          <li><%= link_to "Stories", stories_path %></li>
-          <li><%= link_to "Genres", genres_path %></li>
-          <li><%= link_to "Writers", writers_path %></li>
-          <li><%= link_to "Characters", characters_path %></li>
-          <li><%= link_to "Audiences", audiences_path %></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
-        <h5>Social Media</h5>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Google+</a></li>
-          <li><a href="#">Pinterest</a></li>
-          <li><a href="#">Youtube</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
+        <div id="footer-social-icons">
+          <a href="#"><%= fa_icon "twitter", class: "fa-2x" %></a>
+          <a href="#"><%= fa_icon "facebook-square", class: "fa-2x" %></a>
+          <a href="#"><%= fa_icon "instagram", class: "fa-2x" %></a>
+          <a href="#"><%= fa_icon "youtube", class: "fa-2x" %></a>
+          <a href="#"><%= fa_icon "pinterest", class: "fa-2x" %></a>
+        </div>
       </div>
     </div>
+
+    <div class="row no-pad">
+      <div class="col-md">
+        <ul class="nav flex-column flex-md-row" id="footer-models-nav">
+          <li class="nav-item"><span class="nav-link" style="font-weight: bold;">Navigation:</span></li>
+          <li class="nav-item"><%= link_to "Stories", stories_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Genres", genres_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Writers", writers_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Characters", characters_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Audiences", audiences_path, class: "nav-link" %></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="row no-pad text-sm-center">
       <div class="col-md">
-        <p>&copy; Mitul Mistry - <a href="https://github.com/MitulMistry/rails-storyplan" target="_blank">Github repo for this application</a></p>
+        <p>&copy; <%= Date.current.year %> Mitul Mistry - <a href="https://github.com/MitulMistry/rails-storyplan" target="_blank">Github repo for this application</a></p>
       </div>
     </div>
   </div>

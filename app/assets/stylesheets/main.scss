@@ -186,3 +186,25 @@ ul.pagination {
     text-decoration: none;
   }
 }
+
+#footer-social-icons i {
+  margin-left: 10px;
+}
+
+#footer-pages-nav {
+  font-weight: bold;
+}
+
+#footer-models-nav {
+  font-size: 1rem;
+
+  // .nav-link {
+  //   padding: .5rem 1rem;
+  // }
+}
+
+@media (min-width: 768px) {
+  #footer-social-icons {
+    @include float-right;
+  }
+}
