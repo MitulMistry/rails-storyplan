@@ -17,49 +17,58 @@ RSpec.describe SearchesController, type: :controller do
         @writer3 = create(:user, username: "toga_road", full_name: "Jen Smith")
       end
 
-      it "finds a story by name" do
+      it "finds a story by name" do # @items in the controller will contain an array of pg_search_documents, so .collect(&:searchable) will get the actual models being referred to
         get :search, params: { search: "Power" }
-        expect(assigns(:items)).to include(@story1)
-        expect(assigns(:items)).not_to include(@story2, @story3)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@story1) # can also just check for include(@story1.pg_search_document) instead of using the collect
+        expect(items).not_to include(@story2, @story3)
 
         get :search, params: { search: "renegades" }
-        expect(assigns(:items)).to include(@story2, @story3)
-        expect(assigns(:items)).not_to include(@story1)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@story2, @story3)
+        expect(items).not_to include(@story1)
       end
 
       it "finds a character by name" do
         get :search, params: { search: "Stephanie" }
-        expect(assigns(:items)).to include(@character1)
-        expect(assigns(:items)).not_to include(@character2, @character3)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@character1)
+        expect(items).not_to include(@character2, @character3)
 
         get :search, params: { search: "howard" }
-        expect(assigns(:items)).to include(@character2, @character3)
-        expect(assigns(:items)).not_to include(@character1)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@character2, @character3)
+        expect(items).not_to include(@character1)
       end
 
       it "finds a writer by username" do
         get :search, params: { search: "targa123" }
-        expect(assigns(:items)).to include(@writer1)
-        expect(assigns(:items)).not_to include(@writer2, @writer3)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@writer1)
+        expect(items).not_to include(@writer2, @writer3)
 
         get :search, params: { search: "road" }
-        expect(assigns(:items)).to include(@writer2, @writer3)
-        expect(assigns(:items)).not_to include(@writer1)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@writer2, @writer3)
+        expect(items).not_to include(@writer1)
       end
 
       it "finds a writer by full name" do
         get :search, params: { search: "Sonny" }
-        expect(assigns(:items)).to include(@writer1)
-        expect(assigns(:items)).not_to include(@writer2, @writer3)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@writer1)
+        expect(items).not_to include(@writer2, @writer3)
 
         get :search, params: { search: "smith" }
-        expect(assigns(:items)).to include(@writer2, @writer3)
-        expect(assigns(:items)).not_to include(@writer1)
+        items = assigns(:items).collect(&:searchable)
+        expect(items).to include(@writer2, @writer3)
+        expect(items).not_to include(@writer1)
       end
 
       it "finds mixed results" do
-        get :search, params: { search: "power stephanie" }
-        expect(assigns(:items)).to include(@story1, @character1)
+        writer = create(:user, full_name: "Stephanie Smith")
+        get :search, params: { search: "stephanie" }
+        expect(assigns(:items).collect(&:searchable)).to include(@character1, writer)
       end
 
       it "renders the :search template" do
