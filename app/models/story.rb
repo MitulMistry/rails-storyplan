@@ -1,6 +1,9 @@
 require 'open-uri' #for URI.parse
 
 class Story < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => :name
+  
   belongs_to :user
   has_many :story_genres
   has_many :genres, -> { distinct }, through: :story_genres

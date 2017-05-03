@@ -42,6 +42,7 @@ gem 'font-awesome-rails'
 gem 'devise'  # For authentication
 gem 'kaminari'  # For pagination
 gem 'paperclip' # For image attachments
+gem 'pg_search' # For Postgres search feature
 gem 'aws-sdk', '~> 2.9', '>= 2.9.7' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
