@@ -43,7 +43,7 @@ feature "Story management" do
       visit root_path #with capybara
       click_link "My Stories"
       click_link story.name
-      click_link "Edit"
+      click_link "Edit Story"
       fill_in "story_name", with: "Edited Name"
       fill_in "story_target_word_count", with: "50000"
       uncheck("Adult")
@@ -63,7 +63,7 @@ feature "Story management" do
 
     scenario "deletes story through button", js: true do #enable selenium-webdriver for js
       story = create(:story, user: @user)
-      
+
       visit root_path #with capybara
       click_link "My Stories"
       click_link story.name
