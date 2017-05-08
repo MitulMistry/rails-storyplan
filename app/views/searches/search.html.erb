@@ -1,2 +1,17 @@
-<h1>Searches#search</h1>
-<p>Find me in app/views/searches/search.html.erb</p>
+<h1>Search Results</h1>
+
+<% if @items.blank? %>
+  <h3>Nothing found</h3>
+<% else %>
+<div class="card-columns">
+  <% @items.each do |item| %>
+    <% if item.searchable.class == User %>
+      <%= render partial: "writers/writer", locals: { writer: item.searchable } %>
+    <% elsif item.searchable.class == Character %>
+      <%= render partial: "characters/character", locals: { character: item.searchable } %>
+    <% elsif item.searchable.class == Story %>
+      <%= render partial: "stories/story", locals: { story: item.searchable } %>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
