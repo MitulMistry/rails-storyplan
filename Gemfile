@@ -7,11 +7,11 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0', '>= 5.0.2'
+gem 'rails', '~> 5.1.0'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,8 +27,6 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -39,11 +37,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
 gem 'font-awesome-rails'
-gem 'devise'  # For authentication
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'  # For authentication
 gem 'kaminari'  # For pagination
 gem 'paperclip' # For image attachments
 gem 'pg_search' # For Postgres search feature
-gem 'aws-sdk', '~> 2.9', '>= 2.9.7' # For image uploading to S3 in production
+gem 'aws-sdk', '~> 2.9', '>= 2.9.15' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
@@ -53,7 +51,7 @@ gem 'omniauth-facebook'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -61,7 +59,10 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '~> 2.13.0'
+  gem 'selenium-webdriver'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -81,10 +82,8 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 
