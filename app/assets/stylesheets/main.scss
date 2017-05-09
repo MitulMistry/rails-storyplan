@@ -84,14 +84,14 @@ a:hover, a:focus {
 
 .card {
   border: 0;
-  border-radius: 0;
-  -webkit-box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
-  -moz-box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
-  box-shadow: 1px 3px 12px 0px rgba(0,0,0,0.28);
+  // border-radius: 0;
+  -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
+  -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
+  box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
 }
 
 .card-img-top {
-  border-radius: 0;
+  // border-radius: 0;
 }
 
 .btn-primary {
@@ -121,7 +121,7 @@ a:hover, a:focus {
 }
 
 .badge {
-  border-radius: 0;
+  border-radius: .1rem;
   font-size: 80%
 }
 
