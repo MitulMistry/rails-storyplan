@@ -1,0 +1,13 @@
+{
+  "lib": {
+    "name": "rails-storyplan-lib",
+    "dependencies": {
+    }
+  },
+  "vendor": {
+    "name": "rails-storyplan-vendor",
+    "dependencies": {
+      "masonry": "latest"
+    }
+  }
+}

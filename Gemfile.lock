@@ -68,6 +68,7 @@ GEM
     bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bower-rails (0.11.0)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.13.0)
@@ -303,6 +304,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 2.9, >= 2.9.15)
   bootstrap (~> 4.0.0.alpha6)
+  bower-rails
   byebug
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)

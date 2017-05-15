@@ -45,6 +45,8 @@ gem 'aws-sdk', '~> 2.9', '>= 2.9.15' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
+gem 'bower-rails' # Use Bower to manage front end dependencies
+
 #gem 'airbrake'
 #gem 'friendly_id'
 

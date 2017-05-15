@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//
+// Bower packages
+//= require masonry/dist/masonry.pkgd.js
+//
 //= require_tree .
