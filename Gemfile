@@ -37,11 +37,11 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
 gem 'font-awesome-rails'
-gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'  # For authentication
-gem 'kaminari'  # For pagination
+gem 'devise', '~> 4.3' # For authentication
+gem 'kaminari' # For pagination
 gem 'paperclip' # For image attachments
 gem 'pg_search' # For Postgres search feature
-gem 'aws-sdk', '~> 2.9', '>= 2.9.15' # For image uploading to S3 in production
+gem 'aws-sdk', '~> 2.9', '>= 2.9.18' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
