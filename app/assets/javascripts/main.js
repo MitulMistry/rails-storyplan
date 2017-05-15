@@ -2,7 +2,20 @@
 
 $(document).on("turbolinks:load", function() { //equivalent of $(document).ready()
   addSpace();
+  initMasonry();
 });
+
+function initMasonry() {
+  $('.masonry-grid').masonry({
+  // options
+  itemSelector: '.card',
+  // columnWidth: 280, //with no columnWidth set, will take size of first element in grid
+  horizontalOrder: true,
+  isFitWidth: true,  //breaks columns like media queries
+  gutter: 20,
+  transitionDuration: '0.3s'
+  });
+}
 
 function addSpace() {
   var spaceBetween = $(".custom-footer").offset().top - $(".navbar").offset().top; //get space between header and footer

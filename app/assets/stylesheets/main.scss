@@ -82,6 +82,10 @@ a:hover, a:focus {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+.masonry-grid {
+  margin: 0 auto; //center grid
+}
+
 .card {
   border: 0;
   // border-radius: 0;
@@ -89,6 +93,37 @@ a:hover, a:focus {
   -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
   box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
 }
+
+.writer-card {
+  width: 250px;
+}
+
+@include media-breakpoint-up(xs) {
+  .writer-card {
+    width: 400px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .writer-card {
+    width: 350px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .writer-card {
+    width: 300px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .writer-card {
+    width: 250px;
+  }
+}
+
+// @include media-breakpoint-up(xl) {
+// }
 
 .card-img-top {
   // border-radius: 0;
@@ -224,7 +259,7 @@ ul.pagination {
   // }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
   #footer-social-icons {
     @include float-right;
   }
