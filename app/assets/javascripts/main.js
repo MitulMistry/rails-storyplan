@@ -2,18 +2,23 @@
 
 $(document).on("turbolinks:load", function() { //equivalent of $(document).ready()
   addSpace();
-  initMasonry();
+  var $grid = initMasonry();
+
+  // layout Masonry after each image loads
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
+  });
 });
 
 function initMasonry() {
-  $('.masonry-grid').masonry({
-  // options
-  itemSelector: '.card',
-  // columnWidth: 280, //with no columnWidth set, will take size of first element in grid
-  horizontalOrder: true,
-  isFitWidth: true,  //breaks columns like media queries
-  gutter: 20,
-  transitionDuration: '0.3s'
+  return $('.masonry-grid').masonry({ //returns the jquery masonry grid to be stored as a variable
+    // options
+    itemSelector: '.card',
+    // columnWidth: 280, //with no columnWidth set, will take size of first element in grid
+    horizontalOrder: true,
+    isFitWidth: true,  //breaks columns like media queries
+    gutter: 20,
+    transitionDuration: '0.3s'
   });
 }
 

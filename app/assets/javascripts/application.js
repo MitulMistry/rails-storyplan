@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //
 // Bower packages
-//= require masonry/dist/masonry.pkgd.js
+//= require imagesloaded/imagesloaded.pkgd.min.js
+//= require masonry/dist/masonry.pkgd.min.js
 //
 //= require_tree .

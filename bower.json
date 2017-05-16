@@ -7,7 +7,8 @@
   "vendor": {
     "name": "rails-storyplan-vendor",
     "dependencies": {
-      "masonry": "latest"
+      "masonry": "latest",
+      "imagesloaded": "latest"
     }
   }
 }
