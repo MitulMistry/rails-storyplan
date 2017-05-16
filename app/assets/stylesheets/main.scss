@@ -83,41 +83,41 @@ a:hover, a:focus {
 }
 
 .masonry-grid {
-  margin: 0 auto; //center grid
+  // margin: 0 auto; //center grid
 }
 
 .card {
   border: 0;
   // border-radius: 0;
-  -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
-  -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
-  box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28);
+  -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
 }
 
-.writer-card {
+.writer-card, .story-card, .character-card {
   width: 250px;
 }
 
 @include media-breakpoint-up(xs) {
-  .writer-card {
+  .writer-card, .story-card, .character-card {
     width: 400px;
   }
 }
 
 @include media-breakpoint-up(sm) {
-  .writer-card {
+  .writer-card, .story-card, .character-card {
     width: 350px;
   }
 }
 
 @include media-breakpoint-up(md) {
-  .writer-card {
+  .writer-card, .story-card, .character-card {
     width: 300px;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .writer-card {
+  .writer-card, .story-card, .character-card {
     width: 250px;
   }
 }

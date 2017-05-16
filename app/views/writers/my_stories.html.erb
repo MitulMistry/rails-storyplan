@@ -1,6 +1,6 @@
 <% if !@stories.empty? %>
 <h3>My Stories</h3>
-<div class="card-columns">
+<div class="masonry-grid">
   <%= render partial: "stories/story", collection: @stories %>
 </div>
 <% else %>

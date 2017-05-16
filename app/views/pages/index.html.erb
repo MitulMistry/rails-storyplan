@@ -8,19 +8,19 @@
 
 <h1>Stories</h1>
 <p>Explore stories currently being written.</p>
-<div class="card-deck">
+<div class="masonry-grid">
   <%= render partial: "stories/story", collection: @stories %>
 </div>
 
 <h1>Writers</h1>
 <p>Meet some of our writers.</p>
-<div class="card-deck">
+<div class="masonry-grid">
   <%= render partial: "writers/writer", collection: @writers %>
 </div>
 
 <h1>Characters</h1>
 <p>See some of the characters that drive our writers' stories.</p>
-<div class="card-deck">
+<div class="masonry-grid">
   <%= render partial: "characters/character", collection: @characters %>
 </div>
 

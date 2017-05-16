@@ -3,7 +3,7 @@
 <% if @items.blank? %>
   <h3>Nothing found</h3>
 <% else %>
-<div class="card-columns">
+<div class="masonry-grid">
   <% @items.each do |item| %>
     <% if item.searchable.class == User %>
       <%= render partial: "writers/writer", locals: { writer: item.searchable } %>

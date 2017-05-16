@@ -38,7 +38,7 @@
 <% end %>
 
 <% if !@story.characters.empty? %><h2>Characters</h2>
-<div class="card-columns">
+<div class="masonry-grid">
   <%= render partial: "characters/character", collection: @story.characters %>
 </div>
 <% end %>
