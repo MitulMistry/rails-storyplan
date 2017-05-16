@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
-    @stories = Story.randomized(3)
-    @writers = User.randomized(3)
-    @characters = Character.randomized(3)
+    @stories = Story.randomized(4)
+    @writers = User.randomized(4)
+    @characters = Character.randomized(4)
   end
 end
