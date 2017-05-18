@@ -1,6 +1,6 @@
 "use strict";
 
-$(document).on("ready turbolinks:load", function() { //equivalent of $(document).ready()
+document.addEventListener("turbolinks:load", function() { //equivalent of $(document).ready()
   console.log("JS loaded.")
   addSpace();
   var $grid = initMasonry();
