@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// REMOVED: require turbolinks
 //= require bootstrap-sprockets
 //
 // Bower packages
