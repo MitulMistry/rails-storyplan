@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 // REMOVED: require turbolinks
+//= require tether
 //= require bootstrap-sprockets
 //
 // Bower packages

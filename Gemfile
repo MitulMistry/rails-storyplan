@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 gem 'font-awesome-rails'
 gem 'devise', '~> 4.3' # For authentication
 gem 'kaminari' # For pagination
