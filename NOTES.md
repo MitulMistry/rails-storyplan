@@ -1,14 +1,12 @@
 **TODO:**
--Fix brand and toggle icon overlap on smallest media query break (for header)
--Center pagination
-
+-Switch from Bower to Webpack for front end dependencies
 -Overhaul front end - design and implementation
--change authorizations to use Pundit
--set up image uploading with Paperclip
--set up comments for models other than stories - so chapters, characters, stories - using polymorphic associations:
+-Write more integration tests
+-Change authorizations to use Pundit
+-Set up comments for models other than stories - so chapters, characters, stories - using polymorphic associations:
   https://launchschool.com/blog/understanding-polymorphic-associations-in-rails
-  -set up new comment forms - form partial
--set up chapter ordering
+  -Set up new comment forms - form partial
+-Set up chapter ordering
 
 **FUTURE FEATURES:**
 -Writing environment - storing formatted text
