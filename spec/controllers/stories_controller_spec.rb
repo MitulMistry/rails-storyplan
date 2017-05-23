@@ -43,7 +43,7 @@ RSpec.describe StoriesController, type: :controller do
     end
   end
 
-  shared_examples_for "full access to owned stories" do #define @user for these tests
+  shared_examples_for "full access to story creation and owned stories" do #define @user for these tests
     describe "GET #new" do
       it "assigns a new Story to @story" do
         get :new
@@ -265,7 +265,7 @@ RSpec.describe StoriesController, type: :controller do
     end
 
     it_behaves_like "public access to stories"
-    it_behaves_like "full access to owned stories"
+    it_behaves_like "full access to story creation and owned stories"
     it_behaves_like "no modification access to non-owned stories"
   end
 

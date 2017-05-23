@@ -41,7 +41,7 @@ RSpec.describe CharactersController, type: :controller do
     end
   end
 
-  shared_examples_for "full access to owned characters" do #define @user for these tests
+  shared_examples_for "full access to character creation and owned characters" do #define @user for these tests
     describe "GET #new" do
       it "assigns a new Character to @character" do
         get :new
@@ -247,7 +247,7 @@ RSpec.describe CharactersController, type: :controller do
     end
 
     it_behaves_like "public access to characters"
-    it_behaves_like "full access to owned characters"
+    it_behaves_like "full access to character creation and owned characters"
     it_behaves_like "no modification access to non-owned characters"
   end
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  shared_examples_for "full access to owned comments" do # define @user for these tests
+  shared_examples_for "full access to comment creation and owned comments" do # define @user for these tests
     describe "GET #edit" do
       it "assigns the requested comment to @comment" do
         comment = create(:comment, user: @user)
@@ -157,7 +157,7 @@ RSpec.describe CommentsController, type: :controller do
       sign_in @user # sign in via Devise::Test::ControllerHelpers
     end
 
-    it_behaves_like "full access to owned comments"
+    it_behaves_like "full access to comment creation and owned comments"
     it_behaves_like "no modification access to non-owned comments"
   end
 

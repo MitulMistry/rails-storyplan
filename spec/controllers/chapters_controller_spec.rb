@@ -44,7 +44,7 @@ RSpec.describe ChaptersController, type: :controller do
     end
   end
 
-  shared_examples_for "full access to owned chapters" do # define @user for these tests
+  shared_examples_for "full access to chapter creation and owned chapters" do # define @user for these tests
     describe "GET #new" do
       context "if user has at least one story" do
         before :each do
@@ -259,7 +259,7 @@ RSpec.describe ChaptersController, type: :controller do
     end
 
     it_behaves_like "public access to chapters"
-    it_behaves_like "full access to owned chapters"
+    it_behaves_like "full access to chapter creation and owned chapters"
     it_behaves_like "no modification access to non-owned chapters"
   end
 
