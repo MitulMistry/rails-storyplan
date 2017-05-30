@@ -2,18 +2,13 @@
   <%= link_to (image_tag story.cover.url(:medium), class: "card-img-top img-fluid"), story %>
   <div class="card-block">
   <h4 class="card-title"><%= link_to story.name, story, class: "card-link" %></h4>
-  <p class="card-text"><strong>Written by:</strong> <%= link_to story.user.username, writer_path(story.user) %></p>
-  <% if story.overview? %><p class="card-text"><strong>Overview: </strong><%= story_truncated_overview(story) %></p><% end %>
-  <% if story.target_word_count? %><p class="card-text"><strong>Target word count:</strong> <%= story.target_word_count %></p><% end %>
-  <% if !story.audiences.empty? %>
-  <p class="card-text"><strong>Target audience:</strong>
+  <p class="card-text"><strong>By:</strong> <%= link_to story.user.username, writer_path(story.user) %></p>
+  <% if story.overview? %><p class="card-text"><%= story_truncated_overview(story) %></p><% end %>
+  <% if !story.genres.empty? && !story.audiences.empty? %>
+  <p class="card-text">
     <% story.audiences.each do |audience| %>
       <%= link_to audience.name, audience, class: "badge badge-audience" %>
     <% end %>
-  </p>
-  <% end %>
-  <% if !story.genres.empty? %>
-  <p class="card-text"><strong>Genres:</strong>
     <% story.genres.each do |genre| %>
       <%= link_to genre.name, genre, class: "badge badge-genre" %>
     <% end %>
