@@ -1,4 +1,4 @@
-class AddAttachmentCoverToStories < ActiveRecord::Migration
+class AddAttachmentCoverToStories < ActiveRecord::Migration[5.0]
   def self.up
     add_attachment :stories, :cover
   end
