@@ -44,13 +44,13 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.1)
       execjs
-    aws-sdk (2.9.21)
-      aws-sdk-resources (= 2.9.21)
-    aws-sdk-core (2.9.21)
+    aws-sdk (2.9.25)
+      aws-sdk-resources (= 2.9.25)
+    aws-sdk-core (2.9.25)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.9.21)
-      aws-sdk-core (= 2.9.21)
+    aws-sdk-resources (2.9.25)
+      aws-sdk-core (= 2.9.25)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -298,7 +298,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 2.9, >= 2.9.18)
+  aws-sdk (~> 2.9, >= 2.9.25)
   bootstrap (~> 4.0.0.alpha6)
   bower-rails
   byebug
