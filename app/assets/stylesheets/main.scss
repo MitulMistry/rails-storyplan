@@ -21,11 +21,32 @@ body {
 }
 
 h1, h2, h3 {
-  margin: 1rem 0 1rem 0;
+  margin: .8rem 0 .8rem 0;
   // font-weight: 600;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-size: 1.2rem
+}
+
 p {
+  font-size: 1rem;
   margin: .6rem 0 .6rem 0;
 }
 
@@ -70,7 +91,7 @@ a:hover, a:focus {
 }
 
 .navbar {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: red;
 }
 
@@ -92,6 +113,14 @@ a:hover, a:focus {
   -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
   -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
   box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
+
+  .card-title {
+    margin-bottom: .3rem;
+  }
+
+  .card-text {
+    margin: .3rem 0 .3rem 0;
+  }
 }
 
 .writer-card, .story-card, .character-card {
@@ -157,7 +186,7 @@ a:hover, a:focus {
 
 .badge {
   border-radius: .1rem;
-  font-size: 80%
+  font-size: 80%;
 }
 
 .badge-audience {
