@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.0.0.alpha6' # Bootstrap 4 gem
+gem 'bootstrap', '4.0.0.alpha6' # Bootstrap 4 gem
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
@@ -44,7 +44,7 @@ gem 'devise', '~> 4.3' # For authentication
 gem 'kaminari' # For pagination
 gem 'paperclip' # For image attachments
 gem 'pg_search' # For Postgres search feature
-gem 'aws-sdk', '~> 2.9', '>= 2.9.25' # For image uploading to S3 in production
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
