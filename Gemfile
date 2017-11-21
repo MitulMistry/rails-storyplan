@@ -44,7 +44,7 @@ gem 'devise', '~> 4.3' # For authentication
 gem 'kaminari' # For pagination
 gem 'paperclip' # For image attachments
 gem 'pg_search' # For Postgres search feature
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
+gem 'aws-sdk', '< 3.0' # For image uploading to S3 in production
 gem 'faker'
 gem 'omniauth-facebook'
 
