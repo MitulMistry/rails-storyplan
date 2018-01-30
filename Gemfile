@@ -40,13 +40,13 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'font-awesome-rails'
-gem 'devise', '~> 4.3' # For authentication
-gem 'kaminari' # For pagination
-gem 'paperclip' # For image attachments
-gem 'pg_search' # For Postgres search feature
+gem 'devise', '~> 4.4', '>= 4.4.1' # For authentication
+gem 'kaminari', '~> 1.1', '>= 1.1.1' # For pagination
+gem 'paperclip', '~> 5.2', '>= 5.2.1' # For image attachments
+gem 'pg_search', '~> 2.1', '>= 2.1.2' # For Postgres search feature
 gem 'aws-sdk', '< 3.0' # For image uploading to S3 in production
 gem 'faker'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '~> 4.0'
 
 gem 'bower-rails' # Use Bower to manage front end dependencies
 
