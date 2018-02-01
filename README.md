@@ -1,7 +1,8 @@
 # Rails Storyplan
 
-## Intro
 Storyplan is a narrative development tool built using [Rails][rails] to help users plan out stories and connect with others as their projects evolve. It has started out as a CRUD application involving the creation of stories, chapters, and characters, but there is room for greater functionality going forward.
+
+![screenshot](readme_storyplan.jpg)
 
 ## Demo App
 You can see a demo version of the application deployed to Heroku here: https://rails-storyplan.herokuapp.com/
