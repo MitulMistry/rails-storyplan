@@ -50,6 +50,9 @@ gem 'bower-rails' # Use Bower to manage front end dependencies
 #gem 'airbrake'
 #gem 'friendly_id'
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
