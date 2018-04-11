@@ -1,17 +1,14 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+ruby '2.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,13 +37,13 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'font-awesome-rails'
-gem 'devise', '~> 4.4', '>= 4.4.1' # For authentication
+gem 'devise', '~> 4.4', '>= 4.4.3' # For authentication
 gem 'kaminari', '~> 1.1', '>= 1.1.1' # For pagination
-gem 'paperclip', '~> 5.2', '>= 5.2.1' # For image attachments
+gem 'paperclip', '~> 6.0' # For image attachments
 gem 'pg_search', '~> 2.1', '>= 2.1.2' # For Postgres search feature
-gem 'aws-sdk', '< 3.0' # For image uploading to S3 in production
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
 gem 'faker'
-gem 'omniauth-facebook', '~> 4.0'
+gem 'omniauth-facebook', '~> 5.0'
 
 gem 'bower-rails' # Use Bower to manage front end dependencies
 
@@ -66,21 +63,23 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 
-  #gem "better_errors"
-  #gem "sprockets_better_errors"
-  #gem "binding_of_caller"
-  #gem "simplecov"
+  #gem 'better_errors'
+  #gem 'sprockets_better_errors'
+  #gem 'binding_of_caller'
+  #gem 'simplecov'
   gem 'pry'
-  #gem "rack_session_access"
+  #gem 'rack_session_access'
 
-  #gem "capybara-webkit"
-  #gem "guard-rspec", require: false
+  #gem 'capybara-webkit'
+  #gem 'guard-rspec', require: false
 
   gem 'dotenv-rails'
 end
@@ -93,7 +92,7 @@ group :test do
 end
 
 group :production do
-  #gem "google-analytics-rails"
+  #gem 'google-analytics-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
