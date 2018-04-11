@@ -6,6 +6,6 @@ module ClassOrderable
   end
 
   def randomized(count)
-    order("RANDOM()").first(count)
+    order(Arel.sql("RANDOM()")).first(count)
   end
 end
