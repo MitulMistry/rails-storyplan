@@ -4,9 +4,9 @@ git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 ruby '2.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.1'
 # Use PostgreSQL as the database for Active Record
-gem 'pg', '~> 1.0'
+gem 'pg', '~> 1.1', '>= 1.1.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -37,9 +37,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'font-awesome-rails'
-gem 'devise', '~> 4.4', '>= 4.4.3' # For authentication
+gem 'devise', '~> 4.5' # For authentication
 gem 'kaminari', '~> 1.1', '>= 1.1.1' # For pagination
-gem 'paperclip', '~> 6.0' # For image attachments
+gem 'paperclip', '~> 6.1' # For image attachments
 gem 'pg_search', '~> 2.1', '>= 2.1.2' # For Postgres search feature
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
 gem 'faker'
