@@ -1,4 +1,4 @@
-<div class="card card-block">
+<div class="card card-body">
   <p class="card-text"><%= image_tag comment.user.avatar.url(:thumb), class: "img-fluid" %><%= link_to comment.user.username, writer_path(comment.user), class: "card-link" %><span class="text-muted"> - <%= readable_date(comment.created_at) %></span></p>
   <p class="card-text"><%= comment.content %></p>
   <% if comment.user == current_user %>

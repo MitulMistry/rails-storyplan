@@ -1,6 +1,6 @@
 <div class="card character-card">
   <%= link_to (image_tag character.portrait.url(:medium), class: "card-img-top img-fluid"), character %>
-  <div class="card-block">
+  <div class="card-body">
     <h4 class="card-title"><%= link_to character.name, character, class: "card-link" %></h4>
     <p class="card-text"><strong>By: </strong><%= link_to character.user.username, writer_path(character.user), class: "card-link" %></p>
     <% if character.bio? %><p class="card-text"><%= character_truncated_bio(character) %></p><% end %>
