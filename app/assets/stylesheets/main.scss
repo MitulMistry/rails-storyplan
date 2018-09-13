@@ -64,7 +64,7 @@ a:hover, a:focus {
 }
 
 .navbar-main {
-  @extend .navbar-inverse;
+  @extend .navbar-light;
   border-bottom: 4px solid $primary;
   border-image: linear-gradient(to right, #81D5F2 0%, #0071BC 100%);
 	border-image-slice: 1;
