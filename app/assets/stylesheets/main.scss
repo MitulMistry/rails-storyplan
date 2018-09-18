@@ -5,6 +5,8 @@ $main-black: black;
 $bg-dark: #25292C;
 $primary: #29ABE2;
 $primary-dark: #1684B5;
+$cool-gray: #6A8B99;
+$yellow: #FFAB4B;
 
 html {
   background-color: #F5F8FA;
@@ -108,20 +110,28 @@ a:hover, a:focus {
 }
 
 .card {
+  margin: 0.5rem 0 1rem 0;
   // border: 1px;
   border-color: rgba($color: black, $alpha: 0.125);
   // border-radius: 0;
-  // -webkit-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
-  // -moz-box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
-  // box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.28), 0px 0px 2px 0px rgba(0,0,0,0.15);
+}
 
-  .card-title {
-    margin-bottom: .3rem;
-  }
+.card-body {
+  padding: 0.75rem 1rem;
+}
 
-  .card-text {
-    margin: .3rem 0 .3rem 0;
-  }
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.05rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0.3rem 0;
+}
+.card-text-author {
+  margin: 0 0 0.3rem 0;
 }
 
 .writer-card, .story-card, .character-card {
@@ -191,15 +201,32 @@ a:hover, a:focus {
 }
 
 .badge-audience {
-  @extend .badge-warning;
+  @extend .badge-info;
+  background-color: $cool-gray;
+}
+
+[href].badge-audience:hover, [href].badge-audience:focus {
+  background-color: darken($cool-gray, 10%);
 }
 
 .badge-genre {
   @extend .badge-primary;
+  background-color: $primary;
+}
+
+[href].badge-genre:hover, [href].badge-genre:focus {
+  background-color: darken($primary, 10%);
 }
 
 .badge-story {
-  @extend .badge-info;
+  @extend .badge-warning;
+  color: white;
+  background-color: $yellow;
+}
+
+[href].badge-story:hover, [href].badge-story:focus {
+  color: white;
+  background-color: darken($yellow, 10%);
 }
 
 .badge-currently-writing {
@@ -215,14 +242,6 @@ a:hover, a:focus {
   background-color: white;
   border: 1px solid #DDDDDD;
   margin: 0;
-}
-
-.card {
-  margin: .5rem 0 1rem 0;
-
-  a {
-    // color: $teal;
-  }
 }
 
 ul.pagination {
