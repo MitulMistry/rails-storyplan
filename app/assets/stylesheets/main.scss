@@ -28,23 +28,23 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.65rem;
 }
 
 h2 {
-  font-size: 1.75rem;
-}
-
-h3 {
   font-size: 1.5rem;
 }
 
-h4 {
+h3 {
   font-size: 1.3rem;
 }
 
+h4 {
+  font-size: 1.2rem;
+}
+
 h5 {
-  font-size: 1.2rem
+  font-size: 1.1rem
 }
 
 p {
@@ -93,7 +93,7 @@ a:hover, a:focus {
 }
 
 .navbar {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: red;
 }
 
@@ -101,13 +101,17 @@ a:hover, a:focus {
   font-size: 1.5rem;
 }
 
-.navbar-main .navbar-toggler-icon { /*override hamburger icon color */
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.dropdown-item.active, .dropdown-item:active {
+  background-color: $primary;
 }
 
-.masonry-grid {
-  // margin: 0 auto; //center grid
-}
+// .navbar-main .navbar-toggler-icon { /*override hamburger icon color */
+// 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+// }
+
+// .masonry-grid {
+//   // margin: 0 auto; //center grid
+// }
 
 .card {
   margin: 0.5rem 0 1rem 0;
@@ -196,8 +200,9 @@ a:hover, a:focus {
 }
 
 .badge {
-  border-radius: .1rem;
+  border-radius: 0.1rem;
   font-size: 80%;
+  padding: 0.3em 0.4em;
 }
 
 .badge-audience {
@@ -270,6 +275,7 @@ ul.pagination {
   border-image: linear-gradient(to right, #81D5F2 0%, #0071BC 100%);
 	border-image-slice: 1;
   color: #969897;
+  font-size: 1rem;
 	padding: 10px 10px 40px 10px;
 
   ul {
@@ -290,6 +296,10 @@ ul.pagination {
     color: $primary;
     text-decoration: none;
   }
+
+  .nav-link {
+    padding: 0.3rem 0.6rem;
+  }
 }
 
 #footer-social-icons i {
@@ -301,10 +311,10 @@ ul.pagination {
 }
 
 #footer-models-nav {
-  font-size: 1rem;
+  font-size: 0.95rem;
 
   // .nav-link {
-  //   padding: .5rem 1rem;
+  //   padding: 0.2rem 0.5rem;
   // }
 }
 
