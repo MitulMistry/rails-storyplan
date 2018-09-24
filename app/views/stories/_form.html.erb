@@ -16,8 +16,7 @@
     <%= f.collection_check_boxes(:audience_ids, Audience.all.order("name ASC"), :id, :name) do |b| %>
       <%= b.label(class: "custom-control custom-checkbox") do %>
         <%= b.check_box(class: "custom-control-input") %>
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description"><%= b.object.name %></span>
+        <span class="custom-control-label"><%= b.object.name %></span>
       <% end %>
     <% end %>
   </div>
