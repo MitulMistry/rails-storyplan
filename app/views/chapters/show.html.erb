@@ -8,7 +8,7 @@
 <p><strong>Overview: </strong><%= @chapter.overview %></p>
 
 <% if @chapter.user == current_user %>
-  <div>
+  <div class="edit-buttons">
     <%= link_to "Edit", edit_chapter_path(@chapter), class: "btn btn-secondary btn-sm" %>
     <%= link_to "Delete", @chapter, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
   </div>

@@ -271,6 +271,14 @@ ul.pagination {
   }
 }
 
+.edit-buttons {
+  margin-top: 3px;
+
+  .btn-secondary {
+    margin-top: 3px;
+  }
+}
+
 .field_with_errors {
   /*@extend .has-error;*/
   color: red;
