@@ -7,6 +7,7 @@ $primary: #29ABE2;
 $primary-dark: #1684B5;
 $cool-gray: #6A8B99;
 $yellow: #FFAB4B;
+$green: #26D1A4;
 
 html {
   background-color: #F5F8FA;
@@ -129,6 +130,11 @@ a:hover, a:focus {
   margin-bottom: 0.05rem;
 }
 
+.card-title-small {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
 .card-text {
   font-size: 0.9rem;
   line-height: 1.4;
@@ -136,6 +142,10 @@ a:hover, a:focus {
 }
 .card-text-author {
   margin: 0 0 0.3rem 0;
+}
+
+.card-link + .card-link {
+  margin-left: 0;
 }
 
 .writer-card, .story-card, .character-card {
@@ -236,6 +246,7 @@ a:hover, a:focus {
 
 .badge-currently-writing {
   @extend .badge-success;
+  background-color: $green;
 }
 
 .jumbotron {

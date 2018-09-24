@@ -1,5 +1,5 @@
 <div class="card card-body">
-  <h4 class="card-title"><strong>CH: <%= link_to chapter.name, chapter, class: "card-link" %></strong> - from <%= link_to chapter.story.name, chapter.story, class: "card-link" %> by <%= link_to chapter.user.username, writer_path(chapter.user), class: "card-link" %><% if chapter.currently_writing %> <%= content_tag :span, "Currently Writing", class: ["badge", "badge-currently-writing"] %><br><% end %></h4>
+  <h4 class="card-title card-title-small"><strong>CH: <%= link_to chapter.name, chapter, class: "card-link" %></strong> from <%= link_to chapter.story.name, chapter.story, class: "card-link" %> by <%= link_to chapter.user.username, writer_path(chapter.user), class: "card-link" %><% if chapter.currently_writing %> <%= content_tag :span, "Currently Writing", class: ["badge", "badge-currently-writing"] %><br><% end %></h4>
   <% if chapter.objective? %><p class="card-text"><strong>Objective: </strong><%= chapter_truncated_objective(chapter) %></p><% end %>
   <% if chapter.target_word_count? %><p class="card-text"><strong>Target word count: </strong><%= chapter.target_word_count %></p><% end %>
   <% if chapter.overview? %><p class="card-text"><strong>Overview: </strong><%= chapter_truncated_overview(chapter) %></p><% end %>
