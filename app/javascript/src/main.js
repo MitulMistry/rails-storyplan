@@ -1,4 +1,23 @@
-"use strict";
+import Rails from 'rails-ujs';
+import Turbolinks from 'turbolinks';
+import 'bootstrap/dist/js/bootstrap';
+
+import jQueryBridget from 'jquery-bridget';
+import Masonry from 'masonry-layout';
+import imagesLoaded from 'imagesloaded/imagesloaded';
+
+// jQuery imported via webpack/environment.js
+
+Rails.start();
+Turbolinks.start();
+
+// make Masonry a jQuery plugin
+jQueryBridget('masonry', Masonry, $);
+// now you can use $().masonry()
+
+// provide jQuery argument
+imagesLoaded.makeJQueryPlugin( $ );
+// now use .imagesLoaded() jQuery plugin
 
 $(document).on('turbolinks:load', function() { //equivalent of $(document).ready()
   console.log("JS loaded.")
