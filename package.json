@@ -1,5 +1,12 @@
 {
   "name": "rails-storyplan",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "imagesloaded": "^4.1.4",
+    "masonry-layout": "^4.2.2"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
 }

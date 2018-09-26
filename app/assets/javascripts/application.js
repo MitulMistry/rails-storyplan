@@ -15,8 +15,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //
-// Bower packages
-//= require imagesloaded/imagesloaded.pkgd.min.js
-//= require masonry/dist/masonry.pkgd.min.js
-//
 //= require_tree .
