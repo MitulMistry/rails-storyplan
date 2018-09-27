@@ -69,7 +69,7 @@ group :development, :test do
   gem 'chromedriver-helper'
 
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   #gem 'better_errors'
   #gem 'sprockets_better_errors'

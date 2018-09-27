@@ -4,7 +4,7 @@ RSpec.describe ChaptersController, type: :controller do
   shared_examples_for "public access to chapters" do
     describe "GET #index" do
       it "populates an array of chapters per page (by creation date)" do
-        chapter1 = create(:chapter) # FactoryGirl creates the chapter, which creates an associated story, which creates an associated user
+        chapter1 = create(:chapter) # FactoryBot creates the chapter, which creates an associated story, which creates an associated user
         chapter2 = create(:chapter)
         chapter3 = create(:chapter)
         get :index
@@ -32,7 +32,7 @@ RSpec.describe ChaptersController, type: :controller do
 
     describe "GET #show" do
       it "assigns the requested chapter to @chapter" do
-        chapter = create(:chapter) #FactoryGirl, invoke story factory
+        chapter = create(:chapter) #FactoryBot, invoke story factory
         get :show, params: { id: chapter } #make a GET request with id for story
         expect(assigns(:chapter)).to eq chapter #assigns checks value of @story in controller
       end
@@ -114,7 +114,7 @@ RSpec.describe ChaptersController, type: :controller do
       context "with valid attributes" do
         it "saves the new chapter in the database" do
           expect { #proc - evaluates code before and after
-            post :create, params: { chapter: attributes_for(:chapter, story_id: @story.id) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { chapter: attributes_for(:chapter, story_id: @story.id) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Chapter, :count).by(1)
         end
 
@@ -254,7 +254,7 @@ RSpec.describe ChaptersController, type: :controller do
 
   describe "user access" do
     before :each do
-      @user = create(:user) # FactoryGirl
+      @user = create(:user) # FactoryBot
       sign_in(@user) # sign in via Devise::Test::ControllerHelpers
     end
 

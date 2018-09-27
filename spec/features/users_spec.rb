@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "User management" do
   context "as a user" do
     before :each do
-      @user = create(:user, password: "password") #FactoryGirl
+      @user = create(:user, password: "password") #FactoryBot
       sign_in_with_form(@user) #login macro
     end
 
@@ -54,7 +54,7 @@ feature "User management" do
     end
 
     scenario "logs in to user account" do
-      user = create(:user) #FactoryGirl
+      user = create(:user) #FactoryBot
       sign_in_with_form(user) #login macro
       expect(page).to have_content "Signed in successfully"
     end

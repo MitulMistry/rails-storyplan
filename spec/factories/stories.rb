@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :story do
     name { Faker::Book.title }
     target_word_count { Faker::Number.between(1, 100) * 1000 }

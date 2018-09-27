@@ -56,8 +56,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Include Factory Girl syntax to simplify calls to factories
-  config.include FactoryGirl::Syntax::Methods
+  # Include FactoryBot syntax to simplify calls to factories
+  config.include FactoryBot::Syntax::Methods
 
   # Include to enable Devise authentication in tests
   config.include Devise::Test::ControllerHelpers, type: :controller

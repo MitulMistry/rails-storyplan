@@ -19,7 +19,7 @@ RSpec.describe GenresController, type: :controller do
 
     describe "GET #show" do
       before :each do
-        @genre = create(:genre) # FactoryGirl, invoke genre factory
+        @genre = create(:genre) # FactoryBot, invoke genre factory
       end
 
       it "assigns the requested genre to @genre" do

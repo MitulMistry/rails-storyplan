@@ -29,7 +29,7 @@ RSpec.describe CharactersController, type: :controller do
 
     describe "GET #show" do
       it "assigns the requested character to @character" do
-        character = create(:character) #FactoryGirl, invoke story factory
+        character = create(:character) #FactoryBot, invoke story factory
         get :show, params: { id: character } #make a GET request with id for story
         expect(assigns(:character)).to eq character #assigns checks value of @story in controller
       end
@@ -72,13 +72,13 @@ RSpec.describe CharactersController, type: :controller do
       context "with valid attributes" do
         it "saves the new character in the database" do
           expect { #proc - evaluates code before and after
-            post :create, params: { character: attributes_for(:character) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { character: attributes_for(:character) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Character, :count).by(1)
         end
 
         it "saves the new character with uploaded portrait in the database" do
           expect { #proc - evaluates code before and after
-            post :create, params: { character: attributes_for(:character_with_uploaded_portrait) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { character: attributes_for(:character_with_uploaded_portrait) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Character, :count).by(1)
 
           expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400.png"

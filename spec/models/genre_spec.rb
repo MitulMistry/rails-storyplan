@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Genre, type: :model do
   it "has a valid factory" do
-    expect(build(:genre)).to be_valid #using FactoryGirl syntax methods in rails_helper.rb
+    expect(build(:genre)).to be_valid #using FactoryBot syntax methods in rails_helper.rb
   end
 
   describe "associations" do

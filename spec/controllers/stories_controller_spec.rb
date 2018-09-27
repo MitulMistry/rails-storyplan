@@ -31,7 +31,7 @@ RSpec.describe StoriesController, type: :controller do
 
     describe "GET #show" do
       it "assigns the requested story to @story" do
-        story = create(:story) #FactoryGirl, invoke story factory
+        story = create(:story) #FactoryBot, invoke story factory
         get :show, params: { id: story } #make a GET request with id for story
         expect(assigns(:story)).to eq story #assigns checks value of @story in controller
       end
@@ -74,13 +74,13 @@ RSpec.describe StoriesController, type: :controller do
       context "with valid attributes" do
         it "saves the new story in the database" do
           expect{ #proc - evaluates code before and after
-            post :create, params: { story: attributes_for(:story) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { story: attributes_for(:story) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Story, :count).by(1)
         end
 
         it "saves the new story with uploaded cover in the database" do
           expect { #proc - evaluates code before and after
-            post :create, params: { story: attributes_for(:story_with_uploaded_cover) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { story: attributes_for(:story_with_uploaded_cover) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Story, :count).by(1)
 
           expect(Story.last.cover.original_filename).to eq "test_story_cover_400x625.png"

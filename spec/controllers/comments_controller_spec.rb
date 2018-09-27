@@ -24,7 +24,7 @@ RSpec.describe CommentsController, type: :controller do
       context "with valid attributes" do
         it "saves the new comment in the database" do
           expect { #proc - evaluates code before and after
-            post :create, params: { comment: attributes_for(:comment, story_id: @story.id) } #attributes_for (FactoryGirl) creates a params hash, mimicking the hash from a form
+            post :create, params: { comment: attributes_for(:comment, story_id: @story.id) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Comment, :count).by(1)
         end
 

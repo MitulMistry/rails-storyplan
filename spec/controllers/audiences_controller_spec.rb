@@ -19,7 +19,7 @@ RSpec.describe AudiencesController, type: :controller do
 
     describe "GET #show" do
       before :each do
-        @audience = create(:audience) # FactoryGirl, invoke audience factory
+        @audience = create(:audience) # FactoryBot, invoke audience factory
       end
 
       it "assigns the requested audience to @audience" do
@@ -48,7 +48,7 @@ RSpec.describe AudiencesController, type: :controller do
 
   describe "user access" do
     before :each do
-      @user = create(:user) # FactoryGirl
+      @user = create(:user) # FactoryBot
       sign_in @user # sign in via Devise::Test::ControllerHelpers
     end
 

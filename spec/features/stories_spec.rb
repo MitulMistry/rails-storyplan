@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Story management" do
   context "as a user" do
     before :each do
-      @user = create(:user, password: "password") #FactoryGirl
+      @user = create(:user, password: "password") #FactoryBot
       sign_in_with_form(@user) #login macro
     end
 

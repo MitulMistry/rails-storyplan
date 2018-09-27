@@ -19,7 +19,7 @@ RSpec.describe WritersController, type: :controller do
 
     describe "GET #show" do
       it "assigns the requested writer to @writer" do
-        writer = create(:user) #FactoryGirl, invoke user factory
+        writer = create(:user) #FactoryBot, invoke user factory
         get :show, params: { id: writer } #make a GET request with id for user
         expect(assigns(:writer)).to eq writer #assigns checks value of @story in controller
       end

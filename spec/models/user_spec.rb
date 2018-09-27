@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it "has a valid factory" do
-    expect(build(:user)).to be_valid #using FactoryGirl syntax methods in rails_helper.rb
+    expect(build(:user)).to be_valid #using FactoryBot syntax methods in rails_helper.rb
   end
 
   it "has an invalid child factory" do

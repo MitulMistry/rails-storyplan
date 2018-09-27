@@ -4,7 +4,7 @@ RSpec.describe SearchesController, type: :controller do
   shared_examples_for "public access to searches" do
     describe "GET #search" do
       before :each do
-        @story1 = create(:story, name: "Power") # FactoryGirl, invoke story factory
+        @story1 = create(:story, name: "Power") # FactoryBot, invoke story factory
         @story2 = create(:story, name: "Renegades")
         @story3 = create(:story, name: "Renegades 2")
 
