@@ -6,21 +6,23 @@ import jQueryBridget from 'jquery-bridget';
 import Masonry from 'masonry-layout';
 import imagesLoaded from 'imagesloaded/imagesloaded';
 
-// jQuery imported via webpack/environment.js
+// jQuery ($), Popper imported via webpack/environment.js
 
-Rails.start();
-Turbolinks.start();
+initialize();
 
-// make Masonry a jQuery plugin
-jQueryBridget('masonry', Masonry, $);
-// now you can use $().masonry()
+function initialize() {
+  Rails.start();
+  Turbolinks.start();
 
-// provide jQuery argument
-imagesLoaded.makeJQueryPlugin( $ );
-// now use .imagesLoaded() jQuery plugin
+  // make Masonry a jQuery plugin
+  jQueryBridget('masonry', Masonry, $); // now you can use $().masonry()
 
-$(document).on('turbolinks:load', function() { //equivalent of $(document).ready()
-  console.log("JS loaded.")
+  // provide jQuery argument
+  imagesLoaded.makeJQueryPlugin($); // now use .imagesLoaded() jQuery plugin
+}
+
+$(document).on('turbolinks:load', function() { // equivalent of $(document).ready()
+  console.log('JS loaded.')
   addSpace();
   var $grid = initMasonry();
 
@@ -31,26 +33,26 @@ $(document).on('turbolinks:load', function() { //equivalent of $(document).ready
 });
 
 function initMasonry() {
-  return $('.masonry-grid').masonry({ //returns the jquery masonry grid to be stored as a variable
+  return $('.masonry-grid').masonry({ // returns the jquery masonry grid to be stored as a variable
     // options
     itemSelector: '.card',
-    // columnWidth: 280, //with no columnWidth set, will take size of first element in grid
+    // columnWidth: 280, // with no columnWidth set, will take size of first element in grid
     horizontalOrder: true,
-    isFitWidth: true,  //breaks columns like media queries
+    isFitWidth: true,  // breaks columns like media queries
     gutter: 20,
     transitionDuration: '0.3s'
   });
 }
 
 function addSpace() {
-  var spaceBetween = $(".custom-footer").offset().top - $(".navbar").offset().top; //get space between header and footer
+  var spaceBetween = $('.custom-footer').offset().top - $('.navbar').offset().top; // get space between header and footer
   var target = 600;
 
-  if (spaceBetween < target) { //if space between header and footer < x
+  if (spaceBetween < target) { // if space between header and footer < x
     var numOfSpaces = (target - spaceBetween) / 35;
 
     for(var i = 0; i < numOfSpaces; i++) {
-      $("#main-container").append("<p>&nbsp</p>"); //add space above footer
+      $('#main-container').append('<p>&nbsp</p>'); // add space above footer
     }
   }
 }
