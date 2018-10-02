@@ -31,7 +31,7 @@ genres = [
   ["Thriller", "A Thriller is a story that is usually a mix of fear and excitement. It has traits from the suspense genre and often from the action, adventure or mystery genres, but the level of terror makes it borderline horror fiction at times as well."],
   ["Urban", "Urban fiction, also known as street lit, is a literary genre set, as the name implies, in a city landscape; however, the genre is as much defined by the race and culture of its characters as the urban setting."],
   ["Western", "Stories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century."]
-  ]
+]
 
 genres.each do |genre_array|
   Genre.create(name: genre_array[0], description: genre_array[1])
@@ -83,7 +83,7 @@ end
   chapter = story.chapters.build(
     name: Faker::Book.title,
     objective: Faker::Lorem.sentence,
-    target_word_count: (Faker::Number.between(1, 100) * 200),
+    target_word_count: (Faker::Number.between(5, 80) * 100),
     overview: Faker::Lorem.paragraph
     )
   chapter.currently_writing = true if Faker::Number.between(1, 3) == 1
