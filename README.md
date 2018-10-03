@@ -26,14 +26,14 @@ Since the application uses PostgreSQL, you need to have it installed locally on 
 
 Create the database with `bundle exec rails db:create` and run migrations with `bundle exec rails db:migrate`, then run `bundle exec rails db:seed` to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key for Facebook.
 
-Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file. They are built by Webpack via the [Webpacker gem][webpacker]. Custom JavaScript code is located in the [app/javascript][js-directory] where front end assets are imported.
+Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file. They are built by Webpack via the [Webpacker gem][webpacker]. Custom JavaScript code is located in the [`app/javascript`][js-directory] where front end assets are imported.
 
 For production, the application is configured to use [AWS S3][s3] for image uploads. You can read more about setting up S3 [here][heroku-s3-setup] (with Heroku).
 
 ## Testing
 The test suite is developed using Rspec via the [rspec-rails gem][rspec-rails] with [shoulda-matchers][shoulda]. [Capybara][capybara] is used for integration (feature) testing to mimic user browser interaction, while model factories are set up with [FactoryBot][factory-bot].
 
-Tests are located under the `/spec` folder. Model and controller level tests are fairly comprehensive, while feature tests only test core CRUD functionality right now. In order to run tests, run `bundle exec rspec` followed by an optional folder or file under the `/spec` directory (for example, if you only want to test models, run `bundle exec rspec spec/models`).
+Tests are located under the [`/spec`][spec-directory] folder. Model and controller level tests are fairly comprehensive, while feature tests only test core CRUD functionality right now. In order to run tests, run `bundle exec rspec` followed by an optional folder or file under the [`/spec`][spec-directory] directory (for example, if you only want to test models, run `bundle exec rspec spec/models`).
 
 ## More Info
 For more, see this post: http://mitulmistry.github.io/ruby/rails/rails-project/
@@ -66,4 +66,5 @@ This project is open source under the terms of the [MIT License][mit].
 [shoulda]: https://github.com/thoughtbot/shoulda-matchers
 [capybara]: https://github.com/teamcapybara/capybara
 [factory-bot]: https://github.com/thoughtbot/factory_bot_rails
+[spec-directory]: https://github.com/MitulMistry/rails-storyplan/blob/master/spec
 [mit]: http://opensource.org/licenses/MIT
