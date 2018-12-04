@@ -26,6 +26,8 @@ Since the application uses PostgreSQL, you need to have it installed locally on 
 
 Create the database with `bundle exec rails db:create` and run migrations with `bundle exec rails db:migrate`, then run `bundle exec rails db:seed` to populate the database. You need to seed, or else there will be no genres or audiences. In order to get OAuth to work, you need a .env file with a secret and application key for Facebook.
 
+To run the application in development mode after installation, run `rails s`.
+
 Front end dependencies are managed by [Yarn][yarn] with the [package.json][package.json] file. They are built by Webpack via the [Webpacker gem][webpacker]. Custom JavaScript code is located in the [`app/javascript`][js-directory] where front end assets are imported.
 
 For production, the application is configured to use [AWS S3][s3] for image uploads. You can read more about setting up S3 [here][heroku-s3-setup] (with Heroku).
@@ -59,6 +61,7 @@ This project is open source under the terms of the [MIT License][mit].
 [postgres-local-setup]: https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
 [old-version-1]: https://github.com/MitulMistry/rails-storyplan/tree/0ef797e90b02720d9f6c44a22a99bea8388c1bc8
 [webpacker]: https://github.com/rails/webpacker
+[yarn]: https://yarnpkg.com/en/
 [package.json]: https://github.com/MitulMistry/rails-storyplan/blob/master/package.json
 [js-directory]: https://github.com/MitulMistry/rails-storyplan/blob/master/app/javascript
 [heroku-s3-setup]: https://devcenter.heroku.com/articles/s3
