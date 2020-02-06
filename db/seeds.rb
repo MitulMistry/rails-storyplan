@@ -64,7 +64,7 @@ end
 35.times do
   story = Story.new(
     name: Faker::Book.title,
-    target_word_count: (Faker::Number.between(1, 100) * 1000),
+    target_word_count: (Faker::Number.between(from: 1, to: 100) * 1000),
     overview: Faker::Lorem.paragraph
     )
   story.user = User.order("RANDOM()").first
@@ -83,10 +83,10 @@ end
   chapter = story.chapters.build(
     name: Faker::Book.title,
     objective: Faker::Lorem.sentence,
-    target_word_count: (Faker::Number.between(5, 80) * 100),
+    target_word_count: (Faker::Number.between(from: 5, to: 80) * 100),
     overview: Faker::Lorem.paragraph
     )
-  chapter.currently_writing = true if Faker::Number.between(1, 3) == 1
+  chapter.currently_writing = true if Faker::Number.between(from: 1, to: 3) == 1
   chapter.save
 end
 
