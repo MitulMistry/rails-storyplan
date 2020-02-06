@@ -1,5 +1,5 @@
-import Rails from 'rails-ujs';
-import Turbolinks from 'turbolinks';
+// import Rails from 'rails-ujs';
+// import Turbolinks from 'turbolinks';
 import 'bootstrap/dist/js/bootstrap';
 
 import jQueryBridget from 'jquery-bridget';
@@ -11,8 +11,8 @@ import imagesLoaded from 'imagesloaded/imagesloaded';
 initialize();
 
 function initialize() {
-  Rails.start();
-  Turbolinks.start();
+  // Rails.start();
+  // Turbolinks.start();
 
   // make Masonry a jQuery plugin
   jQueryBridget('masonry', Masonry, $); // now you can use $().masonry()
@@ -22,7 +22,7 @@ function initialize() {
 }
 
 $(document).on('turbolinks:load', function() { // equivalent of $(document).ready()
-  console.log('JS loaded.')
+  console.log('JS loaded.');
   addSpace();
   var $grid = initMasonry();
 
