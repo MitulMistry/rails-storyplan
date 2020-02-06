@@ -37,15 +37,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'bootstrap', '~> 4.1.3' # still needed for sprockets styles
+gem 'bootstrap', '~> 4.4', '>= 4.4.1' # still needed for sprockets styles
 gem 'font-awesome-rails'
-gem 'devise', '~> 4.5' # For authentication
-gem 'kaminari', '~> 1.1', '>= 1.1.1' # For pagination
+gem 'devise', '~> 4.7', '>= 4.7.1' # For authentication
+gem 'kaminari', '~> 1.2' # For pagination
 gem 'paperclip', '~> 6.1' # For image attachments
-gem 'pg_search', '~> 2.1', '>= 2.1.2' # For Postgres search feature
+gem 'pg_search', '~> 2.3', '>= 2.3.2' # For Postgres search feature
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
 gem 'faker'
-gem 'omniauth-facebook', '~> 5.0'
+gem 'omniauth-facebook', '~> 6.0'
 
 #gem 'airbrake'
 #gem 'friendly_id'
