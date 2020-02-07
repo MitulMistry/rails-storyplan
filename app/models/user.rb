@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  include PgSearch
-  multisearchable :against => [:username, :full_name]
+  include PgSearch::Model
+  multisearchable against: [:username, :full_name]
 
   has_many :stories
   has_many :characters

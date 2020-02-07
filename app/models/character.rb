@@ -1,8 +1,8 @@
 require 'open-uri' #for URI.parse
 
 class Character < ActiveRecord::Base
-  include PgSearch
-  multisearchable :against => :name
+  include PgSearch::Model
+  multisearchable against: :name
 
   belongs_to :user
   has_many :character_chapters
