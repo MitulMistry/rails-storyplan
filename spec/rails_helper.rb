@@ -66,6 +66,9 @@ RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
 
   config.include LoginMacros
+
+  # Use old method for FactoryBot associations build strategy
+  FactoryBot.use_parent_strategy = false
 end
 
 Shoulda::Matchers.configure do |config|

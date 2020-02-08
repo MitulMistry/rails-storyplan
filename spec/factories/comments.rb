@@ -5,7 +5,7 @@ FactoryBot.define do
     association :story
 
     factory :invalid_comment do # child factory
-      content nil
+      content { nil }
     end
   end
 end

@@ -44,7 +44,7 @@ gem 'kaminari', '~> 1.2' # For pagination
 gem 'paperclip', '~> 6.1' # For image attachments
 gem 'pg_search', '~> 2.3', '>= 2.3.2' # For Postgres search feature
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
-gem 'faker'
+gem 'faker', '~> 2.10', '>= 2.10.1'
 gem 'omniauth-facebook', '~> 6.0'
 
 #gem 'airbrake'
@@ -73,8 +73,8 @@ group :development, :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
 
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 4.0.0.beta4' # beta branch for Rails 6 
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
 
   #gem 'better_errors'
   #gem 'sprockets_better_errors'

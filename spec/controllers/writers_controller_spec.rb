@@ -91,7 +91,7 @@ RSpec.describe WritersController, type: :controller do
       context "with invalid attributes" do
         it "does not update the writer's attributes" do
           name = @user.full_name
-          patch :update_profile, params: { user: attributes_for(:user, full_name: Faker::Lorem.characters(201)) }
+          patch :update_profile, params: { user: attributes_for(:user, full_name: Faker::Lorem.characters(number: 201)) }
           @user.reload
           expect(@user.full_name).to eq name
         end

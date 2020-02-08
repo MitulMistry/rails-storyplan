@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :story do
     name { Faker::Book.title }
-    target_word_count { Faker::Number.between(1, 100) * 1000 }
+    target_word_count { Faker::Number.between(from: 1, to: 100) * 1000 }
     overview { Faker::Lorem.paragraph }
     association :user
 
     factory :invalid_story do # child factory
-      name nil
+      name { nil }
     end
 
     factory :story_with_cover do #use test file for attached Paperclip image
@@ -19,7 +19,7 @@ FactoryBot.define do
 
     factory :invalid_story_with_uploaded_cover do #use this child factory when making a post/patch request with attributes_for
       cover { Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/images/test_story_cover_400x625.png", "image/png") } #issues multi-part request
-      name nil
+      name { nil }
     end
   end
 end

@@ -13,24 +13,24 @@ require 'rails_helper'
 RSpec.describe ChaptersHelper, type: :helper do
   context "with text over character limit" do
     it "truncates chapter objective to 150 characters" do
-      chapter = build(:chapter, objective: Faker::Lorem.characters(175)) #examples don't need to be persisted to database since just testing formatting (so build instead of create)
+      chapter = build(:chapter, objective: Faker::Lorem.characters(number: 175)) #examples don't need to be persisted to database since just testing formatting (so build instead of create)
       expect(helper.chapter_truncated_objective(chapter).length).to eq(150)
     end
 
     it "truncates chapter overview to 250 characters" do
-      chapter = build(:chapter, overview: Faker::Lorem.characters(275))
+      chapter = build(:chapter, overview: Faker::Lorem.characters(number: 275))
       expect(helper.chapter_truncated_overview(chapter).length).to eq(250)
     end
   end
 
   context "with text below character limit" do
     it "doesn't truncate chapter objective" do
-      chapter = build(:chapter, objective: Faker::Lorem.characters(100))
+      chapter = build(:chapter, objective: Faker::Lorem.characters(number: 100))
       expect(helper.chapter_truncated_objective(chapter).length).to eq(100)
     end
 
     it "doesn't truncate chapter overview" do
-      chapter = build(:chapter, overview: Faker::Lorem.characters(200))
+      chapter = build(:chapter, overview: Faker::Lorem.characters(number: 200))
       expect(helper.chapter_truncated_overview(chapter).length).to eq(200)
     end
   end

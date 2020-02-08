@@ -13,14 +13,14 @@ require 'rails_helper'
 RSpec.describe WritersHelper, type: :helper do
   context "with text over character limit" do
     it "truncates writer bio to 150 characters" do
-      writer = create(:user, bio: Faker::Lorem.characters(175))
+      writer = create(:user, bio: Faker::Lorem.characters(number: 175))
       expect(helper.writer_truncated_bio(writer).length).to eq(150)
     end
   end
 
   context "with text below character limit" do
     it "doesn't truncate writer bio" do
-      writer = create(:user, bio: Faker::Lorem.characters(100))
+      writer = create(:user, bio: Faker::Lorem.characters(number: 100))
       expect(helper.writer_truncated_bio(writer).length).to eq(100)
     end
   end

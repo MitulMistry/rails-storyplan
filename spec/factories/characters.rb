@@ -6,7 +6,7 @@ FactoryBot.define do
     association :user
 
     factory :invalid_character do
-      name nil
+      name { nil }
     end
 
     factory :character_with_portrait do #use test file for attached Paperclip image
@@ -19,7 +19,7 @@ FactoryBot.define do
 
     factory :invalid_character_with_uploaded_portrait do #use this child factory when making a post/patch request with attributes_for
       portrait { Rack::Test::UploadedFile.new("#{Rails.root}/spec/support/fixtures/images/test_character_portrait_400.png", "image/png") } #issues multi-part request
-      name nil
+      name { nil }
     end
   end
 end
