@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.10', '>= 1.10.3'
 
 gem 'bootstrap', '~> 4.4', '>= 4.4.1' # still needed for sprockets styles
 gem 'font-awesome-rails'
