@@ -68,10 +68,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_172427) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "portrait_file_name"
-    t.string "portrait_content_type"
-    t.bigint "portrait_file_size"
-    t.datetime "portrait_updated_at"
   end
 
   create_table "comments", id: :serial, force: :cascade do |t|
@@ -105,10 +101,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_172427) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cover_file_name"
-    t.string "cover_content_type"
-    t.bigint "cover_file_size"
-    t.datetime "cover_updated_at"
   end
 
   create_table "story_audiences", id: :serial, force: :cascade do |t|
@@ -143,10 +135,6 @@ ActiveRecord::Schema.define(version: 2020_02_10_172427) do
     t.string "full_name"
     t.string "provider"
     t.string "uid"
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.bigint "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

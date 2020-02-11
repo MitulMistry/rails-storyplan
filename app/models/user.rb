@@ -1,4 +1,4 @@
-require 'open-uri' #for URI.parse
+require 'uri' #for URI.open
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -15,15 +15,16 @@ class User < ActiveRecord::Base
   has_many :chapters, through: :stories
   has_many :comments
   #has_many :audiences, -> { uniq }, through: :stories
-  has_attached_file :avatar, styles: { medium: "400x400#", thumb: "50x50#" }, default_url: "paperclip/:style/default_user_avatar.png" # 400x625# means crop to that size regardless of what's uploaded, use > to preserve aspect ratio
+  has_one_attached :avatar
 
   validates :username, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_-]+\Z/ }
   validates :full_name, length: { maximum: 200 }
   validates :bio, length: { maximum: 4000 }
 
-  validates_attachment :avatar, #presence: true,
-    content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-    size: { in: 0..1.megabytes }
+  # validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  #   dimension: { width: { min: 300, max: 3500 },
+  #   height: { min: 300, max: 3500 }, message: 'is not within dimensions' },
+  #   size: { less_than: 1.megabytes , message: 'is not under file size limit' }
 
   extend Generatable
   extend ClassOrderable
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar_from_url(url) #save model after calling method
-    self.avatar = URI.parse(url)
+    self.avatar.attach(io: URI.open(url), filename: "generated-avatar.jpg")
   end
 
   def ordered_updated_stories

@@ -41,11 +41,11 @@ gem 'bootstrap', '~> 4.4', '>= 4.4.1' # still needed for sprockets styles
 gem 'font-awesome-rails'
 gem 'devise', '~> 4.7', '>= 4.7.1' # For authentication
 gem 'kaminari', '~> 1.2' # For pagination
-gem 'paperclip', '~> 6.1' # For image attachments
 gem 'pg_search', '~> 2.3', '>= 2.3.2' # For Postgres search feature
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
 gem 'faker', '~> 2.10', '>= 2.10.1'
 gem 'omniauth-facebook', '~> 6.0'
+gem 'active_storage_validations', '~> 0.8.7'
 
 #gem 'airbrake'
 #gem 'friendly_id'

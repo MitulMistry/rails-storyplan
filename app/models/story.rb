@@ -1,4 +1,4 @@
-require 'open-uri' #for URI.parse
+require 'uri' #for URI open
 
 class Story < ActiveRecord::Base
   include PgSearch::Model
@@ -12,21 +12,22 @@ class Story < ActiveRecord::Base
   has_many :chapters, dependent: :destroy #destroys all chapters belonging to it when the story is destroyed
   has_many :characters, through: :chapters
   has_many :comments
-  has_attached_file :cover, styles: { medium: "400x625#", small: "205x320#" }, default_url: "paperclip/:style/default_story_cover.png" # 400x625# means crop to that size regardless of what's uploaded, use > to preserve aspect ratio
+  has_one_attached :cover
 
   validates :name, presence: true
   validates :user_id, presence: true
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
   validates :overview, length: { maximum: 4000 }
 
-  validates_attachment :cover, #presence: true,
-    content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-    size: { in: 0..2.megabytes }
+  # validates :cover, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  #   dimension: { width: { min: 300, max: 3500 },
+  #   height: { min: 300, max: 3500 }, message: 'is not within dimensions' },
+  #   size: { less_than: 2.megabytes , message: 'is not under file size limit' }
 
   extend ClassOrderable
 
   def cover_from_url(url) #save model after calling method
-    self.cover = URI.parse(url)
+    self.cover.attach(io: URI.open(url), filename: "generated-cover.jpg")
   end
 
   def recent_comments
