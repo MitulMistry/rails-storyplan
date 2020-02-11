@@ -1,7 +1,7 @@
 <h1><%= @writer.username %></h1>
 <div class="row">
   <div class="col-md-3">
-    <%= image_tag @writer.avatar.url(:medium), class: "img-fluid" %>
+    <%= writer_image_avatar(@writer) %>
 
     <% if @writer == current_user %>
     <div class="edit-buttons">

@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-3">
-    <%= image_tag @story.cover.url(:medium), class: "img-fluid" %>
+    <%= story_image_cover(@story) %>
 
     <% if @story.user == current_user %>
       <div class="edit-buttons"><%= link_to "Edit Story", edit_story_path(@story), class: "btn btn-secondary btn-sm" %>

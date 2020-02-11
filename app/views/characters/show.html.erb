@@ -1,7 +1,7 @@
 <h1><%= @character.name %></h1>
 <div class="row">
   <div class="col-md-3">
-    <%= image_tag @character.portrait.url(:medium), class: "img-fluid" %>
+    <%= character_image_portrait(@character) %>
 
     <% if @character.user == current_user %>
     <div class="edit-buttons">

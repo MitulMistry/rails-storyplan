@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-auto">
-        <%= image_tag comment.user.avatar.url(:thumb), class: "img-fluid rounded-circle" %></p>
+        <%= comment_user_avatar(comment.user) %></p>
       </div>
       <div class="col">
         <p class="card-text"><%= link_to comment.user.username, writer_path(comment.user), class: "card-link" %></p>
