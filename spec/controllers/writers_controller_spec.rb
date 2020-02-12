@@ -79,7 +79,7 @@ RSpec.describe WritersController, type: :controller do
         it "uploads a new writer avatar" do
           patch :update_profile, params: { user: attributes_for(:user_with_uploaded_avatar) }
           @user.reload
-          expect(@user.avatar.original_filename).to eq "test_user_avatar_400.png"
+          expect(@user.avatar.filename).to eq "test_user_avatar_400.png"
         end
 
         it "redirects to the updated profile" do
@@ -111,7 +111,7 @@ RSpec.describe WritersController, type: :controller do
 
       it "deletes the writer avatar from the database" do
         @user.reload
-        expect(@user.avatar).not_to exist
+        expect(@user.avatar.attached?).to be false
       end
 
       it "doesn't delete the writer" do

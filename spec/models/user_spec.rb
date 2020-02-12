@@ -51,13 +51,9 @@ RSpec.describe User, type: :model do
     end
 
     context "image (avatar) validations" do
-      it { should have_attached_file(:avatar) }
-      # it { should validate_attachment_presence(:avatar) }
-      it { should validate_attachment_content_type(:avatar).
-        allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
-        rejecting("text/plain", "text/xml") }
-      it { should validate_attachment_size(:avatar).less_than(1.megabytes) }
-      #it should validate dimensions (400 x 400?)
+      it { should validate_content_type_of(:avatar).allowing("image/png", "image/jpeg", "image/jpg") }
+      it { should validate_content_type_of(:avatar).rejecting("text/plain", "text/xml") }
+      it { should validate_size_of(:avatar).less_than(1.megabytes) }
     end
 
     context "other validations" do

@@ -83,7 +83,7 @@ RSpec.describe StoriesController, type: :controller do
             post :create, params: { story: attributes_for(:story_with_uploaded_cover) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Story, :count).by(1)
 
-          expect(Story.last.cover.original_filename).to eq "test_story_cover_400x625.png"
+          expect(Story.last.cover.filename).to eq "test_story_cover_400x625.png"
         end
 
         it "assigns current user as owner of the story" do
@@ -131,7 +131,7 @@ RSpec.describe StoriesController, type: :controller do
         it "uploads a new story cover" do
           patch :update, params: { id: @story, story: attributes_for(:story_with_uploaded_cover) }
           @story.reload
-          expect(Story.last.cover.original_filename).to eq "test_story_cover_400x625.png"
+          expect(Story.last.cover.filename).to eq "test_story_cover_400x625.png"
         end
 
         it "redirects to the updated story" do
@@ -163,7 +163,7 @@ RSpec.describe StoriesController, type: :controller do
 
       it "deletes the story cover from the database" do
         @story.reload
-        expect(@story.cover).not_to exist
+        expect(@story.cover.attached?).to be false
       end
 
       it "doesn't delete the story" do
@@ -232,7 +232,7 @@ RSpec.describe StoriesController, type: :controller do
       it "does not delete the story cover from the database" do
         story = create(:story_with_cover, user: @user2)
         patch :delete_cover, params: { id: story }
-        expect(story.cover).to exist
+        expect(story.cover.attached?).to be true
       end
     end
 

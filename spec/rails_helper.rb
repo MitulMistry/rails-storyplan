@@ -6,7 +6,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-require 'paperclip/matchers'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -62,13 +61,14 @@ RSpec.configure do |config|
   # Include to enable Devise authentication in tests
   config.include Devise::Test::ControllerHelpers, type: :controller
 
-  # Include to test Paperclip attachments
-  config.include Paperclip::Shoulda::Matchers
-
   config.include LoginMacros
 
   # Use old method for FactoryBot associations build strategy
   FactoryBot.use_parent_strategy = false
+end
+
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
 end
 
 Shoulda::Matchers.configure do |config|

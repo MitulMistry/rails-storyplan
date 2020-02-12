@@ -81,7 +81,7 @@ RSpec.describe CharactersController, type: :controller do
             post :create, params: { character: attributes_for(:character_with_uploaded_portrait) } #attributes_for (FactoryBot) creates a params hash, mimicking the hash from a form
           }.to change(Character, :count).by(1)
 
-          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400.png"
+          expect(Character.last.portrait.filename).to eq "test_character_portrait_400.png"
         end
 
         it "assigns current user as owner of the character" do
@@ -129,7 +129,7 @@ RSpec.describe CharactersController, type: :controller do
         it "uploads a new character portrait" do
           patch :update, params: { id: @character, character: attributes_for(:character_with_uploaded_portrait) }
           @character.reload
-          expect(Character.last.portrait.original_filename).to eq "test_character_portrait_400.png"
+          expect(Character.last.portrait.filename).to eq "test_character_portrait_400.png"
         end
 
         it "redirects to the updated character" do
@@ -161,7 +161,7 @@ RSpec.describe CharactersController, type: :controller do
 
       it "deletes the character portrait from the database" do
         @character.reload
-        expect(@character.portrait).not_to exist
+        expect(@character.portrait.attached?).to be false
       end
 
       it "doesn't delete the character" do
@@ -222,7 +222,7 @@ RSpec.describe CharactersController, type: :controller do
       it "does not delete the character portrait from the database" do
         character = create(:character_with_portrait, user: @user2)
         patch :delete_portrait, params: { id: character }
-        expect(character.portrait).to exist
+        expect(character.portrait.attached?).to be true
       end
     end
 

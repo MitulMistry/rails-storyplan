@@ -27,13 +27,9 @@ RSpec.describe Story, type: :model do
     end
 
     context "image (cover) validations" do
-      it { should have_attached_file(:cover) }
-      # it { should validate_attachment_presence(:cover) }
-      it { should validate_attachment_content_type(:cover).
-        allowing("image/jpeg", "image/jpg", "image/gif", "image/png").
-        rejecting("text/plain", "text/xml") }
-      it { should validate_attachment_size(:cover).less_than(2.megabytes) }
-      #it should validate dimensions (600 x 900?)
+      it { should validate_content_type_of(:cover).allowing("image/png", "image/jpeg", "image/jpg") }
+      it { should validate_content_type_of(:cover).rejecting("text/plain", "text/xml") }
+      it { should validate_size_of(:cover).less_than(2.megabytes) }
     end
 
     context "other validations" do
