@@ -7,7 +7,7 @@
 
     <% if @story.user == current_user %>
       <div class="edit-buttons"><%= link_to "Edit Story", edit_story_path(@story), class: "btn btn-secondary btn-sm" %>
-      <% if @story.cover.exists? %><%= link_to "Delete Image", delete_story_cover_path(@story), :method => :patch, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %><% end %>
+      <% if @story.cover.attached? %><%= link_to "Delete Image", delete_story_cover_path(@story), :method => :patch, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %><% end %>
       <%= link_to "Delete Story", @story, :method => :delete, data: {confirm: "Are you sure? All associated chapters will be deleted as well."}, class: "btn btn-secondary btn-sm" %></div>
     <br>
     <div><%= link_to "Create new chapter for story", new_story_chapter_path(@story), class: "btn btn-secondary btn-sm" %></div>
