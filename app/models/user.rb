@@ -21,10 +21,8 @@ class User < ActiveRecord::Base
   validates :full_name, length: { maximum: 200 }
   validates :bio, length: { maximum: 4000 }
 
-  # validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #   dimension: { width: { min: 300, max: 3500 },
-  #   height: { min: 300, max: 3500 }, message: 'is not within dimensions' },
-  #   size: { less_than: 1.megabytes , message: 'is not under file size limit' }
+  validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],    
+    size: { less_than: 1.megabytes }
 
   extend Generatable
   extend ClassOrderable

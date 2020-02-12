@@ -19,10 +19,8 @@ class Story < ActiveRecord::Base
   validates :target_word_count, numericality: { only_integer: true }, allow_blank: true
   validates :overview, length: { maximum: 4000 }
 
-  # validates :cover, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-  #   dimension: { width: { min: 300, max: 3500 },
-  #   height: { min: 300, max: 3500 }, message: 'is not within dimensions' },
-  #   size: { less_than: 2.megabytes , message: 'is not under file size limit' }
+  validates :cover, content_type: ['image/png', 'image/jpg', 'image/jpeg'],    
+    size: { less_than: 2.megabytes }
 
   extend ClassOrderable
 
