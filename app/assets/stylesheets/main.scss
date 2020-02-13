@@ -95,7 +95,7 @@ a:hover, a:focus {
 
 .navbar {
   font-size: 1rem;
-  color: red;
+  color: #ed113d;
 }
 
 .navbar-brand {
@@ -281,11 +281,30 @@ ul.pagination {
 
 .field_with_errors {
   /*@extend .has-error;*/
-  color: red;
+  color: #ed113d;
   display: inline;
   input {
-    border-color: red;
+    border-color: #ed113d;
   }
+}
+
+#error_explanation {
+  color: #ed113d;
+}
+
+ul.dashed {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.dashed > li {
+  margin-left: 15px;  
+}
+
+/* Prevent nested li's from getting messed up */
+ul.dashed > li::before {
+  content: "-";
+  // margin-left: -15px;
 }
 
 .custom-footer {

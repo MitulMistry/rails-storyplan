@@ -3,22 +3,22 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
     <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control", autofocus: true %>
+    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="form-group">
     <%= f.label :password %>
-    <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
   </div>
 
-  <% if devise_mapping.rememberable? -%>
+  <% if devise_mapping.rememberable? %>
     <div class="form-group">
       <%= f.label :remember_me, class: "custom-control custom-checkbox" do %>
         <%= f.check_box :remember_me, class: "custom-control-input" %>
         <span class="custom-control-label">Remember me</span>
       <% end %>
     </div>
-  <% end -%>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Log in", class: "btn btn-primary" %>
