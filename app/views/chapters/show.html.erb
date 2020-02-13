@@ -10,7 +10,7 @@
 <% if @chapter.user == current_user %>
 <div class="edit-buttons">
   <%= link_to "Edit", edit_chapter_path(@chapter), class: "btn btn-secondary btn-sm" %>
-  <%= link_to "Delete", @chapter, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
+  <%= link_to "Delete Chapter", @chapter, :method => :delete, data: {confirm: "Are you sure?"}, class: "btn btn-secondary btn-sm" %>
 </div>
 <% end %>
 

@@ -57,19 +57,19 @@ feature "Character management" do
     end
 
     scenario "deletes character through button", js: true do #enable selenium-webdriver for js
-        character = create(:character, user: @user)
-        
-        visit root_path #with capybara
-        click_link "Profile"
-        click_link character.name
+      character = create(:character, user: @user)
+      
+      visit root_path #with capybara
+      click_link "Profile"
+      click_link character.name
 
-        expect{
-          accept_confirm do #accept js confirmation box w/capybara
-            click_link "Delete"
-          end
-        }.to change(Character, :count).by(-1)
+      expect{
+        accept_confirm do #accept js confirmation box w/capybara
+          click_link "Delete Character"
+        end
+      }.to change(Character, :count).by(-1)
 
-        expect(page).to have_content("Character was successfully deleted.")
+      expect(page).to have_content("Character was successfully deleted.")
     end
   end
 end

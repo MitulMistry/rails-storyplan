@@ -70,7 +70,7 @@ feature "Story management" do
 
       expect{
         accept_confirm do #accept js confirmation box w/capybara
-          click_link "Delete"
+          click_link "Delete Story"
         end
       }.to change(Story, :count).by(-1)
 

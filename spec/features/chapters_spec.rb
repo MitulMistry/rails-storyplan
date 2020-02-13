@@ -78,7 +78,7 @@ feature "Chapter management" do
 
       expect{
         accept_confirm do #accept js confirmation box w/capybara
-          click_link "Delete"
+          click_link "Delete Chapter"
         end
       }.to change(Chapter, :count).by(-1)
 
