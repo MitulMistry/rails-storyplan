@@ -11,7 +11,7 @@ namespace :character do
       image_original = CGI.unescape(image.gsub(ext, "_original#{ext}"))
 
       # this url pattern can be changed to reflect whatever service you use - #{image_original} - sprintf converts '1' to '001'
-      portrait_url = "https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/characters/portraits/000/000/#{sprintf '%03d', character.id}/original/#{image}"
+      portrait_url = "https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/characters/portraits/000/000/#{sprintf '%03d', character.id}/original/#{image}"
       character.portrait.attach(io: open(portrait_url),
                                   filename: character.portrait_file_name,
                                   content_type: character.portrait_content_type)
