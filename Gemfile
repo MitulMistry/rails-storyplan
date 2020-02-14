@@ -12,7 +12,7 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0' # Use Webpack to process JS and Yarn to manage front end dependencies
+gem 'webpacker', '~> 4.2', '>= 4.2.2' # Use Webpack to process JS and Yarn to manage front end dependencies
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
