@@ -1,6 +1,4 @@
-@import 'bootstrap/scss/_functions';
-@import 'bootstrap/scss/_variables';
-@import 'bootstrap/scss/mixins/_breakpoints';
+@import 'bootstrap'; //import Bootstrap styles here due to errors on Heroku production deploy (asset precompile can't find mixins)
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
 
