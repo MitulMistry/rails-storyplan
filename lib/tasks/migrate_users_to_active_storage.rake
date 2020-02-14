@@ -10,8 +10,8 @@ namespace :user do
       ext = File.extname(image)
       image_original = CGI.unescape(image.gsub(ext, "_original#{ext}"))
 
-      # this url pattern can be changed to reflect whatever service you use
-      avatar_url = "https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/users/#{user.id}/#{image_original}"
+      # this url pattern can be changed to reflect whatever service you use - #{image_original} - sprintf converts '1' to '001'
+      avatar_url = "https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/users/avatars/000/000/#{sprintf '%03d', user.id}/original/#{image}"
       user.avatar.attach(io: open(avatar_url),
                                     filename: user.avatar_file_name,
                                     content_type: user.avatar_content_type)

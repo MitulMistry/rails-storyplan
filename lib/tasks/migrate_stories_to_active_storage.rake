@@ -10,8 +10,8 @@ namespace :story do
       ext = File.extname(image)
       image_original = CGI.unescape(image.gsub(ext, "_original#{ext}"))
 
-      # this url pattern can be changed to reflect whatever service you use
-      cover_url = "https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/stories/#{story.id}/#{image_original}"
+      # this url pattern can be changed to reflect whatever service you use - #{image_original} - sprintf converts '1' to '001'
+      cover_url = "https://s3.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/stories/covers/000/000/#{sprintf '%03d', story.id}/original/#{image}"
       story.cover.attach(io: open(cover_url),
                                   filename: story.cover_file_name,
                                   content_type: story.cover_content_type)
