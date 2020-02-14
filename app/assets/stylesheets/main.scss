@@ -356,8 +356,8 @@ ul.dashed > li::before {
   // }
 }
 
-@include media-breakpoint-up(md) {
-  #footer-social-icons {
-    @include float-right;
-  }
-}
+// @include media-breakpoint-up(md) {
+//   #footer-social-icons {
+//     @include float-right;
+//   }
+// }
