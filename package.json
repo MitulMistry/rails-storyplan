@@ -8,7 +8,7 @@
     "@rails/webpacker": "4.2.2",
     "bootstrap": "^4.4.1",
     "imagesloaded": "^4.1.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-bridget": "^2.0.1",
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
