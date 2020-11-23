@@ -15,10 +15,6 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.2', '>= 4.2.2' # Use Webpack to process JS and Yarn to manage front end dependencies
 # Use Uglifier as compressor for JavaScript assets
 # gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 # gem 'jquery-rails' # jquery now in package.json
@@ -31,21 +27,18 @@ gem 'jbuilder', '~> 2.7'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Use Active Storage variant
-gem 'image_processing', '~> 1.10', '>= 1.10.3'
+gem 'image_processing', '~> 1.12', '>= 1.12.1'
 
 gem 'bootstrap', '~> 4.4', '>= 4.4.1' # still needed for sprockets styles
-gem 'font-awesome-rails'
-gem 'devise', '~> 4.7', '>= 4.7.1' # For authentication
-gem 'kaminari', '~> 1.2' # For pagination
-gem 'pg_search', '~> 2.3', '>= 2.3.2' # For Postgres search feature
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+gem 'devise', '~> 4.7', '>= 4.7.3' # For authentication
+gem 'kaminari', '~> 1.2', '>= 1.2.1' # For pagination
+gem 'pg_search', '~> 2.3', '>= 2.3.5' # For Postgres search feature
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
-gem 'faker', '~> 2.10', '>= 2.10.1'
-gem 'omniauth-facebook', '~> 6.0'
-gem 'active_storage_validations', '~> 0.8.7'
+gem 'faker', '~> 2.14'
+gem 'omniauth-facebook', '~> 8.0'
+gem 'active_storage_validations', '~> 0.9.0'
 
 #gem 'airbrake'
 #gem 'friendly_id'
@@ -73,8 +66,8 @@ group :development, :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
 
-  gem 'rspec-rails', '~> 4.0.0.beta4' # beta branch for Rails 6 
-  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'factory_bot_rails', '~> 6.1'
 
   #gem 'better_errors'
   #gem 'sprockets_better_errors'
@@ -93,7 +86,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 group :production do

@@ -37,7 +37,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_storage_validations (0.8.9)
+    active_storage_validations (0.9.0)
       rails (>= 5.2.0)
     activejob (6.0.3.4)
       activesupport (= 6.0.3.4)
@@ -1056,11 +1056,11 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
-    factory_bot (5.2.0)
-      activesupport (>= 4.2.0)
-    factory_bot_rails (5.2.0)
-      factory_bot (~> 5.2.0)
-      railties (>= 4.2.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faker (2.14.0)
       i18n (>= 1.6, < 2)
     faraday (1.1.0)
@@ -1128,7 +1128,7 @@ GEM
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-facebook (6.0.0)
+    omniauth-facebook (8.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-oauth2 (1.7.0)
       oauth2 (~> 1.4)
@@ -1267,34 +1267,34 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_storage_validations (~> 0.8.7)
+  active_storage_validations (~> 0.9.0)
   aws-sdk (~> 3.0, >= 3.0.1)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4, >= 4.4.1)
   byebug
   capybara (>= 2.15, < 4.0)
   database_cleaner
-  devise (~> 4.7, >= 4.7.1)
+  devise (~> 4.7, >= 4.7.3)
   dotenv-rails
-  factory_bot_rails (~> 5.1, >= 5.1.1)
-  faker (~> 2.10, >= 2.10.1)
-  font-awesome-rails
-  image_processing (~> 1.10, >= 1.10.3)
+  factory_bot_rails (~> 6.1)
+  faker (~> 2.14)
+  font-awesome-rails (~> 4.7, >= 4.7.0.5)
+  image_processing (~> 1.12, >= 1.12.1)
   jbuilder (~> 2.7)
-  kaminari (~> 1.2)
+  kaminari (~> 1.2, >= 1.2.1)
   launchy
   listen (>= 3.0.5, < 3.2)
-  omniauth-facebook (~> 6.0)
+  omniauth-facebook (~> 8.0)
   pg (>= 0.18, < 2.0)
-  pg_search (~> 2.3, >= 2.3.2)
+  pg_search (~> 2.3, >= 2.3.5)
   pry
   puma (~> 4.1)
   rails (~> 6.0, >= 6.0.3.4)
   rails-controller-testing
-  rspec-rails (~> 4.0.0.beta4)
+  rspec-rails (~> 4.0, >= 4.0.1)
   sass-rails (>= 6)
   selenium-webdriver
-  shoulda-matchers
+  shoulda-matchers (~> 4.4, >= 4.4.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
