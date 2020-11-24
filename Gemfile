@@ -35,7 +35,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'devise', '~> 4.7', '>= 4.7.3' # For authentication
 gem 'kaminari', '~> 1.2', '>= 1.2.1' # For pagination
 gem 'pg_search', '~> 2.3', '>= 2.3.5' # For Postgres search feature
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1' # For image uploading to S3 in production
+gem 'aws-sdk-s3', '~> 1.85' # For image uploading to S3 in production
 gem 'faker', '~> 2.14'
 gem 'omniauth-facebook', '~> 8.0'
 gem 'active_storage_validations', '~> 0.9.0'
