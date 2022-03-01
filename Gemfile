@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.12', '>= 1.12.1'
+gem 'image_processing', '~> 1.12'
 
 gem 'bootstrap', '~> 4.5', '>= 4.5.3' # still needed for sprockets styles
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
