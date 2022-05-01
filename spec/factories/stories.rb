@@ -10,15 +10,15 @@ FactoryBot.define do
     end
 
     factory :story_with_cover do # use test file for attached Active Storage image
-      cover { fixture_file_upload(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
+      cover { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
     end
 
     factory :story_with_uploaded_cover do # use this child factory when making a post/patch request with attributes_for
-      cover { fixture_file_upload(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
+      cover { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
     end
 
     factory :invalid_story_with_uploaded_cover do # use this child factory when making a post/patch request with attributes_for
-      cover { fixture_file_upload(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
+      cover { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "test_story_cover_400x625.png"), "image/png") }
       name { nil }
     end
   end
