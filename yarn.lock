@@ -8071,6 +8071,8 @@ __metadata:
     masonry-layout: ^4.2.2
     popper.js: ^1.16.1
     turbolinks: ^5.2.0
+    webpack: ^4.46.0
+    webpack-cli: ^3.3.12
     webpack-dev-server: ^3
   languageName: unknown
   linkType: soft
