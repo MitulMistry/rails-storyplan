@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'image_processing', '~> 1.2'
 
 # Use Bootstrap gem for styling, still needed for Sprockets styles
-gem 'bootstrap', '~> 4.5', '>= 4.5.3'
+gem 'bootstrap', '~> 4.6', '>= 4.6.1'
 # Font Awesome provides icons
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 # Use Devise for authentication and user registration
