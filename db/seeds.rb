@@ -33,6 +33,8 @@ genres = [
   ["Western", "Stories in the Western genre are set in the American West, between the time of the Civil war and the early nineteenth century."]
 ]
 
+puts "Creating genres..."
+
 genres.each do |genre_array|
   Genre.create(name: genre_array[0], description: genre_array[1])
 end
@@ -45,9 +47,13 @@ audiences = [
   "Children"
   ]
 
+puts "Creating audiences..."
+
 audiences.each do |audience|
   Audience.create(name: audience)
 end
+
+puts "Creating users..."
 
 25.times do
   user = User.new(
@@ -60,6 +66,8 @@ end
   user.avatar_from_url("http://loremflickr.com/400/400/portrait")
   user.save
 end
+
+puts "Creating stories..."
 
 35.times do
   story = Story.new(
@@ -78,6 +86,8 @@ end
   story.save
 end
 
+puts "Creating chapters..."
+
 50.times do
   story = Story.order("RANDOM()").first
   chapter = story.chapters.build(
@@ -90,11 +100,16 @@ end
   chapter.save
 end
 
+puts "Creating characters..."
+
 50.times do
-  user = User.order("RANDOM()").first
-  until !user.chapters.empty?
-    user = User.order("RANDOM()").first
-  end
+  chapter = Chapter.order("RANDOM()").first
+  user = chapter.user
+
+  # user = User.order("RANDOM()").first
+  # until !user.chapters.empty?
+  #   user = User.order("RANDOM()").first
+  # end
 
   character = user.characters.build(
     name: Faker::Superhero.name,
@@ -109,9 +124,13 @@ end
   character.save
 end
 
+puts "Creating comments..."
+
 100.times do
   user = User.order("RANDOM()").first
   comment =  user.comments.build(content: Faker::Lorem.paragraph)
   comment.story = Story.order("RANDOM()").first
   comment.save
 end
+
+puts "Seeding complete."

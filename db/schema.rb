@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_05_02_001508) do
     t.integer "searchable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "stories", id: :serial, force: :cascade do |t|
