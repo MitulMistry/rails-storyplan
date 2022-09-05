@@ -5,7 +5,7 @@ Storyplan is a narrative development tool built using [Rails][rails] to help use
 ![screenshot](readme_storyplan.jpg)
 
 ## Demo App
-You can see a demo version of the application deployed to Heroku here: https://rails-storyplan.herokuapp.com/
+You can see a demo version of the application deployed to Heroku here: https://storyplan-rails.herokuapp.com/
 
 ## Functionality
 Users can create an account either manually or via Facebook. They can create stories and associate chapters with them to flesh them out and develop narrative structure. Users can create characters that can be associated with chapters they appear in, but can also exist independently, offering the option to begin story planning with characters first.

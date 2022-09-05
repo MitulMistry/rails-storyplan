@@ -6,9 +6,9 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
-    "bootstrap": "4.6.1",
+    "bootstrap": "4.6.2",
     "imagesloaded": "^5.0.0",
-    "jquery": "^3.6.0",
+    "jquery": "3.6.1",
     "jquery-bridget": "^3.0.1",
     "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
@@ -19,10 +19,10 @@
   "version": "0.1.0",
   "engines": {
     "node": "16.15.0",
-    "yarn": "3.2.0"
+    "yarn": "3.2.3"
   },
   "devDependencies": {
     "webpack-dev-server": "^3"
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "yarn@3.2.3"
 }
