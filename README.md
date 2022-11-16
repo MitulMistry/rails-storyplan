@@ -5,7 +5,7 @@ Storyplan is a narrative development tool built using [Rails][rails] to help use
 ![screenshot](readme_storyplan.jpg)
 
 ## Demo App
-You can see a demo version of the application deployed to Heroku here: https://storyplan-rails.herokuapp.com/
+You can see a demo version of the application deployed to [Railway][railway] here: https://rails-storyplan.up.railway.app/
 
 ## Functionality
 Users can create an account either manually or via Facebook. They can create stories and associate chapters with them to flesh them out and develop narrative structure. Users can create characters that can be associated with chapters they appear in, but can also exist independently, offering the option to begin story planning with characters first.
@@ -47,6 +47,7 @@ https://github.com/learn-co-students/rails-assessment-v-000
 This project is open source under the terms of the [MIT License][mit].
 
 [rails]: http://rubyonrails.org/
+[railway]: https://railway.app/
 [devise]: https://github.com/plataformatec/devise
 [active-record]: http://guides.rubyonrails.org/active_record_basics.html
 [postgres]: https://www.postgresql.org/
