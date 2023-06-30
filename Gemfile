@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-ruby '2.7.6'
+ruby '3.1.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1', '>= 6.1.6.1'
+gem 'rails', '~> 6.1', '>= 6.1.7.4'
 # Use PostgreSQL as the database for Active Record
-gem 'pg', '~> 1.4', '>= 1.4.3'
+gem 'pg', '~> 1.5', '>= 1.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 # Use Webpack to process JS and Yarn to manage front end dependencies
-gem 'webpacker', '~> 5.4', '>= 5.4.3'
+gem 'webpacker', '~> 5.4', '>= 5.4.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks', '~> 5' # turbolinks now in package.json
@@ -28,17 +28,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'image_processing', '~> 1.12', '>= 1.12.2'
 
 # Use Bootstrap gem for styling, still needed for Sprockets styles
-gem 'bootstrap', '~> 4.6', '>= 4.6.1'
+gem 'bootstrap', '~> 4.6', '>= 4.6.2'
 # Font Awesome provides icons
-gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
 # Use Devise for authentication and user registration
-gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'devise', '~> 4.9', '>= 4.9.2'
 # Use Kaminari For pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 # Use PG Search For Postgres search feature
 gem 'pg_search', '~> 2.3', '>= 2.3.6'
 # For image uploading to S3 in production
-gem 'aws-sdk-s3', '~> 1.114'
+gem 'aws-sdk-s3', '~> 1.127'
 # Use Faker to generate example data
 gem 'faker', '~> 2.23'
 # Set up OAuth registration and authentication via Facebook
