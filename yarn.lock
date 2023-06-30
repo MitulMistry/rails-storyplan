@@ -1453,9 +1453,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rails/webpacker@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@rails/webpacker@npm:5.4.3"
+"@rails/webpacker@npm:^5.4.4":
+  version: 5.4.4
+  resolution: "@rails/webpacker@npm:5.4.4"
   dependencies:
     "@babel/core": ^7.15.0
     "@babel/plugin-proposal-class-properties": ^7.14.5
@@ -1495,7 +1495,7 @@ __metadata:
     webpack-assets-manifest: ^3.1.1
     webpack-cli: ^3.3.12
     webpack-sources: ^1.4.3
-  checksum: 5ad732d8d0ca790203624b46960beece3f87b6b8096bd4946fd0dae09dea6c83dbb1f22d297a94c004697ce8fb0e0fd699147cfda78edf3edd5104645313cef6
+  checksum: 9344aac9e52e9389432b2972027038f76ecca7043030784aee08c12fcfe0ebbf4d06b31dc9543b4f2dae3388ce0be1bff1379a0345fe572221643372274c92bb
   languageName: node
   linkType: hard
 
@@ -4425,7 +4425,7 @@ __metadata:
 
 "fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=d11327"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
@@ -4435,7 +4435,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.1.2#~builtin<compat/fsevents>":
   version: 2.1.3
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.3#~builtin<compat/fsevents>::version=2.1.3&hash=31d12a"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -4444,7 +4444,7 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -5580,17 +5580,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jquery@npm:3.6.1":
-  version: 3.6.1
-  resolution: "jquery@npm:3.6.1"
-  checksum: 6177d866a74f1137cad800f142c7cdbd5ab19cd4282546f8bdb4890c9f933b1d542ab96f2aa15d007e43c98de7315b0513e849ec5359d3ac5640f720892fe547
-  languageName: node
-  linkType: hard
-
 "jquery@npm:>=1.4.2 <4":
   version: 3.5.1
   resolution: "jquery@npm:3.5.1"
   checksum: 813047b852511ca1ecfaa7b2568aba1d7270a92e5c74962b308792a401adf041869a3b2a6858b0b7a02f6684947fb93171e40cbb4460831977a937b40b0e15ce
+  languageName: node
+  linkType: hard
+
+"jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
   languageName: node
   linkType: hard
 
@@ -8077,10 +8077,10 @@ __metadata:
     "@rails/actioncable": ^6.0.0
     "@rails/activestorage": ^6.0.0
     "@rails/ujs": ^6.0.0
-    "@rails/webpacker": 5.4.3
+    "@rails/webpacker": ^5.4.4
     bootstrap: 4.6.2
     imagesloaded: ^5.0.0
-    jquery: 3.6.1
+    jquery: ^3.7.0
     jquery-bridget: ^3.0.1
     masonry-layout: ^4.2.2
     popper.js: ^1.16.1
@@ -8432,7 +8432,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>":
   version: 1.19.0
-  resolution: "resolve@patch:resolve@npm%3A1.19.0#~builtin<compat/resolve>::version=1.19.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.19.0#~builtin<compat/resolve>::version=1.19.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.1.0
     path-parse: ^1.0.6
@@ -8442,7 +8442,7 @@ __metadata:
 
 "resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>":
   version: 1.22.0
-  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=07638b"
+  resolution: "resolve@patch:resolve@npm%3A1.22.0#~builtin<compat/resolve>::version=1.22.0&hash=c3c19d"
   dependencies:
     is-core-module: ^2.8.1
     path-parse: ^1.0.7
